@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    container_name: template
+    ports:
+      - "5555:5432"
+    env_file: ./.env.local
+    volumes:
+      - my:/var/lib/postgresql/data
+volumes:
+  my:
