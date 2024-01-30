@@ -15,7 +15,7 @@ export const HeaderSessionFeature: FC = () => {
 
   const handleCalendarCreated = useCallback(
     (calendar: Calendar) => {
-      router.push("/calendar");
+      router.push(`/c/${calendar.id}`);
     },
     [router]
   );
