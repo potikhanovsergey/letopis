@@ -1,4 +1,5 @@
 import "./user"
+import "./event"
 
 enum CalendarVisibility {
   hidden
@@ -16,6 +17,8 @@ model Calendar {
 
   userId String
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  events Event[]
 
   /* Все пользователи могут видеть публичные календари, непубличные только его создатели */
   @@allow('read', visiiblity != hidden || auth() == user)

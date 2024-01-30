@@ -73,4 +73,15 @@ model Calendar {
     visiiblity CalendarVisibility
     userId String
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    events Event[]
+}
+
+/// @@allow('read', calendar.visiiblity != hidden || auth() == calendar.user)
+/// @@allow('all', auth() == calendar.user)
+model Event {
+    id Int @id() @default(autoincrement())
+    title String
+    date String
+    calendarId String
+    calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
 }
