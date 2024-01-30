@@ -1,0 +1,5 @@
+.wrapper {
+  padding-bottom: var(--mantine-spacing-md);
+  position: relative;
+  left: rem(24px);
+}

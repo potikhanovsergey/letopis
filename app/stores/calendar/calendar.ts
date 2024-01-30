@@ -1,6 +1,7 @@
-import { create } from "zustand";
-import { CalendarStore } from "./calendar.typings";
 import dayjs from "dayjs";
+import { create } from "zustand";
+
+import { CalendarStore } from "./calendar.typings";
 
 export const useCalendarStore = create<CalendarStore>((set, get) => ({
   hoveredIndex: null,
@@ -39,6 +40,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
     const yearBeginning = startDate.startOf("y");
 
     const startIndex = startDate.diff(yearBeginning, "w");
+
     return startIndex;
   },
 }));

@@ -1,0 +1,9 @@
+import { useCalendarStore } from "@/app/stores";
+
+export const resetHovered = () => {
+  useCalendarStore.setState(() => ({
+    hoveredColumnIndex: null,
+    hoveredIndex: null,
+    hoveredRowIndex: null,
+  }));
+};
