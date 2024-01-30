@@ -1,25 +1,31 @@
-"use client";
 import { Box } from "@mantine/core";
-import dayjs from "dayjs";
+import { notFound } from "next/navigation";
 
-import { KeyValue } from "@/app/components/KeyValue";
 import { EditToolbarFeature } from "@/app/features/EditToolbarFeature";
 import { YearsCalendarFeature } from "@/app/features/YearsCalendarFeature";
-import { useCalendarStore } from "@/app/stores";
+import prisma from "@/db";
 
-export default function Page() {
-  const startDate = useCalendarStore((state) => state.startDate);
+const Page = async ({ params }: { params: { id: string } }) => {
+  const calendar = await prisma.calendar.findFirst({
+    where: { id: params.id },
+  });
+
+  if (!calendar) {
+    return notFound();
+  }
 
   return (
     <main>
       <Box mx="auto" maw={1200} pt="xl" pb={80}>
-        <KeyValue
+        {/* <KeyValue
           k="Стартовая дата"
           v={dayjs(startDate).format("DD.MM.YYYY")}
-        />
+        /> */}
         <YearsCalendarFeature />
         <EditToolbarFeature />
       </Box>
     </main>
   );
-}
+};
+
+export default Page;

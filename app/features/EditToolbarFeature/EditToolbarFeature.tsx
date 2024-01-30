@@ -1,3 +1,4 @@
+"use client";
 import { Divider, Group } from "@mantine/core";
 import { IconCalendar, IconGridDots } from "@tabler/icons-react";
 
