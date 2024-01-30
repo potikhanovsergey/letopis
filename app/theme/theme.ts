@@ -1,18 +1,70 @@
-import { createTheme } from "@mantine/core";
+import {
+  ActionIcon,
+  Button,
+  createTheme,
+  Modal,
+  NumberInput,
+  Textarea,
+  TextInput,
+  Tooltip,
+} from "@mantine/core";
+import { DateInput } from "@mantine/dates";
+import { Nunito_Sans } from "next/font/google";
 
-import ComboboxClassNames from "./styles/Combobox.module.css";
-import MenuClassNames from "./styles/Menu.module.css";
-import PopoverClassNames from "./styles/Popover.module.css";
+const font = Nunito_Sans({
+  subsets: ["cyrillic", "latin"],
+  weight: ["400", "700"],
+});
 
 export const theme = createTheme({
-  activeClassName: "",
-  components: {
-    Menu: {
-      classNames: MenuClassNames,
-    },
-    Combobox: {
-      classNames: ComboboxClassNames,
-    },
-    Popover: { classNames: PopoverClassNames },
+  primaryColor: "dark",
+  fontFamily: font.style.fontFamily,
+  headings: {
+    fontFamily: font.style.fontFamily,
   },
+  components: {
+    ActionIcon: ActionIcon.extend({
+      defaultProps: {
+        variant: "subtle",
+      },
+    }),
+    Tooltip: Tooltip.extend({
+      defaultProps: {
+        withArrow: true,
+      },
+    }),
+    Modal: Modal.extend({
+      defaultProps: {
+        centered: true,
+        lockScroll: false,
+      },
+    }),
+    Button: Button.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+    NumberInput: NumberInput.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+    DateInput: DateInput.extend({
+      defaultProps: {
+        size: "xs",
+        locale: "ru",
+      },
+    }),
+    TextInput: TextInput.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+    Textarea: Textarea.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+  },
+  activeClassName: "",
 });

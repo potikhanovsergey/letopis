@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres:13
     restart: always
-    container_name: template
+    container_name: letopis
     ports:
       - "5555:5432"
     env_file: ./.env.local

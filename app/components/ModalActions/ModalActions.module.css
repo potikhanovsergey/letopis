@@ -1,0 +1,4 @@
+.wrapper {
+  margin-top: var(--mantine-spacing-md);
+  justify-content: flex-end;
+}

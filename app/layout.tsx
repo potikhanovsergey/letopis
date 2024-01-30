@@ -1,13 +1,13 @@
 import { FC, PropsWithChildren } from "react";
 import { AppShell, AppShellMain, ColorSchemeScript } from "@mantine/core";
-import { getSession } from "server/utils";
+import { ModalsProvider } from "@mantine/modals";
 
-import {
-  MantineStylesProvider,
-  SessionProvider,
-  ZenstackHooksProvider,
-} from "./providers";
-import { HeaderWidget } from "./widgets";
+import { HeaderFeature } from "@/app/features/HeaderFeature";
+import { DatesProvider } from "@/app/providers/DatesProvider";
+import { SessionProvider } from "@/app/providers/SessionProvider";
+import { StylesProvider } from "@/app/providers/StylesProvider";
+import { ZenstackHooksProvider } from "@/app/providers/ZenstackHooksProvider";
+import { getSession } from "@/server/utils";
 
 const Layout: FC<PropsWithChildren> = async ({ children }) => {
   const session = await getSession();
@@ -20,12 +20,16 @@ const Layout: FC<PropsWithChildren> = async ({ children }) => {
       <body>
         <SessionProvider session={session}>
           <ZenstackHooksProvider>
-            <MantineStylesProvider>
-              <AppShell header={{ height: 40 }}>
-                <HeaderWidget />
-                <AppShellMain>{children}</AppShellMain>
-              </AppShell>
-            </MantineStylesProvider>
+            <StylesProvider>
+              <ModalsProvider>
+                <DatesProvider>
+                  <AppShell header={{ height: 40 }}>
+                    <HeaderFeature />
+                    <AppShellMain>{children}</AppShellMain>
+                  </AppShell>
+                </DatesProvider>
+              </ModalsProvider>
+            </StylesProvider>
           </ZenstackHooksProvider>
         </SessionProvider>
       </body>

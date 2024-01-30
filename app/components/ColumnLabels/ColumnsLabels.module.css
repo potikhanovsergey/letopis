@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  padding-bottom: var(--mantine-spacing-md);
+}
+
+.label {
+  font-size: rem(10px);
+  position: absolute;
+  top: 0;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(8px);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(4px);
+  }
+}

@@ -1,12 +1,21 @@
-model User {
-    id String @id @default(cuid())
-    email String @unique @email
-    password String @password @omit
+import "./session"
+import "./account"
 
-    /* Все пользователи могут создавать аккаунт */
-    @@allow('create', true)
-    /* Все пользователи могут видеть другие аккаунты */
-    @@allow('read', true)
-    /* Все остальные действия (delete, update) доступны только самому себе */
-    @@allow('all', auth() == this)
+model User {
+  id String @id @default(cuid())
+  name String?
+  email String? @unique
+  emailVerified DateTime?
+  image String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  accounts Account[]
+  sessions Session[]
+
+  /* Все пользователи могут создавать аккаунт */
+  @@allow('create', true)
+  /* Все пользователи могут видеть другие аккаунты */
+  @@allow('read', true)
+  /* Все остальные действия доступны только самому себе */
+  @@allow('all', auth() == this)
 }

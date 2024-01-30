@@ -44,7 +44,7 @@
               // Реакт и библиотеки с @
               ["^react", "^@?\\w"],
               // Наши компоненты
-              ["^(features|components)(/.*|$)"],
+              ["^(@)(/.*|$)"],
               // Side effect imports.
               ["^\\u0000"],
               // Parent imports. Put `..` last.

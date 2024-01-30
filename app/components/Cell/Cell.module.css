@@ -1,0 +1,8 @@
+.cell {
+  aspect-ratio: 1;
+  background: var(--mantine-color-gray-3);
+  border-radius: var(--mantine-radius-xs);
+  &:hover {
+    background: var(--mantine-color-gray-4);
+  }
+}
