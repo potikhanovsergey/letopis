@@ -4,16 +4,31 @@ import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 
 import { ModalActions } from "@/app/components/ModalActions";
+import { useCalendarStore } from "@/app/stores";
+import { useUpdateCalendar } from "@/db/hooks";
 
 export const EditInfoModalFeature: FC = () => {
+  const title = useCalendarStore((state) => state.data.title);
+  const description = useCalendarStore((state) => state.data.description);
+  const id = useCalendarStore((state) => state.data.id);
+
+  const { mutateAsync, isPending: loading } = useUpdateCalendar();
+
   const form = useForm({
     initialValues: {
-      title: "",
-      description: "",
+      title,
+      description,
     },
   });
 
-  const handleSubmit = form.onSubmit((values) => {
+  const handleSubmit = form.onSubmit(async ({ title, description }) => {
+    const data = await mutateAsync({
+      where: { id },
+      data: { title, description },
+    });
+    if (data) {
+      useCalendarStore.setState({ data });
+    }
     modals.closeAll();
   });
 
@@ -33,7 +48,9 @@ export const EditInfoModalFeature: FC = () => {
       </Stack>
 
       <ModalActions>
-        <Button type="submit">Подтвердить</Button>
+        <Button loading={loading} type="submit">
+          Подтвердить
+        </Button>
       </ModalActions>
     </form>
   );

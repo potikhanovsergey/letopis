@@ -22,10 +22,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   return (
     <Box pt="md" pb={80}>
-      <CalendarEditorFeature
-        title={calendar.title}
-        description={calendar.description}
-      />
+      <CalendarEditorFeature calendar={calendar} />
     </Box>
   );
 };

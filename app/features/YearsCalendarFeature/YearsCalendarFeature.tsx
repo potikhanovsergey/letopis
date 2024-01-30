@@ -19,7 +19,8 @@ const array53 = [...Array(53)];
 
 export const YearsCalendarFeature = () => {
   const startDateIndex = useCalendarStore((state) => state.startDateIndex());
-  const rows = useCalendarStore((state) => state.rows);
+  const rows = useCalendarStore((state) => state.data.rows);
+  console.log(rows);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -44,7 +45,7 @@ export const YearsCalendarFeature = () => {
   const handleMouseLeave = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       resetHovered();
-    }, 200);
+    }, 300);
   }, []);
 
   useEffect(() => {

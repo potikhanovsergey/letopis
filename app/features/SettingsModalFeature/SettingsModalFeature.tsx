@@ -9,7 +9,7 @@ import { useCalendarStore } from "@/app/stores";
 import { setRows, setStartDate } from "@/app/stores/calendar/actions";
 
 export const SettingsModalFeature: FC = () => {
-  const rows = useCalendarStore((state) => state.rows);
+  const rows = useCalendarStore((state) => state.data.rows);
   const startDate = useCalendarStore((state) => state.startDate);
 
   const form = useForm({

@@ -4,6 +4,15 @@ import { create } from "zustand";
 import { CalendarStore } from "./calendar.typings";
 
 export const useCalendarStore = create<CalendarStore>((set, get) => ({
+  data: {
+    id: "",
+    title: "",
+    description: "",
+    rows: 60,
+    startDate: new Date(),
+    userId: "",
+    visiiblity: "hidden",
+  },
   hoveredIndex: null,
   hoveredRowIndex: null,
   hoveredColumnIndex: null,
@@ -33,7 +42,6 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
       end: dayjs.min(hoveredEndDate, hoveredYearEndDate),
     };
   },
-  rows: 60,
   startDate: new Date(),
   startDateIndex: () => {
     const startDate = dayjs(get().startDate);
