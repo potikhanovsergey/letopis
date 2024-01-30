@@ -9,7 +9,7 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
 }) => {
   return (
     <div>
-      <Title order={2} mb="md">
+      <Title order={2} mb="xs">
         {title}
       </Title>
       {calendars.map((calendar) => (

@@ -1,0 +1,24 @@
+import "./user"
+
+enum CalendarVisibility {
+  hidden
+  link
+  feed
+}
+
+model Calendar {
+  id String @id @default(cuid())
+  title String
+  description String
+  rows Int
+  startDate DateTime @default(now())
+  visiiblity CalendarVisibility
+
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /* Все пользователи могут видеть публичные календари, непубличные только его создатели */
+  @@allow('read', visiiblity != hidden || auth() == user)
+  /* Все остальные действия может делать только создатель календаря */
+  @@allow('all', auth() == user)
+}

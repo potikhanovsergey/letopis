@@ -1,5 +1,6 @@
 import "./session"
 import "./account"
+import "./calendar"
 
 model User {
   id String @id @default(cuid())
@@ -11,6 +12,7 @@ model User {
   updatedAt DateTime @updatedAt
   accounts Account[]
   sessions Session[]
+  calendars Calendar[]
 
   /* Все пользователи могут создавать аккаунт */
   @@allow('create', true)

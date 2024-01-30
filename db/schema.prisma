@@ -12,6 +12,12 @@ generator client {
     provider = "prisma-client-js"
 }
 
+enum CalendarVisibility {
+    hidden
+    link
+    feed
+}
+
 /// @@allow('create', true)
 /// @@allow('read', true)
 /// @@allow('all', auth() == this)
@@ -25,6 +31,7 @@ model User {
     updatedAt DateTime @updatedAt()
     accounts Account[]
     sessions Session[]
+    calendars Calendar[]
 }
 
 /// @@allow('all', auth() == user)
@@ -53,4 +60,17 @@ model Account {
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
+}
+
+/// @@allow('read', visiiblity != hidden || auth() == user)
+/// @@allow('all', auth() == user)
+model Calendar {
+    id String @id() @default(cuid())
+    title String
+    description String
+    rows Int
+    startDate DateTime @default(now())
+    visiiblity CalendarVisibility
+    userId String
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

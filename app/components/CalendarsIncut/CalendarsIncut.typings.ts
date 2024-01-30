@@ -1,4 +1,6 @@
+import { Calendar } from "@prisma/client";
+
 export interface CalendarsIncutProps {
   title: string;
-  calendars: any[];
+  calendars: Calendar[];
 }
