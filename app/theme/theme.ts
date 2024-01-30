@@ -41,7 +41,8 @@ export const theme = createTheme({
     }),
     Button: Button.extend({
       defaultProps: {
-        size: "xs",
+        size: "compact-sm",
+        variant: "subtle",
       },
     }),
     NumberInput: NumberInput.extend({

@@ -5,7 +5,7 @@ services:
     restart: always
     container_name: letopis
     ports:
-      - "5555:5432"
+      - 5555:5432
     env_file: ./.env.local
     volumes:
       - my:/var/lib/postgresql/data

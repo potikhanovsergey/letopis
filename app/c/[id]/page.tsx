@@ -7,7 +7,7 @@ import prisma from "@/db";
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const calendar = await prisma.calendar.findFirst({
-    where: { id: params.id },
+    where: { id: params.id, visiiblity: { not: "hidden" } },
   });
 
   if (!calendar) {
@@ -15,16 +15,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <main>
-      <Box mx="auto" maw={1200} pt="xl" pb={80}>
-        {/* <KeyValue
-          k="Стартовая дата"
-          v={dayjs(startDate).format("DD.MM.YYYY")}
-        /> */}
-        <YearsCalendarFeature />
-        <EditToolbarFeature />
-      </Box>
-    </main>
+    <Box mx="auto" maw={1200} pt="xl" pb={80}>
+      <YearsCalendarFeature />
+      <EditToolbarFeature />
+    </Box>
   );
 };
 

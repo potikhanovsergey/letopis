@@ -12,7 +12,6 @@ export const CreateCalendarFeature: FC<CreateCalendarFeatureProps> = ({
   const { mutateAsync: createCalendar, isPending } = useCreateCalendar();
 
   const handleClick = useCallback(async () => {
-    console.log("click");
     const calendar = await createCalendar({
       data: {
         title: "Новый календарь",
@@ -28,12 +27,7 @@ export const CreateCalendarFeature: FC<CreateCalendarFeatureProps> = ({
   }, [createCalendar, user.id, onCalendarCreated]);
 
   return (
-    <Button
-      loading={isPending}
-      onClick={handleClick}
-      size="compact-sm"
-      variant="subtle"
-    >
+    <Button loading={isPending} onClick={handleClick}>
       Создать календарь
     </Button>
   );

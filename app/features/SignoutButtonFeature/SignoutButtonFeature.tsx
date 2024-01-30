@@ -7,5 +7,14 @@ export const SignoutButtonFeature: FC = () => {
     signOut({ redirect: true, callbackUrl: "/" });
   }, []);
 
-  return <Button onClick={handleClick}>Выйти из аккаунта</Button>;
+  return (
+    <Button
+      variant="subtle"
+      color="red"
+      size="compact-sm"
+      onClick={handleClick}
+    >
+      Выйти из аккаунта
+    </Button>
+  );
 };

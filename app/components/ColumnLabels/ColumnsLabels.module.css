@@ -1,6 +1,6 @@
 .wrapper {
-  position: relative;
   padding-bottom: var(--mantine-spacing-md);
+  position: relative;
 }
 
 .label {

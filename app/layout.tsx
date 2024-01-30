@@ -9,6 +9,8 @@ import { StylesProvider } from "@/app/providers/StylesProvider";
 import { ZenstackHooksProvider } from "@/app/providers/ZenstackHooksProvider";
 import { getSession } from "@/server/utils";
 
+import "./globals.css";
+
 const Layout: FC<PropsWithChildren> = async ({ children }) => {
   const session = await getSession();
 

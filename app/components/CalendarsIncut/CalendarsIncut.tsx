@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Title } from "@mantine/core";
 
+import { CalendarCard } from "@/app/components/CalendarCard";
+
 import { CalendarsIncutProps } from "./CalendarsIncut.typings";
 
 export const CalendarsIncut: FC<CalendarsIncutProps> = ({
@@ -13,7 +15,11 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
         {title}
       </Title>
       {calendars.map((calendar) => (
-        <div key={calendar.id}>{calendar.title}</div>
+        <CalendarCard
+          key={calendar.id}
+          title={calendar.title}
+          id={calendar.id}
+        />
       ))}
     </div>
   );
