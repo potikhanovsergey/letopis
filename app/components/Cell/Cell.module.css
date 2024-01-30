@@ -5,4 +5,5 @@
   &:hover {
     background: var(--mantine-color-gray-4);
   }
+  margin: 0.5px;
 }

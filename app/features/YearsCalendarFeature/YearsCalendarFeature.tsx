@@ -1,8 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef } from "react";
-import { Box } from "@mantine/core";
+import { Box, Text } from "@mantine/core";
 
-import { ColumnLabels } from "@/app/components/ColumnLabels";
 import { RCHint } from "@/app/components/RCHint";
 import { RowLabels } from "@/app/components/RowLabels";
 import { YearsGrid } from "@/app/components/YearsGrid";
@@ -45,7 +44,7 @@ export const YearsCalendarFeature = () => {
   const handleMouseLeave = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       resetHovered();
-    }, 100);
+    }, 200);
   }, []);
 
   useEffect(() => {
@@ -56,7 +55,7 @@ export const YearsCalendarFeature = () => {
 
   return (
     <Box pos="relative">
-      <ColumnLabels />
+      <Text fw="bold">Недели</Text>
       <RowLabels />
 
       <FloatingInfoFeature>

@@ -21,8 +21,11 @@ const Page = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <Box pt="xl" pb={80}>
-      <CalendarEditorFeature />
+    <Box pt="md" pb={80}>
+      <CalendarEditorFeature
+        title={calendar.title}
+        description={calendar.description}
+      />
     </Box>
   );
 };
