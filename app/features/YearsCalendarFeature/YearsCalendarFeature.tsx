@@ -8,19 +8,13 @@ import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
 import { useCalendarStore } from "@/app/stores";
-import {
-  setHoveredColumnIndex,
-  setHoveredIndex,
-  setHoveredRowIndex,
-} from "@/app/stores/calendar/actions";
-import { resetHovered } from "@/app/stores/calendar/actions/resetHovered";
+import { resetHovered } from "@/app/stores/calendar/actions";
 
 const array53 = [...Array(53)];
 
 export const YearsCalendarFeature = () => {
   const startDateIndex = useCalendarStore((state) => state.startDateIndex());
   const rows = useCalendarStore((state) => state.data.rows);
-  console.log(rows);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -34,9 +28,11 @@ export const YearsCalendarFeature = () => {
       rowIndex: number;
       columnIndex: number;
     }) => {
-      setHoveredIndex(index);
-      setHoveredRowIndex(rowIndex);
-      setHoveredColumnIndex(columnIndex);
+      useCalendarStore.setState({
+        hoveredIndex: index,
+        hoveredRowIndex: rowIndex,
+        hoveredColumnIndex: columnIndex,
+      });
       timeoutRef.current && clearTimeout(timeoutRef.current);
     },
     []

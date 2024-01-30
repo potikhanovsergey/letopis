@@ -6,11 +6,15 @@ import { modals } from "@mantine/modals";
 
 import { ModalActions } from "@/app/components/ModalActions";
 import { useCalendarStore } from "@/app/stores";
-import { setRows, setStartDate } from "@/app/stores/calendar/actions";
+import { useUpdateCalendar } from "@/db/hooks";
 
 export const SettingsModalFeature: FC = () => {
   const rows = useCalendarStore((state) => state.data.rows);
-  const startDate = useCalendarStore((state) => state.startDate);
+  const startDate = useCalendarStore((state) => state.data.startDate);
+  const id = useCalendarStore((state) => state.data.id);
+
+  const { mutateAsync: updateCalendar, isPending: loading } =
+    useUpdateCalendar();
 
   const form = useForm({
     initialValues: {
@@ -19,10 +23,21 @@ export const SettingsModalFeature: FC = () => {
     },
   });
 
-  const handleSubmit = form.onSubmit((values) => {
-    setRows(values.rows);
-    setStartDate(values.startDate);
-
+  const handleSubmit = form.onSubmit(async ({ startDate, rows }) => {
+    const data = await updateCalendar({
+      where: { id },
+      data: { startDate, rows },
+      select: { startDate: true, rows: true },
+    });
+    if (data) {
+      useCalendarStore.setState((state) => ({
+        data: {
+          ...state.data,
+          startDate: data.startDate,
+          rows: data.rows,
+        },
+      }));
+    }
     modals.closeAll();
   });
 
@@ -43,7 +58,9 @@ export const SettingsModalFeature: FC = () => {
       </Stack>
 
       <ModalActions>
-        <Button type="submit">Подтвердить</Button>
+        <Button loading={loading} type="submit">
+          Подтвердить
+        </Button>
       </ModalActions>
     </form>
   );

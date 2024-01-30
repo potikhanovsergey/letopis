@@ -20,7 +20,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
     const hoveredIndex = get().hoveredIndex;
     const hoveredRowIndex = get().hoveredRowIndex;
     const hoveredColumnIndex = get().hoveredColumnIndex;
-    const startYearDate = dayjs(get().startDate).startOf("y");
+    const startYearDate = dayjs(get().data.startDate).startOf("y");
 
     if (
       hoveredIndex === null ||
@@ -44,7 +44,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
   },
   startDate: new Date(),
   startDateIndex: () => {
-    const startDate = dayjs(get().startDate);
+    const startDate = dayjs(get().data.startDate);
     const yearBeginning = startDate.startOf("y");
 
     const startIndex = startDate.diff(yearBeginning, "w");

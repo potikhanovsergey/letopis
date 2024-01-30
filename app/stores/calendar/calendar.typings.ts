@@ -7,6 +7,5 @@ export interface CalendarStore {
   hoveredRowIndex: number | null;
   hoveredColumnIndex: number | null;
   hoveredDates: () => { start: Dayjs | null; end: Dayjs | null };
-  startDate: Date;
   startDateIndex: () => number;
 }

@@ -12,7 +12,8 @@ export const EditInfoModalFeature: FC = () => {
   const description = useCalendarStore((state) => state.data.description);
   const id = useCalendarStore((state) => state.data.id);
 
-  const { mutateAsync, isPending: loading } = useUpdateCalendar();
+  const { mutateAsync: updateCalendar, isPending: loading } =
+    useUpdateCalendar();
 
   const form = useForm({
     initialValues: {
@@ -22,12 +23,19 @@ export const EditInfoModalFeature: FC = () => {
   });
 
   const handleSubmit = form.onSubmit(async ({ title, description }) => {
-    const data = await mutateAsync({
+    const data = await updateCalendar({
       where: { id },
       data: { title, description },
+      select: { title: true, description: true },
     });
     if (data) {
-      useCalendarStore.setState({ data });
+      useCalendarStore.setState((state) => ({
+        data: {
+          ...state.data,
+          title: data.title,
+          description: data.description,
+        },
+      }));
     }
     modals.closeAll();
   });
