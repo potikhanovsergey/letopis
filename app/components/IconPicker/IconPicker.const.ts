@@ -1,11 +1,11 @@
 import {
   IconExclamationCircle,
   IconSkull,
-  IconStar,
+  IconStarFilled,
 } from "@tabler/icons-react";
 
 export const icons = {
-  star: IconStar,
+  star: IconStarFilled,
   exclamation: IconExclamationCircle,
   skull: IconSkull,
 };
