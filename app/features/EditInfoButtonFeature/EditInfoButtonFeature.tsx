@@ -2,7 +2,6 @@ import { FC, useCallback } from "react";
 import { modals } from "@mantine/modals";
 import { IconEdit } from "@tabler/icons-react";
 
-import { Icon } from "@/app/components/Icon";
 import { IconButton } from "@/app/components/IconButton";
 import { EditInfoModalFeature } from "@/app/features/EditInfoModalFeature";
 
@@ -16,9 +15,5 @@ export const EditInfoButtonFeature: FC = () => {
     });
   }, []);
 
-  return (
-    <IconButton onClick={handleClick} label={label}>
-      <Icon As={IconEdit} />
-    </IconButton>
-  );
+  return <IconButton icon={IconEdit} onClick={handleClick} label={label} />;
 };

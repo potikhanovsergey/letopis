@@ -2,7 +2,6 @@ import { FC, useCallback } from "react";
 import { modals } from "@mantine/modals";
 import { IconSettings } from "@tabler/icons-react";
 
-import { Icon } from "@/app/components/Icon";
 import { IconButton } from "@/app/components/IconButton";
 import { SettingsModalFeature } from "@/app/features/SettingsModalFeature";
 
@@ -16,9 +15,5 @@ export const SettingsButtonFeature: FC = () => {
     });
   }, []);
 
-  return (
-    <IconButton onClick={handleClick} label={label}>
-      <Icon As={IconSettings} />
-    </IconButton>
-  );
+  return <IconButton icon={IconSettings} onClick={handleClick} label={label} />;
 };

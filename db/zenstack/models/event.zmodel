@@ -3,7 +3,8 @@ import "./calendar"
 model Event {
   id Int @id @default(autoincrement())
   title String
-  date String
+  date DateTime
+  icon String
 
   calendarId String
   calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)

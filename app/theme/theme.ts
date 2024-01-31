@@ -30,7 +30,7 @@ export const theme = createTheme({
     }),
     Tooltip: Tooltip.extend({
       defaultProps: {
-        withArrow: true,
+        radius: "xl",
       },
     }),
     Modal: Modal.extend({
@@ -42,7 +42,7 @@ export const theme = createTheme({
     Button: Button.extend({
       defaultProps: {
         size: "compact-sm",
-        variant: "subtle",
+        variant: "light",
       },
     }),
     NumberInput: NumberInput.extend({

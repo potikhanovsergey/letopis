@@ -1,4 +1,5 @@
 .wrapper {
   margin-top: var(--mantine-spacing-md);
   justify-content: flex-end;
+  gap: var(--mantine-spacing-xs);
 }

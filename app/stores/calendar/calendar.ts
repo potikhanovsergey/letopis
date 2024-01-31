@@ -13,6 +13,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
     userId: "",
     visiiblity: "hidden",
   },
+  events: [],
   hoveredIndex: null,
   hoveredRowIndex: null,
   hoveredColumnIndex: null,

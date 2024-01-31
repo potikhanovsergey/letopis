@@ -1,6 +1,7 @@
-import { PropsWithChildren } from "react";
+import { Icon } from "@tabler/icons-react";
 
-export interface IconButtonProps extends PropsWithChildren {
+export interface IconButtonProps {
   label: string;
   onClick?: () => void;
+  icon: Icon;
 }
