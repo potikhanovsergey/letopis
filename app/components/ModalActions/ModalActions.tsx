@@ -1,5 +1,5 @@
-import { Group } from "@mantine/core";
 import { FC, PropsWithChildren } from "react";
+import { Group } from "@mantine/core";
 
 import classes from "./ModalActions.module.css";
 

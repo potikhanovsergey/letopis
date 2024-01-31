@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import { create } from "zustand";
 
 import { CalendarStore } from "./calendar.typings";
-import { getIndexesByDate } from "./utils";
 
 export const useCalendarStore = create<CalendarStore>((set, get) => ({
   data: {
@@ -10,6 +9,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
     title: "",
     description: "",
     rows: 60,
+    events: [],
     startDate: new Date(),
     userId: "",
     visiiblity: "hidden",
@@ -22,10 +22,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
     const hoveredColumnIndex = get().hoveredColumnIndex;
     const startYearDate = dayjs(get().data.startDate).startOf("y");
 
-    if (
-      hoveredRowIndex === null ||
-      hoveredColumnIndex === null
-    )
+    if (hoveredRowIndex === null || hoveredColumnIndex === null)
       return { start: null, end: null };
 
     const hoveredStartDate = startYearDate
@@ -35,9 +32,6 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
     const hoveredYearEndDate = hoveredStartDate.endOf("y");
 
     const hoveredEndDate = hoveredStartDate.add(6, "d");
-
-    console.log(getIndexesByDate({ startDate: get().data.startDate, date: hoveredStartDate.toDate() } ));
-    console.log(hoveredRowIndex, hoveredColumnIndex)
 
     return {
       start: hoveredStartDate,

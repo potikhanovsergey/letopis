@@ -1,5 +1,4 @@
 export interface CellIndexes {
-  index: number;
   rowIndex: number;
   columnIndex: number;
 }

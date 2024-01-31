@@ -8,7 +8,6 @@ export const useInitCalendar = (calendar: ExtendedCalendar) => {
   useEffect(() => {
     const { events, ...data } = calendar;
     const indexedEvents = getIndexedEvents(events, calendar.startDate);
-
     useCalendarStore.setState({ data, events: indexedEvents });
   }, [calendar]);
-}
+};

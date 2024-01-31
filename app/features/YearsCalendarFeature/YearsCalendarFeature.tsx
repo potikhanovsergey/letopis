@@ -19,14 +19,7 @@ export const YearsCalendarFeature = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = useCallback(
-    ({
-      rowIndex,
-      columnIndex,
-    }: {
-      index: number;
-      rowIndex: number;
-      columnIndex: number;
-    }) => {
+    ({ rowIndex, columnIndex }: { rowIndex: number; columnIndex: number }) => {
       useCalendarStore.setState({
         hoveredRowIndex: rowIndex,
         hoveredColumnIndex: columnIndex,
@@ -57,7 +50,7 @@ export const YearsCalendarFeature = () => {
         <div>
           <YearsGrid>
             <span />
-            
+
             {/* Первый ряд состоит из лэйблов недель */}
             {array53.map((e, columnIndex) => {
               if (columnIndex % 5 === 0 || columnIndex === 52)
@@ -78,7 +71,6 @@ export const YearsCalendarFeature = () => {
                 <CellFeature
                   rowIndex={0}
                   columnIndex={columnIndex}
-                  index={columnIndex}
                   key={columnIndex}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
@@ -99,7 +91,6 @@ export const YearsCalendarFeature = () => {
                   <CellFeature
                     rowIndex={rowIndex + 1}
                     columnIndex={columnIndex}
-                    index={(rowIndex + 1) * 53 + columnIndex}
                     key={columnIndex}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}

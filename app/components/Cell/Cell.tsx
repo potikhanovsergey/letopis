@@ -1,15 +1,19 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import { CellProps } from "./Cell.typings";
 
 import classes from "./Cell.module.css";
 
-export const Cell: FC<CellProps> = ({ onMouseEnter, onMouseLeave }) => {
+const CellBase: FC<CellProps> = ({ children, onMouseEnter, onMouseLeave }) => {
   return (
-    <div
+    <button
       className={classes.cell}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-    />
+    >
+      {children}
+    </button>
   );
 };
+
+export const Cell = memo(CellBase);

@@ -1,14 +1,10 @@
 import { FC } from "react";
 
-export const DynamicIcon: FC = () => {
-  return <></>;
-  // const path = componentPath; // example : "news/lists"
+import { Icon } from "@/app/components/Icon";
+import { icons } from "@/app/components/IconPicker/IconPicker.const";
 
-  // const DynamicComponent = dynamic(() => import(`../components/${path}`),
-  // {
-  //    ssr: false,
-  //    loading: () => <p>Loading Content...</p>,
-  // });
+import { DynamicIconProps } from "./DynamicIcon.typings";
 
-  // return <DynamicComponent />;
+export const DynamicIcon: FC<DynamicIconProps> = ({ name }) => {
+  return <Icon As={icons[name]} />;
 };

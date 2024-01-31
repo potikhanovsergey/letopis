@@ -1,5 +1,6 @@
 import { NextRequestHandler } from "@zenstackhq/server/next";
-import { getEnhancedDb } from "server/utils/getEnhancedDb";
+
+import { getEnhancedDb } from "@/server/utils/getEnhancedDb";
 
 const handler = NextRequestHandler({
   getPrisma: getEnhancedDb,
