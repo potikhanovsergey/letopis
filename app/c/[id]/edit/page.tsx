@@ -14,6 +14,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   const calendar = await prisma.calendar.findFirst({
     where: { id: params.id, userId: session.user.id },
+    include: { events: true }
   });
 
   if (!calendar) {

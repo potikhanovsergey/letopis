@@ -20,7 +20,6 @@ export const YearsCalendarFeature = () => {
 
   const handleMouseEnter = useCallback(
     ({
-      index,
       rowIndex,
       columnIndex,
     }: {
@@ -29,7 +28,6 @@ export const YearsCalendarFeature = () => {
       columnIndex: number;
     }) => {
       useCalendarStore.setState({
-        hoveredIndex: index,
         hoveredRowIndex: rowIndex,
         hoveredColumnIndex: columnIndex,
       });
@@ -59,6 +57,8 @@ export const YearsCalendarFeature = () => {
         <div>
           <YearsGrid>
             <span />
+            
+            {/* Первый ряд состоит из лэйблов недель */}
             {array53.map((e, columnIndex) => {
               if (columnIndex % 5 === 0 || columnIndex === 52)
                 return <RCHint key={columnIndex}>{columnIndex + 1}</RCHint>;
@@ -67,6 +67,8 @@ export const YearsCalendarFeature = () => {
             })}
 
             <RCHint>1</RCHint>
+
+            {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
 
             {array53.map((e, columnIndex) => {
               if (columnIndex < startDateIndex)
@@ -83,6 +85,9 @@ export const YearsCalendarFeature = () => {
                 />
               );
             })}
+
+            {/* Остальные ряды нормальные */}
+
             {[...Array(rows - 1)].map((e, rowIndex) => (
               <React.Fragment key={rowIndex}>
                 {rowIndex % 5 === 4 || rowIndex === rows - 2 ? (
@@ -92,7 +97,7 @@ export const YearsCalendarFeature = () => {
                 )}
                 {[...Array(53)].map((e, columnIndex) => (
                   <CellFeature
-                    rowIndex={rowIndex}
+                    rowIndex={rowIndex + 1}
                     columnIndex={columnIndex}
                     index={(rowIndex + 1) * 53 + columnIndex}
                     key={columnIndex}

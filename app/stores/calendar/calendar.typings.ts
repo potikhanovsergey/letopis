@@ -3,10 +3,14 @@ import { Dayjs } from "dayjs";
 
 export interface CalendarStore {
   data: Calendar;
-  hoveredIndex: number | null;
   hoveredRowIndex: number | null;
   hoveredColumnIndex: number | null;
-  events: Event[]
+  events: IndexedEvent[]
   hoveredDates: () => { start: Dayjs | null; end: Dayjs | null };
   startDateIndex: () => number;
+}
+
+export interface IndexedEvent extends Event {
+  rowIndex: number;
+  columnIndex: number;
 }

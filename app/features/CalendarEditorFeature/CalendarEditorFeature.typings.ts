@@ -1,5 +1,6 @@
-import { Calendar } from "@prisma/client";
+
+import { ExtendedCalendar } from "@/app/typings";
 
 export interface CalendarEditorFeatureProps {
-  calendar: Calendar;
+  calendar: ExtendedCalendar;
 }

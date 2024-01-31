@@ -1,8 +1,9 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 
 import { Calendar } from "@/app/components/Calendar";
 import { EditToolbarFeature } from "@/app/features/EditToolbarFeature";
+import { useInitCalendar } from "@/app/hooks/useInitCalendar";
 import { useCalendarStore } from "@/app/stores";
 
 import { CalendarEditorFeatureProps } from "./CalendarEditorFeature.typings";
@@ -10,9 +11,7 @@ import { CalendarEditorFeatureProps } from "./CalendarEditorFeature.typings";
 export const CalendarEditorFeature: FC<CalendarEditorFeatureProps> = ({
   calendar,
 }) => {
-  useEffect(() => {
-    useCalendarStore.setState({ data: calendar });
-  }, [calendar]);
+  useInitCalendar(calendar)
 
   const title = useCalendarStore((state) => state.data.title);
   const description = useCalendarStore((state) => state.data.description);
