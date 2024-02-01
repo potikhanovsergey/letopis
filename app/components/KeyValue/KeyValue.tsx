@@ -1,15 +1,20 @@
 import { FC } from "react";
-import { Text } from "@mantine/core";
+import { Group, Text } from "@mantine/core";
 
 import { KeyValueProps } from "./KeyValue.typings";
 
-export const KeyValue: FC<KeyValueProps> = ({ k, v, ...props }) => {
+import classes from "./KeyValue.module.css";
+
+export const KeyValue: FC<KeyValueProps> = ({ k, v, icon, ...props }) => {
   return (
-    <Text {...props}>
-      <Text inherit span fw="bold">
-        {k}:{" "}
-      </Text>
+    <Group className={classes.group} {...props}>
+      <Group className={classes.keyGroup}>
+        {icon}
+        <Text fw="bold" inherit>
+          {k}:
+        </Text>{" "}
+      </Group>
       {v}
-    </Text>
+    </Group>
   );
 };

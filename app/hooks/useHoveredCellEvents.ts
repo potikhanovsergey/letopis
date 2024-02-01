@@ -11,8 +11,9 @@ export const useHoveredCellEvents = () => {
   }));
 
   return useMemo(() => {
-    if (!columnIndex || !rowIndex) return [];
+    console.log(columnIndex, rowIndex);
+    if (columnIndex === null || rowIndex === null) return [];
 
-    getCellEvents({ rowIndex, columnIndex, events });
+    return getCellEvents({ rowIndex, columnIndex, events });
   }, [columnIndex, events, rowIndex]);
 };

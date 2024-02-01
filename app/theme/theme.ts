@@ -38,6 +38,11 @@ export const theme = createTheme({
         centered: true,
         lockScroll: false,
       },
+      styles: {
+        title: {
+          fontWeight: 700,
+        },
+      },
     }),
     Button: Button.extend({
       defaultProps: {

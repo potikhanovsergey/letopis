@@ -1,8 +1,12 @@
 "use client";
 import { FC, PropsWithChildren, useMemo } from "react";
-import { Divider, Stack, Tooltip } from "@mantine/core";
+import { Divider, Stack, Text, Tooltip } from "@mantine/core";
+import dayjs from "dayjs";
 
+import { DynamicIcon } from "@/app/components/DynamicIcon";
+import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { KeyValue } from "@/app/components/KeyValue";
+import { useHoveredCellEvents } from "@/app/hooks/useHoveredCellEvents";
 import { useCalendarStore } from "@/app/stores";
 import { getDayOfWeekLabel } from "@/app/utils/date";
 
@@ -25,6 +29,9 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
     return `${hoveredDates.end?.format("DD MMMM YYYY")} года`;
   }, [hoveredDates.end]);
 
+  const events = useHoveredCellEvents();
+  console.log(events);
+
   if (hoveredDates.start === null) return children;
 
   return (
@@ -37,6 +44,25 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
           <Divider my={4} color="dimmed" />
           <KeyValue k="Конец клетки" v={endDateLabel} />
           <KeyValue k="День недели" v={endDayOfWeek} />
+          {events.length > 0 && (
+            <>
+              <Divider my={4} color="dimmed" />
+              <Text fw="bold">События</Text>
+              {events.map((event) => (
+                <KeyValue
+                  k={event.title}
+                  icon={
+                    <DynamicIcon
+                      size="0.75rem"
+                      name={event.icon as EventIconKey}
+                    />
+                  }
+                  v={dayjs(event.date).format("DD.MM.YYYY")}
+                  key={event.id}
+                />
+              ))}
+            </>
+          )}
         </Stack>
       }
     >

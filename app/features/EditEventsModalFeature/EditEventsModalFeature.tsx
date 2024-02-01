@@ -1,5 +1,5 @@
 import { FC, useCallback } from "react";
-import { Button, Title } from "@mantine/core";
+import { Button } from "@mantine/core";
 import { modals } from "@mantine/modals";
 
 import { EventsTimeline } from "@/app/components/EventsTimeline";
@@ -17,12 +17,9 @@ export const EditEventsModalFeature: FC = () => {
 
   return (
     <div>
-      <Button onClick={handleCreateClick} fullWidth variant="outline">
+      <Button onClick={handleCreateClick} mb="md" fullWidth variant="outline">
         Создать новое событие
       </Button>
-      <Title order={2} my="md">
-        События
-      </Title>
       <EventsTimeline events={events} />
     </div>
   );
