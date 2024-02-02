@@ -1,11 +1,12 @@
 "use client";
 import { FC, useCallback } from "react";
-import { Button, ColorInput, Stack, TextInput } from "@mantine/core";
+import { Button, Stack, TextInput } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { closeModal } from "@mantine/modals";
 import { IconArrowLeft } from "@tabler/icons-react";
 
+import { ColorPicker } from "@/app/components/ColorPicker";
 import { Icon } from "@/app/components/Icon";
 import { ModalActions } from "@/app/components/ModalActions";
 import { useTimespansModal } from "@/app/hooks/useTimespansModal";
@@ -57,11 +58,9 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
           label="Конец промежутка"
           {...form.getInputProps("endDate")}
         />
-        <ColorInput
+        <ColorPicker
           required
           label="Цвет промежутка"
-          disallowInput
-          withEyeDropper={false}
           {...form.getInputProps("color")}
         />
       </Stack>
