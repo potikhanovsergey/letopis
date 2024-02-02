@@ -30,7 +30,6 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
   }, [hoveredDates.end]);
 
   const events = useHoveredCellEvents();
-  console.log(events);
 
   if (hoveredDates.start === null) return children;
 
@@ -53,7 +52,7 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
                   k={event.title}
                   icon={
                     <DynamicIcon
-                      size="0.75rem"
+                      size="0.8rem"
                       name={event.icon as EventIconKey}
                     />
                   }

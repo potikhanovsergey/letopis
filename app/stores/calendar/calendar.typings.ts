@@ -6,6 +6,7 @@ export interface CalendarStore {
   hoveredRowIndex: number | null;
   hoveredColumnIndex: number | null;
   events: IndexedEvent[];
+  mode: CalendarMode;
   hoveredDates: () => { start: Dayjs | null; end: Dayjs | null };
   startDateIndex: () => number;
 }
@@ -14,3 +15,5 @@ export interface IndexedEvent extends Event {
   rowIndex: number;
   columnIndex: number;
 }
+
+export type CalendarMode = "view" | "edit";

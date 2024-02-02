@@ -11,15 +11,17 @@ import { CalendarEditorFeatureProps } from "./CalendarEditorFeature.typings";
 export const CalendarEditorFeature: FC<CalendarEditorFeatureProps> = ({
   calendar,
 }) => {
-  useInitCalendar(calendar)
+  useInitCalendar(calendar, "edit");
 
   const title = useCalendarStore((state) => state.data.title);
   const description = useCalendarStore((state) => state.data.description);
+  const startDate = useCalendarStore((state) => state.data.startDate);
 
   return (
     <Calendar
       title={title}
       description={description}
+      startDate={startDate}
       toolbar={<EditToolbarFeature />}
     />
   );

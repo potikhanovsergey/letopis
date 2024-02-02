@@ -1,5 +1,9 @@
-import { IndexedEvent } from "@/app/stores/calendar/calendar.typings";
+import {
+  CalendarMode,
+  IndexedEvent,
+} from "@/app/stores/calendar/calendar.typings";
 
 export interface EventsTimelineProps {
   events: IndexedEvent[];
+  mode: CalendarMode;
 }

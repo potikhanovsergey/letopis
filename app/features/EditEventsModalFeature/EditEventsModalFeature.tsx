@@ -9,6 +9,7 @@ import { useCalendarStore } from "@/app/stores";
 export const EditEventsModalFeature: FC = () => {
   const openCreateEventModal = useCreateEventModal();
   const events = useCalendarStore((state) => state.events);
+  const mode = useCalendarStore((state) => state.mode);
 
   const handleCreateClick = useCallback(() => {
     modals.close("edit-events");
@@ -20,7 +21,7 @@ export const EditEventsModalFeature: FC = () => {
       <Button onClick={handleCreateClick} mb="md" fullWidth variant="outline">
         Создать новое событие
       </Button>
-      <EventsTimeline events={events} />
+      <EventsTimeline events={events} mode={mode} />
     </div>
   );
 };
