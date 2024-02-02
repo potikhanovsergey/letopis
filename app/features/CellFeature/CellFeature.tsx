@@ -4,6 +4,7 @@ import { FC, useCallback, useMemo } from "react";
 import { Cell } from "@/app/components/Cell";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
+import { useTimespansColor } from "@/app/hooks/useTimespansColor";
 import { useCalendarStore } from "@/app/stores";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
@@ -22,9 +23,7 @@ export const CellFeature: FC<CellFeatureProps> = ({
     return getCellTimespans({ rowIndex, columnIndex, timespans });
   }, [timespans, rowIndex, columnIndex]);
 
-  const color = useMemo(() => {
-    return cellTimespans?.[0]?.color;
-  }, [cellTimespans]);
+  const color = useTimespansColor(cellTimespans);
 
   const handleMouseEnter = useCallback(() => {
     onMouseEnter({ rowIndex, columnIndex });
