@@ -4,8 +4,8 @@ import { IconGridDots } from "@tabler/icons-react";
 
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { IconButton } from "@/app/components/IconButton";
-import { EditEventsButtonFeature } from "@/app/features/EditEventsButtonFeature";
 import { EditInfoButtonFeature } from "@/app/features/EditInfoButtonFeature";
+import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
 import { SettingsButtonFeature } from "@/app/features/SettingsButtonFeature";
 
 export const EditToolbarFeature = () => {
@@ -13,7 +13,7 @@ export const EditToolbarFeature = () => {
     <FloatingToolbar>
       <Group gap="xs">
         <IconButton icon={IconGridDots} label="Добавить промежуток" />
-        <EditEventsButtonFeature />
+        <EventsButtonFeature />
         <Divider orientation="vertical" />
         <EditInfoButtonFeature />
         <SettingsButtonFeature />

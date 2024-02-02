@@ -1,10 +1,11 @@
 import { FC } from "react";
-import { Button, Group, Text, Timeline } from "@mantine/core";
+import { Group, Text, Timeline } from "@mantine/core";
 import dayjs from "dayjs";
 
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { DeleteEventFeature } from "@/app/features/DeleteEventFeature";
+import { UpdateEventFeature } from "@/app/features/UpdateEventFeature/UpdateEventFeature";
 
 import { EventsTimelineProps } from "./EventsTimeline.typings";
 
@@ -22,9 +23,7 @@ export const EventsTimeline: FC<EventsTimelineProps> = ({ events, mode }) => {
           </Text>
           {mode === "edit" && (
             <Group mt={4}>
-              <Button variant="subtle" size="compact-xs">
-                Редактировать
-              </Button>
+              <UpdateEventFeature event={event} />
               <DeleteEventFeature id={event.id} />
             </Group>
           )}

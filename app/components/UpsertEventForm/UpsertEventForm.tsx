@@ -9,9 +9,12 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Icon } from "@/app/components/Icon";
 import { IconPicker } from "@/app/components/IconPicker";
 import { ModalActions } from "@/app/components/ModalActions";
-import { useEditEventsModal } from "@/app/hooks/useEditEventsModal";
+import { useEventsModal } from "@/app/hooks/useEventsModal";
 
-import { UpsertEventFormData, UpsertEventFormProps } from "./UpsertEventForm.typings";
+import {
+  UpsertEventFormData,
+  UpsertEventFormProps,
+} from "./UpsertEventForm.typings";
 
 export const UpsertEventForm: FC<UpsertEventFormProps> = ({
   type,
@@ -19,7 +22,6 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
   isButtonLoading,
   onSubmit,
 }) => {
-
   const form = useForm<UpsertEventFormData>({
     initialValues: {
       title: event?.title || "",
@@ -28,12 +30,12 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
     },
   });
 
-  const openEditEventsModal = useEditEventsModal();
+  const openEventsModal = useEventsModal();
 
   const handleBack = useCallback(() => {
     closeModal(type);
-    openEditEventsModal()
-  }, [type, openEditEventsModal]);
+    openEventsModal();
+  }, [type, openEventsModal]);
 
   const handleSubmit = form.onSubmit(onSubmit);
 

@@ -1,15 +1,15 @@
 import { useCallback } from "react";
 import { modals } from "@mantine/modals";
 
-import { EditEventsModalFeature } from "@/app/features/EditEventsModalFeature";
+import { EventsModalFeature } from "@/app/features/EventsModalFeature";
 
-export const useEditEventsModal = () => {
+export const useEventsModal = () => {
   const onClick = useCallback(() => {
     modals.open({
-      modalId: "edit-events",
+      modalId: "events-modal",
       title: "События",
       size: "lg",
-      children: <EditEventsModalFeature />,
+      children: <EventsModalFeature />,
     });
   }, []);
 
