@@ -1,6 +1,6 @@
 "use client";
 import { FC, useCallback } from "react";
-import { Button, Stack, TextInput } from "@mantine/core";
+import { Button, DEFAULT_THEME, Stack, TextInput } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { closeModal } from "@mantine/modals";
@@ -27,7 +27,7 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
       title: timespan?.title || "",
       startDate: timespan?.startDate || new Date(),
       endDate: timespan?.endDate || new Date(),
-      color: timespan?.color || "#ffffff",
+      color: timespan?.color || DEFAULT_THEME.colors.green[5],
     },
   });
 
@@ -50,11 +50,13 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
         />
         <DateInput
           required
+          maxDate={form.values.endDate}
           label="Начало промежутка"
           {...form.getInputProps("startDate")}
         />
         <DateInput
           required
+          minDate={form.values.startDate}
           label="Конец промежутка"
           {...form.getInputProps("endDate")}
         />

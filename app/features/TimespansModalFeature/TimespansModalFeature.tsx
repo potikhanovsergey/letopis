@@ -2,12 +2,13 @@ import { FC, useCallback } from "react";
 import { Button } from "@mantine/core";
 import { modals } from "@mantine/modals";
 
+import { Timespans } from "@/app/components/Timespans";
 import { useCreateTimespanModal } from "@/app/hooks/useCreateTimespanModal";
 import { useCalendarStore } from "@/app/stores";
 
 export const TimespansModalFeature: FC = () => {
   const openCreateTimespanModal = useCreateTimespanModal();
-  // const events = useCalendarStore((state) => state.events);
+  const timespans = useCalendarStore((state) => state.timespans);
   const mode = useCalendarStore((state) => state.mode);
 
   const handleCreateClick = useCallback(() => {
@@ -22,7 +23,7 @@ export const TimespansModalFeature: FC = () => {
           Создать новый промежуток
         </Button>
       )}
-      {/* <EventsTimeline events={events} mode={mode} /> */}
+      <Timespans timespans={timespans} mode={mode} />
     </div>
   );
 };
