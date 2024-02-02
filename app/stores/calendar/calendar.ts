@@ -16,6 +16,7 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
   },
   mode: "view",
   events: [],
+  timespans: [],
   hoveredRowIndex: null,
   hoveredColumnIndex: null,
   hoveredDates: () => {

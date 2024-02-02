@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   Button,
+  ColorInput,
   createTheme,
   Modal,
   NumberInput,
@@ -67,6 +68,11 @@ export const theme = createTheme({
       },
     }),
     Textarea: Textarea.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+    ColorInput: ColorInput.extend({
       defaultProps: {
         size: "xs",
       },

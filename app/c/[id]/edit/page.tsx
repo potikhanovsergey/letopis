@@ -18,6 +18,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
       events: {
         orderBy: { date: "asc" },
       },
+      timespans: {
+        orderBy: { startDate: "asc" },
+      },
     },
   });
 

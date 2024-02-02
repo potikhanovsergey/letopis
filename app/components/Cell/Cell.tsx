@@ -1,12 +1,24 @@
-import { FC, memo } from "react";
+import { FC, memo, useMemo } from "react";
 
 import { CellProps } from "./Cell.typings";
 
 import classes from "./Cell.module.css";
 
-const CellBase: FC<CellProps> = ({ children, onMouseEnter, onMouseLeave }) => {
+const CellBase: FC<CellProps> = ({
+  children,
+  color,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
+  const style = useMemo(() => {
+    if (!color) return undefined;
+
+    if (color) return { background: color };
+  }, [color]);
+
   return (
     <button
+      style={style}
       className={classes.cell}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

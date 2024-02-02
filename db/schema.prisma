@@ -74,6 +74,7 @@ model Calendar {
     userId String
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
     events Event[]
+    timespans Timespan[]
 }
 
 /// @@allow('read', calendar.visiiblity != hidden || auth() == calendar.user)
@@ -83,6 +84,18 @@ model Event {
     title String
     date DateTime
     icon String
+    calendarId String
+    calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
+}
+
+/// @@allow('read', calendar.visiiblity != hidden || auth() == calendar.user)
+/// @@allow('all', auth() == calendar.user)
+model Timespan {
+    id Int @id() @default(autoincrement())
+    title String
+    startDate DateTime
+    endDate DateTime
+    color String
     calendarId String
     calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
 }

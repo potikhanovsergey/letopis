@@ -1,5 +1,6 @@
 import "./user"
 import "./event"
+import "./timespan"
 
 enum CalendarVisibility {
   hidden
@@ -19,6 +20,7 @@ model Calendar {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   events Event[]
+  timespans Timespan[]
 
   /* Все пользователи могут видеть публичные календари, непубличные только его создатели */
   @@allow('read', visiiblity != hidden || auth() == user)

@@ -1,5 +1,6 @@
-import { Calendar, Event } from "@prisma/client";
+import { Calendar, Event, Timespan } from "@prisma/client";
 
 export interface ExtendedCalendar extends Calendar {
-  events: Event[]
+  events: Event[];
+  timespans: Timespan[];
 }

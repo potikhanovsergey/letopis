@@ -1,0 +1,17 @@
+import "./calendar"
+
+model Timespan {
+  id Int @id @default(autoincrement())
+
+  title String
+  startDate DateTime
+  endDate DateTime
+  color String
+
+  calendarId String
+  calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
+
+  /* Правила повторяют правила календаря */
+  @@allow('read', calendar.visiiblity != hidden || auth() == calendar.user)
+  @@allow('all', auth() == calendar.user)
+}

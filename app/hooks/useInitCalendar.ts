@@ -2,7 +2,10 @@ import { useEffect } from "react";
 
 import { useCalendarStore } from "@/app/stores";
 import { CalendarMode } from "@/app/stores/calendar/calendar.typings";
-import { getIndexedEvents } from "@/app/stores/calendar/utils";
+import {
+  getIndexedEvents,
+  getIndexedTimespans,
+} from "@/app/stores/calendar/utils";
 import { ExtendedCalendar } from "@/app/typings";
 
 export const useInitCalendar = (
@@ -10,8 +13,15 @@ export const useInitCalendar = (
   mode: CalendarMode
 ) => {
   useEffect(() => {
-    const { events, ...data } = calendar;
+    const { events, timespans, ...data } = calendar;
     const indexedEvents = getIndexedEvents(events, calendar.startDate);
-    useCalendarStore.setState({ data, events: indexedEvents, mode });
+    const indexedTimespans = getIndexedTimespans(timespans, calendar.startDate);
+
+    useCalendarStore.setState({
+      data,
+      events: indexedEvents,
+      timespans: indexedTimespans,
+      mode,
+    });
   }, [calendar, mode]);
 };

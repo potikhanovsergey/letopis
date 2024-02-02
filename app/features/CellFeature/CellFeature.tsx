@@ -5,7 +5,7 @@ import { Cell } from "@/app/components/Cell";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { useCalendarStore } from "@/app/stores";
-import { getCellEvents } from "@/app/stores/calendar/utils";
+import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
 import { CellFeatureProps } from "./CellFeature.typings";
 
@@ -16,6 +16,15 @@ export const CellFeature: FC<CellFeatureProps> = ({
   onMouseLeave,
 }) => {
   const events = useCalendarStore((state) => state.events);
+  const timespans = useCalendarStore((state) => state.timespans);
+
+  const cellTimespans = useMemo(() => {
+    return getCellTimespans({ rowIndex, columnIndex, timespans });
+  }, [timespans, rowIndex, columnIndex]);
+
+  const color = useMemo(() => {
+    return cellTimespans?.[0]?.color;
+  }, [cellTimespans]);
 
   const handleMouseEnter = useCallback(() => {
     onMouseEnter({ rowIndex, columnIndex });
@@ -34,7 +43,11 @@ export const CellFeature: FC<CellFeatureProps> = ({
   }, [columnIndex, rowIndex, events]);
 
   return (
-    <Cell onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
+    <Cell
+      color={color}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
     </Cell>
   );
