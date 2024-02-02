@@ -60,6 +60,7 @@ export const theme = createTheme({
       defaultProps: {
         size: "xs",
         locale: "ru",
+        hideOutsideDates: true,
       },
     }),
     TextInput: TextInput.extend({

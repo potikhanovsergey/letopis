@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef } from "react";
 import { Box, Text } from "@mantine/core";
+import { range } from "@mantine/hooks";
 
 import { RCHint } from "@/app/components/RCHint";
 import { RowLabels } from "@/app/components/RowLabels";
@@ -10,7 +11,7 @@ import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
 import { useCalendarStore } from "@/app/stores";
 import { resetHovered } from "@/app/stores/calendar/actions";
 
-const array53 = [...Array(53)];
+const array53 = range(0, 52);
 
 export const YearsCalendarFeature = () => {
   const startDateIndex = useCalendarStore((state) => state.startDateIndex());
@@ -43,7 +44,7 @@ export const YearsCalendarFeature = () => {
 
   return (
     <Box pos="relative">
-      <Text fw="bold">Недели</Text>
+      <Text fw="bold">Недели {"--->"}</Text>
       <RowLabels />
 
       <FloatingInfoFeature>
@@ -52,7 +53,7 @@ export const YearsCalendarFeature = () => {
             <span />
 
             {/* Первый ряд состоит из лэйблов недель */}
-            {array53.map((e, columnIndex) => {
+            {array53.map((columnIndex) => {
               if (columnIndex % 5 === 0 || columnIndex === 52)
                 return <RCHint key={columnIndex}>{columnIndex + 1}</RCHint>;
 
@@ -62,10 +63,16 @@ export const YearsCalendarFeature = () => {
             <RCHint>1</RCHint>
 
             {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
+            {startDateIndex !== 0 && (
+              <span
+                style={{
+                  gridArea: `2 / 2 / 3 / ${startDateIndex + 2}`,
+                }}
+              />
+            )}
 
-            {array53.map((e, columnIndex) => {
-              if (columnIndex < startDateIndex)
-                return <span onMouseEnter={resetHovered} key={columnIndex} />;
+            {array53.map((columnIndex) => {
+              if (columnIndex < startDateIndex) return null;
 
               return (
                 <CellFeature
@@ -80,14 +87,14 @@ export const YearsCalendarFeature = () => {
 
             {/* Остальные ряды нормальные */}
 
-            {[...Array(rows - 1)].map((e, rowIndex) => (
+            {range(0, rows - 2).map((e, rowIndex) => (
               <React.Fragment key={rowIndex}>
                 {rowIndex % 5 === 4 || rowIndex === rows - 2 ? (
                   <RCHint>{rowIndex + 2}</RCHint>
                 ) : (
                   <span />
                 )}
-                {[...Array(53)].map((e, columnIndex) => (
+                {array53.map((columnIndex) => (
                   <CellFeature
                     rowIndex={rowIndex + 1}
                     columnIndex={columnIndex}
