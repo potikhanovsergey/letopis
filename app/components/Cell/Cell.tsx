@@ -12,7 +12,6 @@ const CellBase: FC<CellProps> = ({
 }) => {
   const style = useMemo(() => {
     if (!color) return undefined;
-
     if (color) return { background: color };
   }, [color]);
 
