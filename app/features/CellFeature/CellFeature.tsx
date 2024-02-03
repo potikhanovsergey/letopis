@@ -1,11 +1,12 @@
 "use-client";
 import { FC, useCallback, useMemo } from "react";
+import { useSelector } from "@legendapp/state/react";
 
 import { Cell } from "@/app/components/Cell";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { useTimespansColor } from "@/app/hooks/useTimespansColor";
-import { useCalendarStore } from "@/app/stores";
+import { events$, timespans$ } from "@/app/stores";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
 import { CellFeatureProps } from "./CellFeature.typings";
@@ -16,8 +17,8 @@ export const CellFeature: FC<CellFeatureProps> = ({
   onMouseEnter,
   onMouseLeave,
 }) => {
-  const events = useCalendarStore((state) => state.events);
-  const timespans = useCalendarStore((state) => state.timespans);
+  const events = useSelector(() => events$.get());
+  const timespans = useSelector(() => timespans$.get());
 
   const cellTimespans = useMemo(() => {
     return getCellTimespans({ rowIndex, columnIndex, timespans });

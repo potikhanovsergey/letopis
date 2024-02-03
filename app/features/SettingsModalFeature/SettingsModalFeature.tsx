@@ -1,17 +1,18 @@
 import { FC } from "react";
+import { useSelector } from "@legendapp/state/react";
 import { Button, NumberInput, Stack } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 
 import { ModalActions } from "@/app/components/ModalActions";
-import { useCalendarStore } from "@/app/stores";
+import { calendarData$ } from "@/app/stores";
 import { useUpdateCalendar } from "@/db/hooks";
 
 export const SettingsModalFeature: FC = () => {
-  const rows = useCalendarStore((state) => state.data.rows);
-  const startDate = useCalendarStore((state) => state.data.startDate);
-  const id = useCalendarStore((state) => state.data.id);
+  const rows = useSelector(calendarData$.rows);
+  const id = useSelector(calendarData$.id);
+  const startDate = useSelector(calendarData$.startDate);
 
   const { mutateAsync: updateCalendar, isPending: loading } =
     useUpdateCalendar();
@@ -30,12 +31,10 @@ export const SettingsModalFeature: FC = () => {
       select: { startDate: true, rows: true },
     });
     if (data) {
-      useCalendarStore.setState((state) => ({
-        data: {
-          ...state.data,
-          startDate: data.startDate,
-          rows: data.rows,
-        },
+      calendarData$.set((state) => ({
+        ...state,
+        startDate: data.startDate,
+        rows: data.rows,
       }));
     }
     modals.closeAll();

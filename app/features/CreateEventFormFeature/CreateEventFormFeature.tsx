@@ -1,9 +1,10 @@
 "use client";
 import { FC, useCallback } from "react";
+import { useSelector } from "@legendapp/state/react";
 
 import { UpsertEventForm } from "@/app/components/UpsertEventForm";
 import { UpsertEventFormData } from "@/app/components/UpsertEventForm/UpsertEventForm.typings";
-import { useCalendarStore } from "@/app/stores";
+import { calendarData$ } from "@/app/stores";
 import { addCellEvent } from "@/app/stores/calendar/actions";
 import { getIndexedEvent } from "@/app/stores/calendar/utils";
 import { useCreateEvent } from "@/db/hooks";
@@ -13,8 +14,8 @@ import { CreateEventFormFeatureProps } from "./CreateEventFormFeature.typings";
 export const CreateEventFormFeature: FC<CreateEventFormFeatureProps> = ({
   onCreated,
 }) => {
-  const calendarId = useCalendarStore((state) => state.data.id);
-  const startDate = useCalendarStore((state) => state.data.startDate);
+  const calendarId = useSelector(calendarData$.id);
+  const startDate = useSelector(calendarData$.startDate);
 
   const { mutateAsync: createEvent, isPending: isCreating } = useCreateEvent();
 

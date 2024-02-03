@@ -1,16 +1,17 @@
 import { FC } from "react";
+import { useSelector } from "@legendapp/state/react";
 import { Button, Stack, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 
 import { ModalActions } from "@/app/components/ModalActions";
-import { useCalendarStore } from "@/app/stores";
+import { calendarData$ } from "@/app/stores";
 import { useUpdateCalendar } from "@/db/hooks";
 
 export const EditInfoModalFeature: FC = () => {
-  const title = useCalendarStore((state) => state.data.title);
-  const description = useCalendarStore((state) => state.data.description);
-  const id = useCalendarStore((state) => state.data.id);
+  const id = useSelector(calendarData$.id);
+  const title = useSelector(calendarData$.title);
+  const description = useSelector(calendarData$.description);
 
   const { mutateAsync: updateCalendar, isPending: loading } =
     useUpdateCalendar();
@@ -29,12 +30,10 @@ export const EditInfoModalFeature: FC = () => {
       select: { title: true, description: true },
     });
     if (data) {
-      useCalendarStore.setState((state) => ({
-        data: {
-          ...state.data,
-          title: data.title,
-          description: data.description,
-        },
+      calendarData$.set((state) => ({
+        ...state,
+        title: data.title,
+        description: data.description,
       }));
     }
     modals.closeAll();

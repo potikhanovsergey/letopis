@@ -1,5 +1,6 @@
 "use client";
 import { FC, PropsWithChildren, useMemo } from "react";
+import { useSelector } from "@legendapp/state/react";
 import { Divider, Stack, Text, Tooltip } from "@mantine/core";
 import dayjs from "dayjs";
 
@@ -7,11 +8,11 @@ import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { KeyValue } from "@/app/components/KeyValue";
 import { useHoveredCellEvents } from "@/app/hooks/useHoveredCellEvents";
-import { useCalendarStore } from "@/app/stores";
+import { hoveredDates$ } from "@/app/stores";
 import { getDayOfWeekLabel } from "@/app/utils/date";
 
 export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
-  const hoveredDates = useCalendarStore((state) => state.hoveredDates());
+  const hoveredDates = useSelector(hoveredDates$);
 
   const startDayOfWeek = useMemo(() => {
     return getDayOfWeekLabel(hoveredDates.start);

@@ -1,9 +1,10 @@
 "use client";
 import { FC, useCallback } from "react";
+import { useSelector } from "@legendapp/state/react";
 
 import { UpsertTimespanForm } from "@/app/components/UpsertTimespanForm";
 import { UpsertTimespanFormData } from "@/app/components/UpsertTimespanForm/UpsertTimespanForm.typings";
-import { useCalendarStore } from "@/app/stores";
+import { calendarData$ } from "@/app/stores";
 import { updateTimespan } from "@/app/stores/calendar/actions/updateTimespan";
 import { getIndexedTimespan } from "@/app/stores/calendar/utils";
 import { useUpdateTimespan } from "@/db/hooks";
@@ -14,7 +15,7 @@ export const UpdateTimespanFormFeature: FC<UpdateTimespanFormFeatureProps> = ({
   onUpdated,
   timespan,
 }) => {
-  const startDate = useCalendarStore((state) => state.data.startDate);
+  const startDate = useSelector(calendarData$.startDate);
 
   const { mutateAsync: updateTimespanMutation, isPending } =
     useUpdateTimespan();

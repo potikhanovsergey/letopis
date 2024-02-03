@@ -1,8 +1,10 @@
-import { useCalendarStore } from "@/app/stores";
+import { batch } from "@legendapp/state";
+
+import { hoveredColumnIndex$, hoveredRowIndex$ } from "@/app/stores";
 
 export const resetHovered = () => {
-  useCalendarStore.setState(() => ({
-    hoveredColumnIndex: null,
-    hoveredRowIndex: null,
-  }));
+  batch(() => {
+    hoveredColumnIndex$.set(null);
+    hoveredRowIndex$.set(null);
+  });
 };

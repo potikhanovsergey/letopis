@@ -1,9 +1,7 @@
 import { Timespan } from "@prisma/client";
 
-import { useCalendarStore } from "@/app/stores";
+import { timespans$ } from "@/app/stores";
 
 export const deleteTimespan = (id: Timespan["id"]) => {
-  useCalendarStore.setState((prev) => ({
-    timespans: prev.timespans.filter((e) => e.id !== id),
-  }));
+  timespans$.set((prev) => prev.filter((t) => t.id !== id));
 };

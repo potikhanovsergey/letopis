@@ -1,14 +1,13 @@
 import { useMemo } from "react";
+import { useSelector } from "@legendapp/state/react";
 
-import { useCalendarStore } from "@/app/stores";
+import { events$, hoveredColumnIndex$, hoveredRowIndex$ } from "@/app/stores";
 import { getCellEvents } from "@/app/stores/calendar/utils";
 
 export const useHoveredCellEvents = () => {
-  const events = useCalendarStore((state) => state.events);
-  const { columnIndex, rowIndex } = useCalendarStore((state) => ({
-    columnIndex: state.hoveredColumnIndex,
-    rowIndex: state.hoveredRowIndex,
-  }));
+  const events = useSelector(() => events$.get());
+  const columnIndex = useSelector(hoveredColumnIndex$);
+  const rowIndex = useSelector(hoveredRowIndex$);
 
   return useMemo(() => {
     if (columnIndex === null || rowIndex === null) return [];

@@ -1,5 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef } from "react";
+import { batch } from "@legendapp/state";
+import { useSelector } from "@legendapp/state/react";
 import { Box, Text } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
@@ -8,22 +10,27 @@ import { RowLabels } from "@/app/components/RowLabels";
 import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
-import { useCalendarStore } from "@/app/stores";
+import {
+  calendarData$,
+  hoveredColumnIndex$,
+  hoveredRowIndex$,
+  startDateIndex$,
+} from "@/app/stores";
 import { resetHovered } from "@/app/stores/calendar/actions";
 
 const array53 = range(0, 52);
 
 export const YearsCalendarFeature = () => {
-  const startDateIndex = useCalendarStore((state) => state.startDateIndex());
-  const rows = useCalendarStore((state) => state.data.rows);
+  const startDateIndex = useSelector(startDateIndex$);
+  const rows = useSelector(calendarData$.rows);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = useCallback(
     ({ rowIndex, columnIndex }: { rowIndex: number; columnIndex: number }) => {
-      useCalendarStore.setState({
-        hoveredRowIndex: rowIndex,
-        hoveredColumnIndex: columnIndex,
+      batch(() => {
+        hoveredRowIndex$.set(rowIndex);
+        hoveredColumnIndex$.set(columnIndex);
       });
       timeoutRef.current && clearTimeout(timeoutRef.current);
     },

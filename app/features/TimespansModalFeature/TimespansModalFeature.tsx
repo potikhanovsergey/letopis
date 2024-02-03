@@ -1,19 +1,13 @@
 import { FC } from "react";
+import { useSelector } from "@legendapp/state/react";
 import { Text } from "@mantine/core";
 
 import { Timespans } from "@/app/components/Timespans";
-import { useCreateTimespanModal } from "@/app/hooks/useCreateTimespanModal";
-import { useCalendarStore } from "@/app/stores";
+import { mode$, timespans$ } from "@/app/stores";
 
 export const TimespansModalFeature: FC = () => {
-  const openCreateTimespanModal = useCreateTimespanModal();
-  const timespans = useCalendarStore((state) => state.timespans);
-  const mode = useCalendarStore((state) => state.mode);
-
-  // const handleCreateClick = useCallback(() => {
-  //   modals.close("timespans-modal");
-  //   openCreateTimespanModal();
-  // }, [openCreateTimespanModal]);
+  const timespans = useSelector(() => timespans$.get());
+  const mode = useSelector(mode$);
 
   return (
     <div>

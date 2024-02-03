@@ -1,10 +1,11 @@
 "use client";
 import { FC } from "react";
+import { useSelector } from "@legendapp/state/react";
 
 import { Calendar } from "@/app/components/Calendar";
 import { EditToolbarFeature } from "@/app/features/EditToolbarFeature";
 import { useInitCalendar } from "@/app/hooks/useInitCalendar";
-import { useCalendarStore } from "@/app/stores";
+import { calendarData$ } from "@/app/stores";
 
 import { CalendarEditorFeatureProps } from "./CalendarEditorFeature.typings";
 
@@ -13,9 +14,9 @@ export const CalendarEditorFeature: FC<CalendarEditorFeatureProps> = ({
 }) => {
   useInitCalendar(calendar, "edit");
 
-  const title = useCalendarStore((state) => state.data.title);
-  const description = useCalendarStore((state) => state.data.description);
-  const startDate = useCalendarStore((state) => state.data.startDate);
+  const title = useSelector(calendarData$.title);
+  const description = useSelector(calendarData$.description);
+  const startDate = useSelector(calendarData$.startDate);
 
   return (
     <Calendar

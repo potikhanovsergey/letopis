@@ -15,6 +15,11 @@ export interface CalendarStore {
   startDateIndex: () => number;
 }
 
+export interface ComputedCalendarStore {
+  hoveredDates: { start: Dayjs | null; end: Dayjs | null };
+  startDateIndex: number;
+}
+
 export interface IndexedEvent extends Event, CellIndexes {}
 export interface IndexedTimespan extends Timespan {
   startCell: CellIndexes;

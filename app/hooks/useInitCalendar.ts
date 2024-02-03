@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { batch } from "@legendapp/state";
 
-import { useCalendarStore } from "@/app/stores";
+import { calendarData$, events$, mode$, timespans$ } from "@/app/stores";
 import { CalendarMode } from "@/app/stores/calendar/calendar.typings";
 import {
   getIndexedEvents,
@@ -17,11 +18,11 @@ export const useInitCalendar = (
     const indexedEvents = getIndexedEvents(events, calendar.startDate);
     const indexedTimespans = getIndexedTimespans(timespans, calendar.startDate);
 
-    useCalendarStore.setState({
-      data,
-      events: indexedEvents,
-      timespans: indexedTimespans,
-      mode,
+    batch(() => {
+      calendarData$.set(data);
+      events$.set(indexedEvents);
+      timespans$.set(indexedTimespans);
+      mode$.set(mode);
     });
   }, [calendar, mode]);
 };

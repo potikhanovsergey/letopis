@@ -1,11 +1,12 @@
 import { FC } from "react";
+import { useSelector } from "@legendapp/state/react";
 
 import { EventsTimeline } from "@/app/components/EventsTimeline";
-import { useCalendarStore } from "@/app/stores";
+import { events$, mode$ } from "@/app/stores";
 
 export const EventsModalFeature: FC = () => {
-  const events = useCalendarStore((state) => state.events);
-  const mode = useCalendarStore((state) => state.mode);
+  const events = useSelector(() => events$.get());
+  const mode = useSelector(mode$);
 
   return (
     <div>
