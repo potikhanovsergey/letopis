@@ -20,10 +20,15 @@ import { CalendarCardProps } from "./CalendarCard.typings";
 
 import classes from "./CalendarCard.module.css";
 
-const now = dayjs(new Date());
-const later = now.add(50, "y").add(4, "m").add(12, "d");
-
-export const CalendarCard: FC<CalendarCardProps> = ({ title, id }) => {
+export const CalendarCard: FC<CalendarCardProps> = ({
+  title,
+  id,
+  startDate,
+  endDate,
+  user,
+  updatedAt,
+  previewUrl,
+}) => {
   const href = useMemo(() => {
     return `/c/${id}` as Route;
   }, [id]);
@@ -33,28 +38,28 @@ export const CalendarCard: FC<CalendarCardProps> = ({ title, id }) => {
       <Card.Section mb="sm">
         <Link href={href}>
           <Image
-            src="https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
-            alt="Top 50 underrated plants for house decoration"
-            height={180}
+            src={previewUrl || "./card-bg.jpg"}
+            alt={title}
+            style={{ aspectRatio: "16/9" }}
           />
         </Link>
       </Card.Section>
       <Badge size="sm" w="fit-content" variant="light">
-        {now.format("DD.MM.YYYY")} - {later.format("DD.MM.YYYY")}
+        {dayjs(startDate).format("DD.MM.YYYY")} -{" "}
+        {dayjs(endDate).format("DD.MM.YYYY")}
       </Badge>
-      <Text fw={700} mt="xs">
-        Top 50 underrated plants for house decoration
+      <Text size="lg" fw={700} mt="xs">
+        {title}
       </Text>
 
       <Group mt="lg" gap="xs">
-        <Avatar
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png"
-          radius="sm"
-        />
+        <Avatar src={user.image} radius="sm" />
         <div>
-          <Text fw={500}>Elsa Gardenowl</Text>
+          <Text size="sm" fw={500}>
+            {user.name}
+          </Text>
           <Text fz="xs" c="dimmed">
-            posted 34 minutes ago
+            Обновлено {dayjs(updatedAt).format("DD.MM.YYYY")}
           </Text>
         </div>
       </Group>

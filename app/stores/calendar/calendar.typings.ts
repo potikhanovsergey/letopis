@@ -1,10 +1,11 @@
-import { Calendar, Event, Timespan } from "@prisma/client";
+import { Event, Timespan } from "@prisma/client";
 import { Dayjs } from "dayjs";
 
 import { CellIndexes } from "@/app/features/CellFeature/CellFeature.typings";
+import { ExtendedCalendar } from "@/app/typings";
 
 export interface CalendarStore {
-  data: Calendar;
+  data: ExtendedCalendar;
   hoveredRowIndex: number | null;
   hoveredColumnIndex: number | null;
   events: IndexedEvent[];

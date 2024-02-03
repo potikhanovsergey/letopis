@@ -5,12 +5,17 @@ import { CalendarStore } from "./calendar.typings";
 
 export const useCalendarStore = create<CalendarStore>((set, get) => ({
   data: {
+    createdAt: new Date(),
+    updatedAt: new Date(),
     id: "",
     title: "",
     description: "",
     rows: 60,
     events: [],
+    timespans: [],
+    previewUrl: null,
     startDate: new Date(),
+    endDate: new Date(),
     userId: "",
     visiiblity: "hidden",
   },
@@ -40,7 +45,6 @@ export const useCalendarStore = create<CalendarStore>((set, get) => ({
       end: dayjs.min(hoveredEndDate, hoveredYearEndDate),
     };
   },
-  startDate: new Date(),
   startDateIndex: () => {
     const startDate = dayjs(get().data.startDate);
     const yearBeginning = startDate.startOf("y");

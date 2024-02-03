@@ -1,0 +1,4 @@
+abstract model Dates {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+}

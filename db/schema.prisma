@@ -65,11 +65,15 @@ model Account {
 /// @@allow('read', visiiblity != hidden || auth() == user)
 /// @@allow('all', auth() == user)
 model Calendar {
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt() @default(now())
     id String @id() @default(cuid())
     title String
     description String
     rows Int
+    previewUrl String?
     startDate DateTime @default(now())
+    endDate DateTime @default(dbgenerated("NOW() + interval '40 years'"))
     visiiblity CalendarVisibility
     userId String
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)

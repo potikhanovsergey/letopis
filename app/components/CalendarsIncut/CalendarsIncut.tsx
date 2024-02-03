@@ -20,6 +20,11 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
             key={calendar.id}
             title={calendar.title}
             id={calendar.id}
+            startDate={calendar.startDate}
+            endDate={calendar.endDate}
+            updatedAt={calendar.updatedAt}
+            previewUrl={calendar.previewUrl}
+            user={calendar.user}
           />
         ))}
       </SimpleGrid>
