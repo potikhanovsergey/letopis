@@ -2,6 +2,7 @@ import {
   ActionIcon,
   Button,
   ColorInput,
+  Container,
   createTheme,
   Modal,
   NumberInput,
@@ -27,6 +28,11 @@ export const theme = createTheme({
     ActionIcon: ActionIcon.extend({
       defaultProps: {
         variant: "subtle",
+      },
+    }),
+    Container: Container.extend({
+      defaultProps: {
+        size: "xl",
       },
     }),
     Tooltip: Tooltip.extend({

@@ -14,7 +14,7 @@ export const Calendar: FC<CalendarProps> = ({
   startDate,
 }) => {
   return (
-    <Container size="xl">
+    <Container>
       <Title order={1}>{title}</Title>
       <KeyValue
         k="Начало календаря"

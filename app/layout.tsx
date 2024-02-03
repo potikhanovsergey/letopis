@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import { AppShell, AppShellMain, ColorSchemeScript } from "@mantine/core";
+import { AppShell, AppShellMain, Box, ColorSchemeScript } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 
 import { HeaderFeature } from "@/app/features/HeaderFeature";
@@ -27,7 +27,11 @@ const Layout: FC<PropsWithChildren> = async ({ children }) => {
                 <DatesProvider>
                   <AppShell header={{ height: 40 }}>
                     <HeaderFeature />
-                    <AppShellMain>{children}</AppShellMain>
+                    <AppShellMain>
+                      <Box pt="xl" pb={80}>
+                        {children}
+                      </Box>
+                    </AppShellMain>
                   </AppShell>
                 </DatesProvider>
               </ModalsProvider>

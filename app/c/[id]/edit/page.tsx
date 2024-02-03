@@ -1,4 +1,3 @@
-import { Box } from "@mantine/core";
 import { notFound } from "next/navigation";
 
 import { CalendarEditorFeature } from "@/app/features/CalendarEditorFeature";
@@ -28,11 +27,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     return notFound();
   }
 
-  return (
-    <Box pt="md" pb={80}>
-      <CalendarEditorFeature calendar={calendar} />
-    </Box>
-  );
+  return <CalendarEditorFeature calendar={calendar} />;
 };
 
 export default Page;
