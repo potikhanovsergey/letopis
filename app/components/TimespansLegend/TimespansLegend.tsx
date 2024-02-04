@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ColorSwatch, Group, Text, Title, UnstyledButton } from "@mantine/core";
+import { ColorSwatch, Group, Text, Title } from "@mantine/core";
 
 import { TimespansLegendProps } from "./TimespansLegend.typings";
 
@@ -13,12 +13,10 @@ export const TimespansLegend: FC<TimespansLegendProps> = ({ timespans }) => {
       </Title>
       <Group>
         {timespans.map((timespan) => (
-          <UnstyledButton key={timespan.id}>
-            <Group gap="xs">
-              <ColorSwatch radius="xs" size={16} color={timespan.color} />
-              <Text size="sm">{timespan.title}</Text>
-            </Group>
-          </UnstyledButton>
+          <Group gap="xs" key={timespan.id}>
+            <ColorSwatch radius="xs" size={16} color={timespan.color} />
+            <Text size="sm">{timespan.title}</Text>
+          </Group>
         ))}
       </Group>
     </div>
