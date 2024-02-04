@@ -1,3 +1,7 @@
 import { Prisma } from "@prisma/client";
 
-export const calendarValidator = Prisma.validator<Prisma.CalendarSelect>();
+export const calendarSelectValidator =
+  Prisma.validator<Prisma.CalendarSelect>();
+
+export const calendarIncludeValidator =
+  Prisma.validator<Prisma.CalendarInclude>();

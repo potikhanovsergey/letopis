@@ -1,20 +1,17 @@
 "use client";
-import { Divider } from "@mantine/core";
 
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
-import { EditInfoButtonFeature } from "@/app/features/EditInfoButtonFeature";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
-import { SettingsButtonFeature } from "@/app/features/SettingsButtonFeature";
 
-export const EditToolbarFeature = () => {
+export const ViewToolbarFeature = () => {
   return (
     <FloatingToolbar>
       <TimespansButtonFeature />
       <EventsButtonFeature />
-      <Divider orientation="vertical" />
+      {/* <Divider orientation="vertical" />
       <EditInfoButtonFeature />
-      <SettingsButtonFeature />
+      <SettingsButtonFeature /> */}
     </FloatingToolbar>
   );
 };

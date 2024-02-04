@@ -1,6 +1,6 @@
-import { calendarValidator } from ".";
+import { calendarSelectValidator } from ".";
 
-export const calendarCardSelect = calendarValidator({
+export const calendarCardSelect = calendarSelectValidator({
   updatedAt: true,
   previewUrl: true,
   title: true,
