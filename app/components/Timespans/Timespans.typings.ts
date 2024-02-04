@@ -1,9 +1,8 @@
-import {
-  CalendarMode,
-  IndexedTimespan,
-} from "@/app/stores/calendar/calendar.typings";
+import { Timespan } from "@prisma/client";
+
+import { CalendarMode } from "@/app/stores/calendar/calendar.typings";
 
 export interface TimespansProps {
-  timespans: IndexedTimespan[];
+  timespans: Timespan[];
   mode: CalendarMode;
 }

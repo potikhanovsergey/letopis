@@ -3,11 +3,10 @@ import { useSelector } from "@legendapp/state/react";
 import { Text } from "@mantine/core";
 
 import { EventsTimeline } from "@/app/components/EventsTimeline";
-import { mode$ } from "@/app/stores";
-import { events$ } from "@/app/stores/calendar/computed";
+import { calendarData$, mode$ } from "@/app/stores";
 
 export const EventsModalFeature: FC = () => {
-  const events = useSelector(events$);
+  const events = useSelector(() => calendarData$.events.get());
   const mode = useSelector(mode$);
 
   if (events.length === 0)

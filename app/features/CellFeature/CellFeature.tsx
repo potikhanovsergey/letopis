@@ -6,7 +6,6 @@ import { Cell } from "@/app/components/Cell";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { useTimespansColor } from "@/app/hooks/useTimespansColor";
-import { calendarData$ } from "@/app/stores";
 import { events$, timespans$ } from "@/app/stores/calendar/computed";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
@@ -20,11 +19,14 @@ export const CellFeature: FC<CellFeatureProps> = ({
 }) => {
   const events = useSelector(events$);
   const timespans = useSelector(timespans$);
-  const endDate = useSelector(calendarData$.endDate);
 
   const cellTimespans = useMemo(() => {
-    return getCellTimespans({ rowIndex, columnIndex, timespans });
-  }, [timespans, rowIndex, columnIndex]);
+    return getCellTimespans({
+      rowIndex,
+      columnIndex,
+      timespans,
+    });
+  }, [rowIndex, columnIndex, timespans]);
 
   const color = useTimespansColor(cellTimespans);
 
@@ -37,7 +39,6 @@ export const CellFeature: FC<CellFeatureProps> = ({
       rowIndex,
       columnIndex,
       events,
-      endDate,
     });
 
     if (cellEvents.length === 1) {
@@ -47,7 +48,7 @@ export const CellFeature: FC<CellFeatureProps> = ({
     if (cellEvents.length === 0) return null;
 
     return cellEvents.length;
-  }, [columnIndex, rowIndex, endDate, events]);
+  }, [rowIndex, columnIndex, events]);
 
   return (
     <Cell

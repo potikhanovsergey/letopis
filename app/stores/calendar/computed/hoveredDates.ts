@@ -10,7 +10,9 @@ import {
 export const hoveredDates$ = computed(() => {
   const hoveredRowIndex = hoveredRowIndex$.get();
   const hoveredColumnIndex = hoveredColumnIndex$.get();
-  const startYearDate = dayjs(calendarData$.startDate.get()).startOf("y");
+  const startDate = dayjs(calendarData$.startDate.get());
+
+  const startYearDate = startDate.startOf("y");
 
   const endDate = calendarData$.endDate.get();
 
@@ -26,7 +28,7 @@ export const hoveredDates$ = computed(() => {
   const hoveredEndDate = hoveredStartDate.add(6, "d");
 
   return {
-    start: hoveredStartDate,
+    start: dayjs.max(hoveredStartDate, startDate),
     end: dayjs.min(
       dayjs.min(hoveredEndDate, hoveredYearEndDate)!,
       dayjs(endDate)

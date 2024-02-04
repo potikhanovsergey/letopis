@@ -3,11 +3,10 @@ import { useSelector } from "@legendapp/state/react";
 import { Text } from "@mantine/core";
 
 import { Timespans } from "@/app/components/Timespans";
-import { mode$ } from "@/app/stores";
-import { timespans$ } from "@/app/stores/calendar/computed";
+import { calendarData$, mode$ } from "@/app/stores";
 
 export const TimespansModalFeature: FC = () => {
-  const timespans = useSelector(timespans$);
+  const timespans = useSelector(() => calendarData$.timespans.get());
   const mode = useSelector(mode$);
 
   if (timespans.length === 0)

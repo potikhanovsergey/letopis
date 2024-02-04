@@ -5,7 +5,9 @@ export const getCellTimespans = ({
   rowIndex,
   columnIndex,
   timespans,
-}: CellIndexes & { timespans: IndexedTimespan[] }) => {
+}: CellIndexes & {
+  timespans: IndexedTimespan[];
+}) => {
   return timespans.filter((t) => {
     const tStartIndex = t.startCell.rowIndex * 53 + t.startCell.columnIndex;
     const tEndIndex = t.endCell.rowIndex * 53 + t.endCell.columnIndex;

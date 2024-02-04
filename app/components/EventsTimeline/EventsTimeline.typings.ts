@@ -1,9 +1,8 @@
-import {
-  CalendarMode,
-  IndexedEvent,
-} from "@/app/stores/calendar/calendar.typings";
+import { Event } from "@prisma/client";
+
+import { CalendarMode } from "@/app/stores/calendar/calendar.typings";
 
 export interface EventsTimelineProps {
-  events: IndexedEvent[];
+  events: Event[];
   mode: CalendarMode;
 }
