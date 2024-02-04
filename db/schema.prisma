@@ -105,6 +105,7 @@ model Timespan {
     calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
 }
 
+/// @@allow('all', auth() == user)
 model Bookmark {
     createdAt DateTime @default(now())
     userId String

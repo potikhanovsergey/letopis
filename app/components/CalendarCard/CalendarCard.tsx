@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { Route } from "next";
 import Link from "next/link";
 
+import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
 import { ShareCalendarFeature } from "@/app/features/ShareCalendarFeature";
 
 import { CalendarCardProps } from "./CalendarCard.typings";
@@ -60,6 +61,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
             Смотреть
           </Button>
           <Group gap={0}>
+            <BookmarkButtonFeature id={id} />
             <ShareCalendarFeature id={id} />
           </Group>
         </Group>

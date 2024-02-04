@@ -9,5 +9,7 @@ model Bookmark {
   calendarId String
   calendar Calendar @relation(fields: [calendarId], references: [id])
 
+  /* Только сам пользователь отвечает за свои заметки */
+  @@allow('all', auth() == user)
   @@id([calendarId, userId])
 }

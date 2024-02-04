@@ -9,7 +9,14 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: async ({ session, user }) => {
       if (session.user && user) {
-        session.user = user;
+        const bookmarks = await prisma.bookmark.findMany({
+          where: { userId: user.id },
+          orderBy: { createdAt: "desc" },
+        });
+        session.user = {
+          ...user,
+          bookmarks,
+        };
       }
 
       return session;
