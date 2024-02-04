@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { batch } from "@legendapp/state";
 
-import { calendarData$, mode$ } from "@/app/stores";
+import { calendarData$, hasInitialized$, mode$ } from "@/app/stores";
 import { CalendarMode } from "@/app/stores/calendar/calendar.typings";
 import { ExtendedCalendar } from "@/app/typings";
 
@@ -13,6 +13,11 @@ export const useInitCalendar = (
     batch(() => {
       calendarData$.set(calendar);
       mode$.set(mode);
+      hasInitialized$.set(true);
     });
+
+    return () => {
+      hasInitialized$.set(false);
+    };
   }, []);
 };

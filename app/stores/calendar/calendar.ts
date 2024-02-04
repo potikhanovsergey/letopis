@@ -16,8 +16,10 @@ export const calendarData$ = observable({
   startDate: new Date(),
   endDate: new Date(),
   userId: "",
-  visiiblity: "hidden",
+  visibility: "hidden",
 } as ExtendedCalendar);
+
+export const hasInitialized$ = observable(false);
 
 export const mode$ = observable("view" as CalendarMode);
 export const hoveredRowIndex$ = observable(null as number | null);

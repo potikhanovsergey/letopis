@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { batch } from "@legendapp/state";
 import { useSelector } from "@legendapp/state/react";
-import { Box, Text } from "@mantine/core";
+import { Box, Skeleton, Text } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
 import { RCHint } from "@/app/components/RCHint";
@@ -10,7 +10,11 @@ import { RowLabels } from "@/app/components/RowLabels";
 import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
-import { hoveredColumnIndex$, hoveredRowIndex$ } from "@/app/stores/calendar";
+import {
+  hasInitialized$,
+  hoveredColumnIndex$,
+  hoveredRowIndex$,
+} from "@/app/stores/calendar";
 import { resetHovered } from "@/app/stores/calendar/actions";
 import { endDateIndex$, startDateIndex$ } from "@/app/stores/calendar/computed";
 import { rowsCount$ } from "@/app/stores/calendar/computed/rowsCount";
@@ -46,6 +50,10 @@ export const YearsCalendarFeature = () => {
       timeoutRef.current && clearTimeout(timeoutRef.current);
     };
   }, []);
+
+  const hasInitialized = useSelector(hasInitialized$);
+
+  if (!hasInitialized) return <Skeleton h={640} />;
 
   return (
     <Box pos="relative">

@@ -10,13 +10,8 @@ export const TimespansModalFeature: FC = () => {
   const timespans = useSelector(timespans$);
   const mode = useSelector(mode$);
 
-  return (
-    <div>
-      {timespans.length === 0 ? (
-        <Text c="dimmed">В этом календаре еще нет промежутков.</Text>
-      ) : (
-        <Timespans timespans={timespans} mode={mode} />
-      )}
-    </div>
-  );
+  if (timespans.length === 0)
+    return <Text c="dimmed">В этом календаре еще нет промежутков.</Text>;
+
+  return <Timespans timespans={timespans} mode={mode} />;
 };
