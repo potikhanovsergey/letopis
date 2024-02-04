@@ -4,6 +4,7 @@ import { Divider } from "@mantine/core";
 
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
+import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
 import { EditInfoButtonFeature } from "@/app/features/EditInfoButtonFeature";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
 import { SettingsButtonFeature } from "@/app/features/SettingsButtonFeature";
@@ -21,6 +22,7 @@ export const EditToolbarFeature = () => {
       <EditInfoButtonFeature />
       <SettingsButtonFeature />
       <Divider orientation="vertical" />
+      <BookmarkButtonFeature id={id} />
       <ShareCalendarFeature id={id} />
     </FloatingToolbar>
   );
