@@ -476,8 +476,8 @@ const metadata = {
                 isForeignKey: false,
                 foreignKeyMapping: undefined,
             },
-            visiiblity: {
-                name: 'visiiblity',
+            visibility: {
+                name: 'visibility',
                 type: 'CalendarVisibility',
                 isId: false,
                 isDataModel: false,

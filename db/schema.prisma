@@ -62,7 +62,7 @@ model Account {
     @@unique([provider, providerAccountId])
 }
 
-/// @@allow('read', visiiblity != hidden || auth() == user)
+/// @@allow('read', visibility != hidden || auth() == user)
 /// @@allow('all', auth() == user)
 model Calendar {
     createdAt DateTime @default(now())
@@ -73,14 +73,14 @@ model Calendar {
     previewUrl String?
     startDate DateTime @default(now())
     endDate DateTime @default(dbgenerated("NOW() + interval '40 years'"))
-    visiiblity CalendarVisibility
+    visibility CalendarVisibility @default(hidden)
     userId String
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
     events Event[]
     timespans Timespan[]
 }
 
-/// @@allow('read', calendar.visiiblity != hidden || auth() == calendar.user)
+/// @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
 /// @@allow('all', auth() == calendar.user)
 model Event {
     id Int @id() @default(autoincrement())
@@ -91,7 +91,7 @@ model Event {
     calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
 }
 
-/// @@allow('read', calendar.visiiblity != hidden || auth() == calendar.user)
+/// @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
 /// @@allow('all', auth() == calendar.user)
 model Timespan {
     id Int @id() @default(autoincrement())

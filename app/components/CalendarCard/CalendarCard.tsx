@@ -34,7 +34,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
   }, [id]);
 
   return (
-    <Card radius="md" withBorder className={classes.card}>
+    <Card component="li" radius="md" withBorder className={classes.card}>
       <Card.Section mb="sm">
         <Link href={href}>
           <Image
@@ -48,11 +48,11 @@ export const CalendarCard: FC<CalendarCardProps> = ({
         {dayjs(startDate).format("DD.MM.YYYY")} -{" "}
         {dayjs(endDate).format("DD.MM.YYYY")}
       </Badge>
-      <Text size="lg" fw={700} mt="xs">
+      <Text className={classes.title} size="lg">
         {title}
       </Text>
 
-      <Group mt="lg" gap="xs">
+      <Group mt="md" gap="xs">
         <Avatar src={user.image} radius="sm" />
         <div>
           <Text size="sm" fw={500}>

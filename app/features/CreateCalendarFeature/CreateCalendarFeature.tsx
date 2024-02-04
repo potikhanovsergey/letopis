@@ -16,7 +16,6 @@ export const CreateCalendarFeature: FC<CreateCalendarFeatureProps> = ({
       data: {
         title: "Новый календарь",
         description: "Описание календаря",
-        visiiblity: "hidden",
         userId: user.id,
       },
     });

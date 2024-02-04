@@ -1,6 +1,6 @@
 import { AuthUser, enhance } from "@zenstackhq/runtime";
 
-import db from "@/db";
+import prisma from "@/db";
 
 import { getSession } from "./getSession";
 
@@ -8,5 +8,5 @@ import { getSession } from "./getSession";
 export async function getEnhancedDb() {
   const session = await getSession();
 
-  return enhance(db, { user: session?.user as unknown as AuthUser });
+  return enhance(prisma, { user: session?.user as unknown as AuthUser });
 }

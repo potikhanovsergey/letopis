@@ -6,6 +6,7 @@ import {
   createTheme,
   Modal,
   NumberInput,
+  Select,
   Textarea,
   TextInput,
   Tooltip,
@@ -80,6 +81,11 @@ export const theme = createTheme({
       },
     }),
     ColorInput: ColorInput.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+    Select: Select.extend({
       defaultProps: {
         size: "xs",
       },

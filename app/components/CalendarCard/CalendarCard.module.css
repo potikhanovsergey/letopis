@@ -7,3 +7,12 @@
   margin-top: var(--mantine-spacing-md);
   border-top: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
 }
+
+.title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-clamp: 1;
+  white-space: nowrap;
+  margin-top: rem(4px);
+  font-weight: 700;
+}
