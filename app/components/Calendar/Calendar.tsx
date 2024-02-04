@@ -12,6 +12,7 @@ export const Calendar: FC<CalendarProps> = ({
   title,
   description,
   startDate,
+  endDate,
 }) => {
   return (
     <Container>
@@ -20,6 +21,7 @@ export const Calendar: FC<CalendarProps> = ({
         k="Начало календаря"
         v={dayjs(startDate).format("DD.MM.YYYY")}
       />
+      <KeyValue k="Конец календаря" v={dayjs(endDate).format("DD.MM.YYYY")} />
       <Text c="dimmed" mb="md">
         {description}
       </Text>

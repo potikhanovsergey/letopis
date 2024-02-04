@@ -1,6 +1,7 @@
 import { FC } from "react";
+import { batch } from "@legendapp/state";
 import { useSelector } from "@legendapp/state/react";
-import { Button, NumberInput, Stack } from "@mantine/core";
+import { Button, Stack } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
@@ -10,32 +11,31 @@ import { calendarData$ } from "@/app/stores";
 import { useUpdateCalendar } from "@/db/hooks";
 
 export const SettingsModalFeature: FC = () => {
-  const rows = useSelector(calendarData$.rows);
   const id = useSelector(calendarData$.id);
   const startDate = useSelector(calendarData$.startDate);
+  const endDate = useSelector(calendarData$.endDate);
 
   const { mutateAsync: updateCalendar, isPending: loading } =
     useUpdateCalendar();
 
   const form = useForm({
     initialValues: {
-      rows,
       startDate,
+      endDate,
     },
   });
 
-  const handleSubmit = form.onSubmit(async ({ startDate, rows }) => {
+  const handleSubmit = form.onSubmit(async ({ startDate, endDate }) => {
     const data = await updateCalendar({
       where: { id },
-      data: { startDate, rows },
-      select: { startDate: true, rows: true },
+      data: { startDate, endDate },
+      select: { startDate: true, endDate: true },
     });
     if (data) {
-      calendarData$.set((state) => ({
-        ...state,
-        startDate: data.startDate,
-        rows: data.rows,
-      }));
+      batch(() => {
+        calendarData$.startDate.set(data.startDate);
+        calendarData$.endDate.set(data.endDate);
+      });
     }
     modals.closeAll();
   });
@@ -43,16 +43,15 @@ export const SettingsModalFeature: FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Stack>
-        <NumberInput
-          description="От 12 до 100"
-          label="Количество лет"
-          min={12}
-          max={100}
-          {...form.getInputProps("rows")}
+        <DateInput
+          label="Дата начала"
+          maxDate={form.values.endDate}
+          {...form.getInputProps("startDate")}
         />
         <DateInput
-          label="Стартовая дата"
-          {...form.getInputProps("startDate")}
+          label="Дата конца"
+          minDate={form.values.startDate}
+          {...form.getInputProps("endDate")}
         />
       </Stack>
 

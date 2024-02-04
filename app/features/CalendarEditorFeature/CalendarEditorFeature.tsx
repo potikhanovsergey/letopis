@@ -17,12 +17,14 @@ export const CalendarEditorFeature: FC<CalendarEditorFeatureProps> = ({
   const title = useSelector(calendarData$.title);
   const description = useSelector(calendarData$.description);
   const startDate = useSelector(calendarData$.startDate);
+  const endDate = useSelector(calendarData$.endDate);
 
   return (
     <Calendar
       title={title}
       description={description}
       startDate={startDate}
+      endDate={endDate}
       toolbar={<EditToolbarFeature />}
     />
   );

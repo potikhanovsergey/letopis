@@ -70,7 +70,6 @@ model Calendar {
     id String @id() @default(cuid())
     title String
     description String
-    rows Int
     previewUrl String?
     startDate DateTime @default(now())
     endDate DateTime @default(dbgenerated("NOW() + interval '40 years'"))

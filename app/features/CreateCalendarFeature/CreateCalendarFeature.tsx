@@ -18,7 +18,6 @@ export const CreateCalendarFeature: FC<CreateCalendarFeatureProps> = ({
         description: "Описание календаря",
         visiiblity: "hidden",
         userId: user.id,
-        rows: 60,
       },
     });
     if (calendar && onCalendarCreated) {

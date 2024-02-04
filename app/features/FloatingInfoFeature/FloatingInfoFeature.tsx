@@ -8,7 +8,7 @@ import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { KeyValue } from "@/app/components/KeyValue";
 import { useHoveredCellEvents } from "@/app/hooks/useHoveredCellEvents";
-import { hoveredDates$ } from "@/app/stores";
+import { hoveredDates$ } from "@/app/stores/calendar/computed";
 import { getDayOfWeekLabel } from "@/app/utils/date";
 
 export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {

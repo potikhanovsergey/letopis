@@ -10,19 +10,17 @@ import { RowLabels } from "@/app/components/RowLabels";
 import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
-import {
-  calendarData$,
-  hoveredColumnIndex$,
-  hoveredRowIndex$,
-  startDateIndex$,
-} from "@/app/stores";
+import { hoveredColumnIndex$, hoveredRowIndex$ } from "@/app/stores/calendar";
 import { resetHovered } from "@/app/stores/calendar/actions";
+import { endDateIndex$, startDateIndex$ } from "@/app/stores/calendar/computed";
+import { rowsCount$ } from "@/app/stores/calendar/computed/rowsCount";
 
 const array53 = range(0, 52);
 
 export const YearsCalendarFeature = () => {
   const startDateIndex = useSelector(startDateIndex$);
-  const rows = useSelector(calendarData$.rows);
+  const endDateIndex = useSelector(endDateIndex$);
+  const rowsCount = useSelector(rowsCount$);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -78,6 +76,7 @@ export const YearsCalendarFeature = () => {
               />
             )}
 
+            {/* TODO: рендерить через рэндж без return null */}
             {array53.map((columnIndex) => {
               if (columnIndex < startDateIndex) return null;
 
@@ -92,18 +91,14 @@ export const YearsCalendarFeature = () => {
               );
             })}
 
-            {/* Остальные ряды нормальные */}
-
-            {range(0, rows - 2).map((e, rowIndex) => (
-              <React.Fragment key={rowIndex}>
-                {rowIndex % 5 === 4 || rowIndex === rows - 2 ? (
-                  <RCHint>{rowIndex + 2}</RCHint>
-                ) : (
-                  <span />
-                )}
+            {/* Все кроме последнего ряда полные */}
+            {/* Со второго ряда до предпоследнего */}
+            {range(2, rowsCount - 1).map((rowNumber) => (
+              <React.Fragment key={rowNumber}>
+                {rowNumber % 5 === 4 ? <RCHint>{rowNumber}</RCHint> : <span />}
                 {array53.map((columnIndex) => (
                   <CellFeature
-                    rowIndex={rowIndex + 1}
+                    rowIndex={rowNumber - 1}
                     columnIndex={columnIndex}
                     key={columnIndex}
                     onMouseEnter={handleMouseEnter}
@@ -112,6 +107,21 @@ export const YearsCalendarFeature = () => {
                 ))}
               </React.Fragment>
             ))}
+
+            <RCHint>{rowsCount}</RCHint>
+
+            {/* Последний ряд клеток может быть меньше из-за стартовой даты */}
+            {range(0, endDateIndex).map((columnIndex) => {
+              return (
+                <CellFeature
+                  rowIndex={rowsCount - 1}
+                  columnIndex={columnIndex}
+                  key={columnIndex}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                />
+              );
+            })}
           </YearsGrid>
         </div>
       </FloatingInfoFeature>

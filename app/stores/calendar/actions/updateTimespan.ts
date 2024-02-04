@@ -1,8 +1,9 @@
-import { timespans$ } from "@/app/stores";
-import { IndexedTimespan } from "@/app/stores/calendar/calendar.typings";
+import { Timespan } from "@prisma/client";
 
-export const updateTimespan = (timespan: IndexedTimespan) => {
-  timespans$.set((prev) =>
+import { calendarData$ } from "@/app/stores";
+
+export const updateTimespan = (timespan: Timespan) => {
+  calendarData$.timespans.set((prev) =>
     prev.map((t) => (t.id === timespan.id ? timespan : t))
   );
 };

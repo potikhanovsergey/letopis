@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.1.0",
-    "@legendapp/state": "^2.1.4",
+    "@legendapp/state": "2.1.4",
     "@mantine/core": "^7.5.0",
     "@mantine/dates": "^7.5.0",
     "@mantine/form": "^7.5.0",
@@ -30,7 +30,6 @@
     "@prisma/client": "5.5.2",
     "@tabler/icons-react": "2.40.0",
     "@tanstack/react-query": "5.8.1",
-    "@udecode/zustood": "2.0.0",
     "@zenstackhq/runtime": "1.2.1",
     "@zenstackhq/tanstack-query": "1.2.1",
     "next": "14.0.0",

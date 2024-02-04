@@ -6,7 +6,6 @@ import { UpsertEventForm } from "@/app/components/UpsertEventForm";
 import { UpsertEventFormData } from "@/app/components/UpsertEventForm/UpsertEventForm.typings";
 import { calendarData$ } from "@/app/stores";
 import { addCellEvent } from "@/app/stores/calendar/actions";
-import { getIndexedEvent } from "@/app/stores/calendar/utils";
 import { useCreateEvent } from "@/db/hooks";
 
 import { CreateEventFormFeatureProps } from "./CreateEventFormFeature.typings";
@@ -15,7 +14,6 @@ export const CreateEventFormFeature: FC<CreateEventFormFeatureProps> = ({
   onCreated,
 }) => {
   const calendarId = useSelector(calendarData$.id);
-  const startDate = useSelector(calendarData$.startDate);
 
   const { mutateAsync: createEvent, isPending: isCreating } = useCreateEvent();
 
@@ -24,12 +22,11 @@ export const CreateEventFormFeature: FC<CreateEventFormFeatureProps> = ({
       const newEvent = await createEvent({ data: { calendarId, ...values } });
 
       if (newEvent) {
-        const indexedEvent = getIndexedEvent(newEvent, startDate);
-        addCellEvent(indexedEvent);
+        addCellEvent(newEvent);
         onCreated?.();
       }
     },
-    [calendarId, createEvent, onCreated, startDate]
+    [calendarId, createEvent, onCreated]
   );
 
   return (

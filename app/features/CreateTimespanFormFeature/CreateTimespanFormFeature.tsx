@@ -6,7 +6,6 @@ import { UpsertTimespanForm } from "@/app/components/UpsertTimespanForm";
 import { UpsertTimespanFormData } from "@/app/components/UpsertTimespanForm/UpsertTimespanForm.typings";
 import { calendarData$ } from "@/app/stores";
 import { addTimespan } from "@/app/stores/calendar/actions";
-import { getIndexedTimespan } from "@/app/stores/calendar/utils";
 import { useCreateTimespan } from "@/db/hooks";
 
 import { CreateTimespanFormFeatureProps } from "./CreateTimespanFormFeature.typings";
@@ -15,7 +14,6 @@ export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
   onCreated,
 }) => {
   const calendarId = useSelector(calendarData$.id);
-  const startDate = useSelector(calendarData$.startDate);
 
   const { mutateAsync: createTimespan, isPending } = useCreateTimespan();
 
@@ -26,12 +24,11 @@ export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
       });
 
       if (newTimespan) {
-        const indexedTimespan = getIndexedTimespan(newTimespan, startDate);
-        addTimespan(indexedTimespan);
+        addTimespan(newTimespan);
         onCreated?.();
       }
     },
-    [calendarId, createTimespan, onCreated, startDate]
+    [calendarId, createTimespan, onCreated]
   );
 
   return (

@@ -1,6 +1,9 @@
-import { events$ } from "@/app/stores";
-import { IndexedEvent } from "@/app/stores/calendar/calendar.typings";
+import { Event } from "@prisma/client";
 
-export const updateCellEvent = (event: IndexedEvent) => {
-  events$.set((prev) => prev.map((e) => (e.id === event.id ? event : e)));
+import { calendarData$ } from "..";
+
+export const updateCellEvent = (event: Event) => {
+  calendarData$.events.set((prev) =>
+    prev.map((e) => (e.id === event.id ? event : e))
+  );
 };
