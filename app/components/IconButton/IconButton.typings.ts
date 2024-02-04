@@ -5,4 +5,6 @@ export interface IconButtonProps extends ActionIconProps {
   label: string;
   onClick?: () => void;
   icon: Icon;
+
+  tooltipDisabled?: boolean;
 }

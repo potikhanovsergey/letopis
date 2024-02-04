@@ -1,20 +1,11 @@
 "use client";
 import { FC, useMemo } from "react";
-import {
-  ActionIcon,
-  Avatar,
-  Badge,
-  Button,
-  Card,
-  Group,
-  Image,
-  rem,
-  Text,
-} from "@mantine/core";
-import { IconShare } from "@tabler/icons-react";
+import { Avatar, Badge, Button, Card, Group, Image, Text } from "@mantine/core";
 import dayjs from "dayjs";
 import { Route } from "next";
 import Link from "next/link";
+
+import { ShareCalendarFeature } from "@/app/features/ShareCalendarFeature";
 
 import { CalendarCardProps } from "./CalendarCard.typings";
 
@@ -69,12 +60,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
             Смотреть
           </Button>
           <Group gap={0}>
-            <ActionIcon variant="subtle" color="gray">
-              <IconShare
-                style={{ width: rem(20), height: rem(20) }}
-                stroke={1.5}
-              />
-            </ActionIcon>
+            <ShareCalendarFeature id={id} />
           </Group>
         </Group>
       </Card.Section>

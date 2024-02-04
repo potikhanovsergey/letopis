@@ -11,6 +11,9 @@ const nextConfig = {
     ],
     typedRoutes: true,
   },
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
