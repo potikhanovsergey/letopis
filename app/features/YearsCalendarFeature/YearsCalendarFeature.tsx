@@ -6,10 +6,10 @@ import { Box, Skeleton, Text } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
 import { RCHint } from "@/app/components/RCHint";
-import { RowLabels } from "@/app/components/RowLabels";
 import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
+import { RowHintFeature } from "@/app/features/RowHintFeature";
 import {
   hasInitialized$,
   hoveredColumnIndex$,
@@ -58,7 +58,7 @@ export const YearsCalendarFeature = () => {
   return (
     <Box pos="relative">
       <Text fw="bold">Недели {"--->"}</Text>
-      <RowLabels />
+      {/* <RowLabels /> */}
 
       <FloatingInfoFeature>
         <div>
@@ -73,7 +73,7 @@ export const YearsCalendarFeature = () => {
               return <span key={columnIndex} />;
             })}
 
-            <RCHint>1</RCHint>
+            <RowHintFeature index={0} />
 
             {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
             {startDateIndex !== 0 && (
@@ -101,12 +101,12 @@ export const YearsCalendarFeature = () => {
 
             {/* Все кроме последнего ряда полные */}
             {/* Со второго ряда до предпоследнего */}
-            {range(2, rowsCount - 1).map((rowNumber) => (
-              <React.Fragment key={rowNumber}>
-                {rowNumber % 5 === 4 ? <RCHint>{rowNumber}</RCHint> : <span />}
+            {range(1, rowsCount - 2).map((rowIndex) => (
+              <React.Fragment key={rowIndex}>
+                <RowHintFeature index={rowIndex} />
                 {array53.map((columnIndex) => (
                   <CellFeature
-                    rowIndex={rowNumber - 1}
+                    rowIndex={rowIndex}
                     columnIndex={columnIndex}
                     key={columnIndex}
                     onMouseEnter={handleMouseEnter}
@@ -116,7 +116,7 @@ export const YearsCalendarFeature = () => {
               </React.Fragment>
             ))}
 
-            <RCHint>{rowsCount}</RCHint>
+            <RowHintFeature index={rowsCount - 1} />
 
             {/* Последний ряд клеток может быть меньше из-за стартовой даты */}
             {range(0, endDateIndex).map((columnIndex) => {

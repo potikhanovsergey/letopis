@@ -1,4 +1,4 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1.851%, 1.851%));
+  grid-template-columns: 40px repeat(53, 1fr);
 }

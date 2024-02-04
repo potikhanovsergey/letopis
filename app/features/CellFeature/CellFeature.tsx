@@ -42,7 +42,9 @@ export const CellFeature: FC<CellFeatureProps> = ({
     });
 
     if (cellEvents.length === 1) {
-      return <DynamicIcon name={cellEvents[0].icon as EventIconKey} />;
+      return (
+        <DynamicIcon size="100%" name={cellEvents[0].icon as EventIconKey} />
+      );
     }
 
     if (cellEvents.length === 0) return null;

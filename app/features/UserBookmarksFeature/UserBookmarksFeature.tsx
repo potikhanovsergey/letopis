@@ -11,7 +11,7 @@ export const UserBookmarksFeature: FC = () => {
 
   const { data: bookmarks } = useFindManyBookmark(
     {
-      where: { userId: session.data!.user.id },
+      where: { userId: session.data?.user.id },
       orderBy: { createdAt: "desc" },
       select: {
         calendar: {
