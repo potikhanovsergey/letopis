@@ -1,6 +1,7 @@
 import "./session"
 import "./account"
 import "./calendar"
+import "./bookmark"
 
 model User {
   id String @id @default(cuid())
@@ -13,6 +14,7 @@ model User {
   accounts Account[]
   sessions Session[]
   calendars Calendar[]
+  bookmarks Bookmark[]
 
   /* Все пользователи могут создавать аккаунт */
   @@allow('create', true)

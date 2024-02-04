@@ -1,0 +1,13 @@
+import "./calendar"
+import "./user"
+
+model Bookmark {
+  createdAt DateTime @default(now())
+
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  calendarId String
+  calendar Calendar @relation(fields: [calendarId], references: [id])
+
+  @@id([calendarId, userId])
+}

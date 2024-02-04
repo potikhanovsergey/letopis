@@ -2,6 +2,7 @@ import "./user"
 import "./event"
 import "./timespan"
 import './common'
+import "./calendar"
 
 enum CalendarVisibility {
   hidden
@@ -24,6 +25,7 @@ model Calendar extends Dates {
 
   events Event[]
   timespans Timespan[]
+  bookmarks Bookmark[]
 
   /* Все пользователи могут видеть публичные календари, непубличные только его создатели */
   @@allow('read', visibility != hidden || auth() == user)
