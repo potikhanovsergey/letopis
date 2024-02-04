@@ -30,7 +30,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
       <Card.Section mb="sm">
         <Link href={href}>
           <Image
-            src={previewUrl || "./card-bg.jpg"}
+            src={previewUrl || "/card-bg.jpg"}
             alt={title}
             style={{ aspectRatio: "16/9" }}
           />
