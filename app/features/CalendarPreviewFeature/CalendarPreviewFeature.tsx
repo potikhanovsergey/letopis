@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
-import { Image, Skeleton } from "@mantine/core";
+import { Skeleton } from "@mantine/core";
 
+import { CalendarPreviewImage } from "@/app/components/CalendarPreviewImage";
 import { calendarData$, hasInitialized$ } from "@/app/stores";
 
 const MAW = 320;
@@ -14,12 +15,5 @@ export const CalendarPreviewFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton w={MAW} h={h} />;
 
-  return (
-    <Image
-      maw={MAW}
-      style={{ aspectRatio: "16/9" }}
-      src={previewUrl || "/card-bg.jpg"}
-      alt={title}
-    />
-  );
+  return <CalendarPreviewImage maw={MAW} alt={title} src={previewUrl} />;
 };

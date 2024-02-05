@@ -1,10 +1,11 @@
 "use client";
 import { FC, useMemo } from "react";
-import { Avatar, Badge, Button, Card, Group, Image, Text } from "@mantine/core";
+import { Avatar, Badge, Button, Card, Group, Text } from "@mantine/core";
 import dayjs from "dayjs";
 import { Route } from "next";
 import Link from "next/link";
 
+import { CalendarPreviewImage } from "@/app/components/CalendarPreviewImage";
 import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
 import { ShareCalendarFeature } from "@/app/features/ShareCalendarFeature";
 
@@ -29,11 +30,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
     <Card component="li" radius="md" withBorder className={classes.card}>
       <Card.Section mb="sm">
         <Link href={href}>
-          <Image
-            src={previewUrl || "/card-bg.jpg"}
-            alt={title}
-            style={{ aspectRatio: "16/9" }}
-          />
+          <CalendarPreviewImage alt={title} src={previewUrl} />
         </Link>
       </Card.Section>
       <Badge size="sm" w="fit-content" variant="light">

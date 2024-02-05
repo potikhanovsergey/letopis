@@ -7,6 +7,7 @@ import { modals } from "@mantine/modals";
 
 import { ModalActions } from "@/app/components/ModalActions";
 import { calendarData$ } from "@/app/stores";
+import { isImageUrlValid } from "@/app/utils/isImageUrlValid";
 import { useUpdateCalendar } from "@/db/hooks";
 
 export const EditInfoModalFeature: FC = () => {
@@ -23,6 +24,12 @@ export const EditInfoModalFeature: FC = () => {
       title,
       description,
       previewUrl,
+    },
+    validate: {
+      previewUrl: (url) =>
+        isImageUrlValid(url)
+          ? null
+          : "Ссылка должна быть с протоколом https, формат изображения png, jpg/jpeg, webp",
     },
   });
 
