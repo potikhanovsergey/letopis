@@ -2,6 +2,7 @@
 import { useSelector } from "@legendapp/state/react";
 import { Divider } from "@mantine/core";
 
+import { DotsActions } from "@/app/components/DotsActions";
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
 import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
@@ -19,11 +20,12 @@ export const EditToolbarFeature = () => {
       <TimespansButtonFeature />
       <EventsButtonFeature />
       <Divider orientation="vertical" />
-      <EditInfoButtonFeature />
-      <SettingsButtonFeature />
-      <Divider orientation="vertical" />
       <BookmarkButtonFeature id={id} />
       <ShareCalendarFeature id={id} />
+      <Divider orientation="vertical" />
+      <EditInfoButtonFeature />
+      <SettingsButtonFeature />
+      <DotsActions />
     </FloatingToolbar>
   );
 };

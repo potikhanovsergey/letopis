@@ -3,7 +3,7 @@ import { Icon } from "@tabler/icons-react";
 
 export interface IconButtonProps extends ActionIconProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   icon: Icon;
   tooltipDisabled?: boolean;
 }

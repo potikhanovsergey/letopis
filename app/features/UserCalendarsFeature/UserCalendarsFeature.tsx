@@ -14,6 +14,7 @@ export const UserCalendarsFeature: FC<UserCalendarsFeatureProps> = ({
   const { data: calendars } = useFindManyCalendar({
     where: { userId: user.id },
     select: calendarCardSelect,
+    orderBy: { updatedAt: "desc" },
   });
 
   if (!calendars) return null;
