@@ -1,1 +1,1 @@
-export const label = "Редактировать описание";
+export const label = "Редактировать данные";
