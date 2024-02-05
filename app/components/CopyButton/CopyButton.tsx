@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { CopyButton as MantineCopyButton } from "@mantine/core";
-import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { Button, CopyButton as MantineCopyButton } from "@mantine/core";
+import { IconCheck, IconLink } from "@tabler/icons-react";
 
-import { IconButton } from "@/app/components/IconButton";
+import { Icon } from "@/app/components/Icon";
 
 import { CopyButtonProps } from "./CopyButton.typings";
 
@@ -10,13 +10,13 @@ export const CopyButton: FC<CopyButtonProps> = ({ value }) => {
   return (
     <MantineCopyButton value={value} timeout={2000}>
       {({ copied, copy }) => (
-        <IconButton
+        <Button
           onClick={copy}
-          icon={copied ? IconCheck : IconCopy}
-          variant="transparent"
+          leftSection={<Icon As={copied ? IconCheck : IconLink} />}
           color={copied ? "green" : undefined}
-          label={copied ? "Скопировано" : "Скопировать"}
-        />
+        >
+          {copied ? "Скопировано" : "Скопировать ссылку"}
+        </Button>
       )}
     </MantineCopyButton>
   );

@@ -1,8 +1,7 @@
 import { FC, useCallback } from "react";
+import { MenuItem } from "@mantine/core";
 import { modals } from "@mantine/modals";
-import { IconSettings } from "@tabler/icons-react";
 
-import { IconButton } from "@/app/components/IconButton";
 import { SettingsModalFeature } from "@/app/features/SettingsModalFeature";
 
 import { label } from "./SettingsButtonFeature.const";
@@ -15,5 +14,5 @@ export const SettingsButtonFeature: FC = () => {
     });
   }, []);
 
-  return <IconButton icon={IconSettings} onClick={handleClick} label={label} />;
+  return <MenuItem onClick={handleClick}>{label}</MenuItem>;
 };

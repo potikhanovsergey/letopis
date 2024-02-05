@@ -1,5 +1,5 @@
 import { FC, useCallback } from "react";
-import { Button } from "@mantine/core";
+import { MenuItem } from "@mantine/core";
 import { signOut } from "next-auth/react";
 
 export const SignoutButtonFeature: FC = () => {
@@ -8,13 +8,8 @@ export const SignoutButtonFeature: FC = () => {
   }, []);
 
   return (
-    <Button
-      variant="subtle"
-      color="red"
-      size="compact-sm"
-      onClick={handleClick}
-    >
+    <MenuItem color="red" onClick={handleClick}>
       Выйти из аккаунта
-    </Button>
+    </MenuItem>
   );
 };

@@ -4,6 +4,7 @@ import {
   ColorInput,
   Container,
   createTheme,
+  Menu,
   Modal,
   NumberInput,
   Select,
@@ -13,6 +14,8 @@ import {
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { Nunito_Sans } from "next/font/google";
+
+import MenuClassNames from "./Menu.module.css";
 
 const font = Nunito_Sans({
   subsets: ["cyrillic", "latin"],
@@ -45,6 +48,9 @@ export const theme = createTheme({
       defaultProps: {
         centered: true,
         lockScroll: false,
+        transitionProps: {
+          duration: 400,
+        },
       },
       styles: {
         title: {
@@ -89,6 +95,9 @@ export const theme = createTheme({
       defaultProps: {
         size: "xs",
       },
+    }),
+    Menu: Menu.extend({
+      classNames: MenuClassNames,
     }),
   },
   activeClassName: "",

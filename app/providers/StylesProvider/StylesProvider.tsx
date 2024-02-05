@@ -4,7 +4,7 @@ import { MantineProvider } from "@mantine/core";
 
 import { theme } from "@/app/theme";
 
-import "@mantine/core/styles.css";
+import "@mantine/core/styles.layer.css";
 import "@mantine/dates/styles.css";
 
 export const StylesProvider: FC<PropsWithChildren> = ({ children }) => {

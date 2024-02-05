@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Button } from "@mantine/core";
+import { MenuItem } from "@mantine/core";
 
 export const DeleteCalendarButton: FC = () => {
-  return <Button color="red">Удалить календарь</Button>;
+  return <MenuItem color="red">Удалить календарь</MenuItem>;
 };

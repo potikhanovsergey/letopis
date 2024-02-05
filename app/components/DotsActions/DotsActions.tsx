@@ -1,20 +1,26 @@
 "use client";
 import { FC } from "react";
-import { Popover } from "@mantine/core";
+import { Menu, Stack } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
 
 import { DeleteCalendarButton } from "@/app/components/DeleteCalendarButton";
 import { IconButton } from "@/app/components/IconButton";
+import { EditInfoButtonFeature } from "@/app/features/EditInfoButtonFeature";
+import { SettingsButtonFeature } from "@/app/features/SettingsButtonFeature";
 
 export const DotsActions: FC = () => {
   return (
-    <Popover>
-      <Popover.Target>
+    <Menu>
+      <Menu.Target>
         <IconButton label="Действия с календарем" icon={IconDotsVertical} />
-      </Popover.Target>
-      <Popover.Dropdown p={4}>
-        <DeleteCalendarButton />
-      </Popover.Dropdown>
-    </Popover>
+      </Menu.Target>
+      <Menu.Dropdown>
+        <Stack gap={4}>
+          <SettingsButtonFeature />
+          <EditInfoButtonFeature />
+          <DeleteCalendarButton />
+        </Stack>
+      </Menu.Dropdown>
+    </Menu>
   );
 };

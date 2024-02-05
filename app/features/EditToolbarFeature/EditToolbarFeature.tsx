@@ -6,9 +6,7 @@ import { DotsActions } from "@/app/components/DotsActions";
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
 import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
-import { EditInfoButtonFeature } from "@/app/features/EditInfoButtonFeature";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
-import { SettingsButtonFeature } from "@/app/features/SettingsButtonFeature";
 import { ShareCalendarFeature } from "@/app/features/ShareCalendarFeature";
 import { calendarData$ } from "@/app/stores";
 
@@ -23,8 +21,6 @@ export const EditToolbarFeature = () => {
       <BookmarkButtonFeature id={id} />
       <ShareCalendarFeature id={id} />
       <Divider orientation="vertical" />
-      <EditInfoButtonFeature />
-      <SettingsButtonFeature />
       <DotsActions />
     </FloatingToolbar>
   );
