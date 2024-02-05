@@ -2,10 +2,7 @@
 import { FC, PropsWithChildren, useMemo } from "react";
 import { useSelector } from "@legendapp/state/react";
 import { Divider, Stack, Text, Tooltip } from "@mantine/core";
-import dayjs from "dayjs";
 
-import { DynamicIcon } from "@/app/components/DynamicIcon";
-import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { KeyValue } from "@/app/components/KeyValue";
 import { useHoveredCellEvents } from "@/app/hooks/useHoveredCellEvents";
 import { hoveredDates$ } from "@/app/stores/calendar/computed";
@@ -36,7 +33,14 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <Tooltip.Floating
+      multiline
+      w={400}
       position="right"
+      styles={{
+        tooltip: {
+          whiteSpace: "normal",
+        },
+      }}
       label={
         <Stack gap={0}>
           <KeyValue k="Начало клетки" v={startDateLabel} />
@@ -47,19 +51,14 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
           {events.length > 0 && (
             <>
               <Divider my={4} color="dimmed" />
-              <Text fw="bold">События</Text>
+              <Text size="sm" fw="bold">
+                События
+              </Text>
+
               {events.map((event) => (
-                <KeyValue
-                  k={event.title}
-                  icon={
-                    <DynamicIcon
-                      size="0.8rem"
-                      name={event.icon as EventIconKey}
-                    />
-                  }
-                  v={dayjs(event.date).format("DD.MM.YYYY")}
-                  key={event.id}
-                />
+                <Text size="xs" key={event.id}>
+                  {event.title}
+                </Text>
               ))}
             </>
           )}

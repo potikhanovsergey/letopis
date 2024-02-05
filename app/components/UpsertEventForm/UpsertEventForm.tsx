@@ -26,7 +26,7 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
     initialValues: {
       title: event?.title || "",
       date: event?.date || new Date(),
-      icon: event?.icon || "star",
+      icon: event?.icon || "circle",
     },
   });
 

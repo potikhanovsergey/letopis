@@ -867,7 +867,7 @@ const metadata = {
     },
     deleteCascade: {
         user: ['Session', 'Account', 'Calendar', 'Bookmark'],
-        calendar: ['Event', 'Timespan'],
+        calendar: ['Event', 'Timespan', 'Bookmark'],
     },
     authModel: 'User',
 };

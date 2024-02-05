@@ -4,6 +4,7 @@ import {
   ColorInput,
   Container,
   createTheme,
+  InputWrapper,
   Menu,
   Modal,
   NumberInput,
@@ -49,7 +50,7 @@ export const theme = createTheme({
         centered: true,
         lockScroll: false,
         transitionProps: {
-          duration: 400,
+          duration: 300,
         },
       },
       styles: {
@@ -92,6 +93,11 @@ export const theme = createTheme({
       },
     }),
     Select: Select.extend({
+      defaultProps: {
+        size: "xs",
+      },
+    }),
+    InputWrapper: InputWrapper.extend({
       defaultProps: {
         size: "xs",
       },

@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
-import { GroupProps } from "@mantine/core";
+import { TextProps } from "@mantine/core";
 
-export interface KeyValueProps extends Omit<GroupProps, "children"> {
+export interface KeyValueProps extends Omit<TextProps, "children"> {
   k: string;
   v: ReactNode;
-  icon?: ReactNode;
 }
