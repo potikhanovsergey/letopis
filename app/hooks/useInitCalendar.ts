@@ -14,10 +14,11 @@ export const useInitCalendar = (
       calendarData$.set(calendar);
       mode$.set(mode);
       hasInitialized$.set(true);
+      console.log(true);
     });
 
     return () => {
       hasInitialized$.set(false);
     };
-  }, []);
+  }, [calendar, mode]);
 };

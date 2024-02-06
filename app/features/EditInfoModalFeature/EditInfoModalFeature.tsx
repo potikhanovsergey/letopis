@@ -27,7 +27,7 @@ export const EditInfoModalFeature: FC = () => {
     },
     validate: {
       previewUrl: (url) =>
-        isImageUrlValid(url)
+        !url.length || isImageUrlValid(url)
           ? null
           : "Ссылка должна быть с протоколом https, формат изображения png, jpg/jpeg, webp",
     },

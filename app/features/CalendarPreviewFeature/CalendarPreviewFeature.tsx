@@ -13,6 +13,8 @@ export const CalendarPreviewFeature: FC = () => {
   const title = useSelector(calendarData$.title);
   const hasInitialized = useSelector(hasInitialized$);
 
+  console.log(hasInitialized);
+
   if (!hasInitialized) return <Skeleton w={MAW} h={h} />;
 
   return <CalendarPreviewImage maw={MAW} alt={title} src={previewUrl} />;

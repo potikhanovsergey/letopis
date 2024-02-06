@@ -4,8 +4,11 @@ import { useSelector } from "@legendapp/state/react";
 import { Divider, Stack, Text, Tooltip } from "@mantine/core";
 
 import { KeyValue } from "@/app/components/KeyValue";
-import { useHoveredCellEvents } from "@/app/hooks/useHoveredCellEvents";
-import { hoveredDates$ } from "@/app/stores/calendar/computed";
+import {
+  hoveredCellTimespans$,
+  hoveredDates$,
+} from "@/app/stores/calendar/computed";
+import { hoveredCellEvents$ } from "@/app/stores/calendar/computed/hoveredCellEvents";
 import { getDayOfWeekLabel } from "@/app/utils/date";
 
 export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
@@ -27,7 +30,8 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
     return `${hoveredDates.end?.format("DD MMMM YYYY")} года`;
   }, [hoveredDates.end]);
 
-  const events = useHoveredCellEvents();
+  const events = useSelector(hoveredCellEvents$);
+  const timespans = useSelector(hoveredCellTimespans$);
 
   if (hoveredDates.start === null) return children;
 
@@ -58,6 +62,20 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
               {events.map((event) => (
                 <Text size="xs" key={event.id}>
                   {event.title}
+                </Text>
+              ))}
+            </>
+          )}
+          {timespans.length > 0 && (
+            <>
+              <Divider my={4} color="dimmed" />
+              <Text size="sm" fw="bold">
+                Промежутки
+              </Text>
+
+              {timespans.map((timespan) => (
+                <Text size="xs" key={timespan.id}>
+                  {timespan.title}
                 </Text>
               ))}
             </>
