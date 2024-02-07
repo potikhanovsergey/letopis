@@ -15,7 +15,7 @@ export const UserIdFeature: FC<UserIdFeatureProps> = ({ user }) => {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <SignoutButtonFeature />
+        <SignoutButtonFeature component={Menu.Item} />
       </Menu.Dropdown>
     </Menu>
   );

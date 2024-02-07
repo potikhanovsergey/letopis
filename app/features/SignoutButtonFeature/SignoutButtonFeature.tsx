@@ -1,15 +1,24 @@
+"use client";
 import { FC, useCallback } from "react";
-import { MenuItem } from "@mantine/core";
-import { signOut } from "next-auth/react";
+import { Box, createPolymorphicComponent } from "@mantine/core";
+import { signOut, useSession } from "next-auth/react";
 
-export const SignoutButtonFeature: FC = () => {
+const SignoutButtonFeatureBase: FC = (props) => {
   const handleClick = useCallback(() => {
     signOut({ redirect: true, callbackUrl: "/" });
   }, []);
 
+  const session = useSession();
+
+  if (!session.data) return null;
+
   return (
-    <MenuItem color="red" onClick={handleClick}>
+    <Box component="button" {...props} color="red" onClick={handleClick}>
       Выйти из аккаунта
-    </MenuItem>
+    </Box>
   );
 };
+
+export const SignoutButtonFeature = createPolymorphicComponent<"button", {}>(
+  SignoutButtonFeatureBase
+);

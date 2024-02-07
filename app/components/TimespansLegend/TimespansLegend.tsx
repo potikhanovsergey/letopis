@@ -8,14 +8,14 @@ export const TimespansLegend: FC<TimespansLegendProps> = ({ timespans }) => {
 
   return (
     <div>
-      <Title order={2} size="h3">
+      <Title order={2} size="h4">
         Легенда
       </Title>
       <Group>
         {timespans.map((timespan) => (
           <Group gap="xs" key={timespan.id}>
-            <ColorSwatch radius="xs" size={16} color={timespan.color} />
-            <Text size="sm">{timespan.title}</Text>
+            <ColorSwatch radius="xs" size={12} color={timespan.color} />
+            <Text size="xs">{timespan.title}</Text>
           </Group>
         ))}
       </Group>

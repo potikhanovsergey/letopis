@@ -1,28 +1,31 @@
+"use client";
 import { FC, useCallback } from "react";
 import { Button } from "@mantine/core";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 import { useCreateCalendar } from "@/db/hooks";
 
-import { CreateCalendarFeatureProps } from "./CreateCalendarFeature.typings";
-
-export const CreateCalendarFeature: FC<CreateCalendarFeatureProps> = ({
-  user,
-  onCalendarCreated,
-}) => {
+export const CreateCalendarFeature: FC = () => {
   const { mutateAsync: createCalendar, isPending } = useCreateCalendar();
+
+  const session = useSession();
+  const router = useRouter();
 
   const handleClick = useCallback(async () => {
     const calendar = await createCalendar({
       data: {
         title: "Новый календарь",
         description: "Описание календаря",
-        userId: user.id,
+        userId: session.data?.user.id || "",
       },
     });
-    if (calendar && onCalendarCreated) {
-      onCalendarCreated(calendar);
+    if (calendar) {
+      router.push(`/c/${calendar.id}`);
     }
-  }, [createCalendar, user.id, onCalendarCreated]);
+  }, [createCalendar, router, session.data]);
+
+  if (!session.data) return null;
 
   return (
     <Button loading={isPending} onClick={handleClick}>

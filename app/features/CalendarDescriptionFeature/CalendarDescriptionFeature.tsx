@@ -10,5 +10,9 @@ export const CalendarDescriptionFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton h={24} />;
 
-  return <Text c="dimmed">{description}</Text>;
+  return (
+    <Text size="sm" c="dimmed">
+      {description}
+    </Text>
+  );
 };
