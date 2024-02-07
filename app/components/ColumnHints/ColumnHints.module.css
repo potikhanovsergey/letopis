@@ -1,0 +1,8 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 40px repeat(53, 1fr);
+  position: sticky;
+  top: var(--app-shell-header-height);
+  background: var(--mantine-color-white);
+  z-index: 2;
+}

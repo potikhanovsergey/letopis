@@ -5,7 +5,7 @@ import { useSelector } from "@legendapp/state/react";
 import { Box, Skeleton, Text } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
-import { RCHint } from "@/app/components/RCHint";
+import { ColumnHints } from "@/app/components/ColumnHints";
 import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
@@ -19,7 +19,7 @@ import { resetHovered } from "@/app/stores/calendar/actions";
 import { endDateIndex$, startDateIndex$ } from "@/app/stores/calendar/computed";
 import { rowsCount$ } from "@/app/stores/calendar/computed/rowsCount";
 
-const array53 = range(0, 52);
+export const array53 = range(0, 52);
 
 export const YearsCalendarFeature = () => {
   const startDateIndex = useSelector(startDateIndex$);
@@ -58,28 +58,18 @@ export const YearsCalendarFeature = () => {
   return (
     <Box pos="relative">
       <Text fw="bold">Недели {"--->"}</Text>
-      {/* <RowLabels /> */}
 
       <FloatingInfoFeature>
         <div>
+          <ColumnHints />
           <YearsGrid>
-            <span />
-
-            {/* Первый ряд состоит из лэйблов недель */}
-            {array53.map((columnIndex) => {
-              if (columnIndex % 5 === 0 || columnIndex === 52)
-                return <RCHint key={columnIndex}>{columnIndex + 1}</RCHint>;
-
-              return <span key={columnIndex} />;
-            })}
-
             <RowHintFeature index={0} />
 
             {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
             {startDateIndex !== 0 && (
               <span
                 style={{
-                  gridArea: `2 / 2 / 3 / ${startDateIndex + 2}`,
+                  gridArea: `1 / 2 / 2 / ${startDateIndex + 2}`,
                 }}
               />
             )}
