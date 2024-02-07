@@ -1,10 +1,12 @@
 import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
-import { Button, Divider } from "@mantine/core";
+import { Divider } from "@mantine/core";
+import { IconEdit } from "@tabler/icons-react";
 import { Route } from "next";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
+import { IconButton } from "@/app/components/IconButton";
 import { calendarData$ } from "@/app/stores";
 
 export const EditCalendarLinkFeature: FC = () => {
@@ -17,13 +19,12 @@ export const EditCalendarLinkFeature: FC = () => {
   return (
     <>
       <Divider orientation="vertical" />
-      <Button
-        size="compact-sm"
+      <IconButton
+        label="Редактировать календарь"
+        icon={IconEdit}
         component={Link}
         href={`/c/${id}/edit` as Route}
-      >
-        Редактировать
-      </Button>
+      />
     </>
   );
 };

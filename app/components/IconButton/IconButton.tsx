@@ -1,11 +1,11 @@
 import { FC, ForwardedRef, forwardRef } from "react";
-import { ActionIcon, Tooltip } from "@mantine/core";
+import { ActionIcon, createPolymorphicComponent, Tooltip } from "@mantine/core";
 
 import { Icon } from "@/app/components/Icon";
 
 import { IconButtonProps } from "./IconButton.typings";
 
-export const IconButton: FC<IconButtonProps> = forwardRef(
+const IconButtonBase: FC<IconButtonProps> = forwardRef(
   (
     { icon, label, tooltipDisabled, onClick, ...props },
     ref: ForwardedRef<HTMLButtonElement>
@@ -20,4 +20,8 @@ export const IconButton: FC<IconButtonProps> = forwardRef(
   }
 );
 
-IconButton.displayName = "IconButton";
+IconButtonBase.displayName = "IconButton";
+
+export const IconButton = createPolymorphicComponent<"button", IconButtonProps>(
+  IconButtonBase
+);

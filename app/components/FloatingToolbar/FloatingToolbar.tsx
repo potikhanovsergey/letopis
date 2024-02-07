@@ -11,7 +11,9 @@ export const FloatingToolbar: FC<PropsWithChildren> = ({ children }) => {
       position={{ bottom: 16, left: "50%" }}
     >
       <Paper withBorder shadow="sm" py="xs" px="md" radius="xl">
-        <Group gap="xs">{children}</Group>
+        <Group wrap="nowrap" gap="xs">
+          {children}
+        </Group>
       </Paper>
     </Affix>
   );

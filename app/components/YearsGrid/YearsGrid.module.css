@@ -1,4 +1,5 @@
 .grid {
   display: grid;
   grid-template-columns: 40px repeat(53, 1fr);
+  min-width: rem(720px);
 }
