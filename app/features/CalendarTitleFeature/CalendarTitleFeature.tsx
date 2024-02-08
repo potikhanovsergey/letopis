@@ -10,5 +10,9 @@ export const CalendarTitleFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton h={40} />;
 
-  return <Title order={1}>{title}</Title>;
+  return (
+    <Title order={1} textWrap="balance">
+      {title}
+    </Title>
+  );
 };

@@ -5,7 +5,7 @@ import classes from "./YearsGrid.module.css";
 
 export const YearsGrid: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <ScrollArea>
+    <ScrollArea style={{ flex: 1 }}>
       <div className={classes.grid}>{children}</div>
     </ScrollArea>
   );

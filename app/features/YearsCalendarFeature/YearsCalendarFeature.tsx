@@ -2,14 +2,13 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { batch } from "@legendapp/state";
 import { useSelector } from "@legendapp/state/react";
-import { Box, Skeleton, Text } from "@mantine/core";
+import { Box, Divider, Skeleton } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
-import { ColumnHints } from "@/app/components/ColumnHints";
+import { RowHints } from "@/app/components/RowHints";
 import { YearsGrid } from "@/app/components/YearsGrid";
 import { CellFeature } from "@/app/features/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
-import { RowHintFeature } from "@/app/features/RowHintFeature";
 import {
   hasInitialized$,
   hoveredColumnIndex$,
@@ -57,70 +56,69 @@ export const YearsCalendarFeature = () => {
 
   return (
     <Box pos="relative">
-      <Text fw="bold">Недели {"--->"}</Text>
-
+      <Divider mb="xs" />
       <FloatingInfoFeature>
         <div>
-          <ColumnHints />
-          <YearsGrid>
-            <RowHintFeature index={0} />
-
-            {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
-            {startDateIndex !== 0 && (
-              <span
-                style={{
-                  gridArea: `1 / 2 / 2 / ${startDateIndex + 2}`,
-                }}
-              />
-            )}
-
-            {/* TODO: рендерить через рэндж без return null */}
-            {array53.map((columnIndex) => {
-              if (columnIndex < startDateIndex) return null;
-
-              return (
-                <CellFeature
-                  rowIndex={0}
-                  columnIndex={columnIndex}
-                  key={columnIndex}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
+          <Box style={{ display: "grid", gridTemplateColumns: "40px 1fr" }}>
+            <RowHints />
+            <YearsGrid>
+              {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
+              {startDateIndex !== 0 && (
+                <span
+                  style={{
+                    gridArea: `1 / 1 / 2 / ${startDateIndex + 1}`,
+                  }}
                 />
-              );
-            })}
+              )}
 
-            {/* Все кроме последнего ряда полные */}
-            {/* Со второго ряда до предпоследнего */}
-            {range(1, rowsCount - 2).map((rowIndex) => (
-              <React.Fragment key={rowIndex}>
-                <RowHintFeature index={rowIndex} />
-                {array53.map((columnIndex) => (
+              {/* TODO: рендерить через рэндж без return null */}
+              {array53.map((columnIndex) => {
+                if (columnIndex < startDateIndex) return null;
+
+                return (
                   <CellFeature
-                    rowIndex={rowIndex}
+                    rowIndex={0}
                     columnIndex={columnIndex}
                     key={columnIndex}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   />
-                ))}
-              </React.Fragment>
-            ))}
+                );
+              })}
 
-            <RowHintFeature index={rowsCount - 1} />
+              {/* Все кроме последнего ряда полные */}
+              {/* Со второго ряда до предпоследнего */}
+              {range(1, rowsCount - 2).map((rowIndex) => (
+                <React.Fragment key={rowIndex}>
+                  {/* <RowHintFeature index={rowIndex} /> */}
+                  {array53.map((columnIndex) => (
+                    <CellFeature
+                      rowIndex={rowIndex}
+                      columnIndex={columnIndex}
+                      key={columnIndex}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    />
+                  ))}
+                </React.Fragment>
+              ))}
 
-            {/* Последний ряд клеток может быть меньше из-за стартовой даты */}
-            {range(0, endDateIndex).map((columnIndex) => {
-              return (
-                <CellFeature
-                  rowIndex={rowsCount - 1}
-                  columnIndex={columnIndex}
-                  key={columnIndex}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                />
-              );
-            })}
-          </YearsGrid>
+              {/* <RowHintFeature index={rowsCount - 1} /> */}
+
+              {/* Последний ряд клеток может быть меньше из-за стартовой даты */}
+              {range(0, endDateIndex).map((columnIndex) => {
+                return (
+                  <CellFeature
+                    rowIndex={rowsCount - 1}
+                    columnIndex={columnIndex}
+                    key={columnIndex}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  />
+                );
+              })}
+            </YearsGrid>
+          </Box>
         </div>
       </FloatingInfoFeature>
     </Box>

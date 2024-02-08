@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  max-width: 40px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

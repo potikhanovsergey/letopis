@@ -34,6 +34,8 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
     <Tooltip.Floating
       multiline
       maw={400}
+      position="bottom"
+      offset={20}
       disabled={hoveredDates.start === null}
       styles={{
         tooltip: {
