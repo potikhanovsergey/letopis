@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren } from "react";
 import { ColorSchemeScript } from "@mantine/core";
-import { ModalsProvider } from "@mantine/modals";
 
 import { DatesProvider } from "@/app/providers/DatesProvider";
 import { SessionProvider } from "@/app/providers/SessionProvider";
@@ -9,6 +8,7 @@ import { ZenstackHooksProvider } from "@/app/providers/ZenstackHooksProvider";
 import { getSession } from "@/server/utils";
 
 import { Shell } from "./components/Shell";
+import { ModalsProvider } from "./providers/ModalsProvider";
 
 import "./globals.css";
 

@@ -3,6 +3,7 @@ import { IconBookmark, IconBookmarkFilled } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 
 import { AsyncButton } from "@/app/components/AsyncButton";
+import { AsyncButtonProps } from "@/app/components/AsyncButton/AsyncButton.typings";
 import { IconButton } from "@/app/components/IconButton";
 import { useCreateBookmark, useDeleteBookmark } from "@/db/hooks";
 
@@ -37,14 +38,24 @@ export const BookmarkButtonFeature: FC<BookmarkButtonFeatureProps> = ({
     }
   }, [bookmarked, createBookmark, deleteBookmark, id, session]);
 
+  const renderRoot = useCallback(
+    (props: AsyncButtonProps) => (
+      <IconButton
+        icon={bookmarked ? IconBookmarkFilled : IconBookmark}
+        label={bookmarked ? "Убрать из закладок" : "Добавить в закладки"}
+        {...props}
+      />
+    ),
+    [bookmarked]
+  );
+
   if (!session.data) return null;
 
   return (
     <AsyncButton
-      onClick={toggleBookmark}
       component={IconButton}
-      icon={bookmarked ? IconBookmarkFilled : IconBookmark}
-      label={bookmarked ? "Убрать из закладок" : "Добавить в закладки"}
+      renderRoot={renderRoot}
+      onClick={toggleBookmark}
     />
   );
 };

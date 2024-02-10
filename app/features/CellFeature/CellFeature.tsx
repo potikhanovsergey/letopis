@@ -5,6 +5,7 @@ import { useSelector } from "@legendapp/state/react";
 import { Cell } from "@/app/components/Cell";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
+import { useCellsDataModal } from "@/app/hooks/useCellsDataModal";
 import { useTimespansColor } from "@/app/hooks/useTimespansColor";
 import { events$, timespans$ } from "@/app/stores/calendar/computed";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
@@ -19,6 +20,8 @@ export const CellFeature: FC<CellFeatureProps> = ({
 }) => {
   const events = useSelector(events$);
   const timespans = useSelector(timespans$);
+
+  const openCellData = useCellsDataModal({ rowIndex, columnIndex });
 
   const cellTimespans = useMemo(() => {
     return getCellTimespans({
@@ -57,6 +60,7 @@ export const CellFeature: FC<CellFeatureProps> = ({
       color={color}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={openCellData}
     >
       {children}
     </Cell>

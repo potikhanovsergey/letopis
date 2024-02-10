@@ -10,25 +10,26 @@ import { hoveredDates$ } from "@/app/stores/calendar/computed";
 import { getDayOfWeekLabel } from "@/app/utils/date";
 
 export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
-  const hoveredDates = useSelector(hoveredDates$);
+  const hoveredDatesStart = useSelector(hoveredDates$.start);
+  const hoveredDatesEnd = useSelector(hoveredDates$.end);
 
   const startDayOfWeek = useMemo(() => {
-    return getDayOfWeekLabel(hoveredDates.start);
-  }, [hoveredDates.start]);
+    return getDayOfWeekLabel(hoveredDatesStart);
+  }, [hoveredDatesStart]);
 
   const endDayOfWeek = useMemo(() => {
-    return getDayOfWeekLabel(hoveredDates.end);
-  }, [hoveredDates.end]);
+    return getDayOfWeekLabel(hoveredDatesEnd);
+  }, [hoveredDatesEnd]);
 
   const startDateLabel = useMemo(() => {
-    return `${hoveredDates.start?.format(
+    return `${hoveredDatesStart?.format(
       "DD MMMM YYYY"
     )} года, ${startDayOfWeek}`;
-  }, [hoveredDates.start, startDayOfWeek]);
+  }, [hoveredDatesStart, startDayOfWeek]);
 
   const endDateLabel = useMemo(() => {
-    return `${hoveredDates.end?.format("DD MMMM YYYY")} года, ${endDayOfWeek}`;
-  }, [endDayOfWeek, hoveredDates.end]);
+    return `${hoveredDatesEnd?.format("DD MMMM YYYY")} года, ${endDayOfWeek}`;
+  }, [endDayOfWeek, hoveredDatesEnd]);
 
   return (
     <Tooltip.Floating
@@ -36,7 +37,7 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
       maw={400}
       position="bottom"
       offset={20}
-      disabled={hoveredDates.start === null}
+      disabled={hoveredDatesStart === null}
       styles={{
         tooltip: {
           whiteSpace: "normal",

@@ -8,6 +8,13 @@ import { UpdateTimespanFeature } from "@/app/features/UpdateTimespanFeature";
 import { TimespansProps } from "./Timespans.typings";
 
 export const Timespans: FC<TimespansProps> = ({ timespans, mode }) => {
+  if (!timespans.length)
+    return (
+      <Text c="dimmed" size="sm">
+        Список промежутков пустой.
+      </Text>
+    );
+
   return (
     <Timeline color="dark" active={timespans.length}>
       {timespans.map((timespan) => (

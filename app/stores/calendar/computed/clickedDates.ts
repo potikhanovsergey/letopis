@@ -2,14 +2,14 @@ import { computed } from "@legendapp/state";
 
 import {
   calendarData$,
-  hoveredColumnIndex$,
-  hoveredRowIndex$,
+  clickedColumnIndex$,
+  clickedRowIndex$,
 } from "@/app/stores/calendar";
 import { getCellDates } from "@/app/stores/calendar/utils";
 
-export const hoveredDates$ = computed(() => {
-  const rowIndex = hoveredRowIndex$.get();
-  const columnIndex = hoveredColumnIndex$.get();
+export const clickedDates$ = computed(() => {
+  const rowIndex = clickedRowIndex$.get();
+  const columnIndex = clickedColumnIndex$.get();
   const startDate = calendarData$.startDate.get();
   const endDate = calendarData$.endDate.get();
 

@@ -9,7 +9,6 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { ColorPicker } from "@/app/components/ColorPicker";
 import { Icon } from "@/app/components/Icon";
 import { ModalActions } from "@/app/components/ModalActions";
-import { useTimespansModal } from "@/app/hooks/useTimespansModal";
 
 import {
   UpsertTimespanFormData,
@@ -31,12 +30,9 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
     },
   });
 
-  const openTimespansModal = useTimespansModal();
-
   const handleBack = useCallback(() => {
-    closeModal(type);
-    openTimespansModal();
-  }, [type, openTimespansModal]);
+    closeModal("upsert-timespan");
+  }, []);
 
   const handleSubmit = form.onSubmit(onSubmit);
 
@@ -69,7 +65,7 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
 
       <ModalActions>
         <Button onClick={handleBack} leftSection={<Icon As={IconArrowLeft} />}>
-          К списку промежутков
+          Назад
         </Button>
         <Button loading={isButtonLoading} variant="filled" type="submit">
           {type === "create"

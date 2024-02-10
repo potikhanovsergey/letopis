@@ -7,6 +7,7 @@ import classes from "./Cell.module.css";
 const CellBase: FC<CellProps> = ({
   children,
   color,
+  onClick,
   onMouseEnter,
   onMouseLeave,
 }) => {
@@ -21,6 +22,7 @@ const CellBase: FC<CellProps> = ({
       className={classes.cell}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onClick}
     >
       {children}
     </button>

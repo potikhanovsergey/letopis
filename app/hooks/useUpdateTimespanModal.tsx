@@ -7,7 +7,7 @@ import { UpdateTimespanFormFeature } from "@/app/features/UpdateTimespanFormFeat
 export const useUpdateTimespanModal = (timespan: Timespan) => {
   const onClick = useCallback(() => {
     modals.open({
-      modalId: "update-timespan",
+      modalId: "upsert-timespan",
       title: "Редактировать промежуток",
       size: "lg",
       children: (

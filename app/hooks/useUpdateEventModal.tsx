@@ -7,7 +7,7 @@ import { UpdateEventFormFeature } from "@/app/features/UpdateEventFormFeature";
 export const useUpdateEventModal = (event: Event) => {
   const onClick = useCallback(() => {
     modals.open({
-      modalId: "update-event",
+      modalId: "upsert-event",
       title: "Редактировать событие",
       size: "lg",
       children: (

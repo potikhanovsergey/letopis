@@ -10,6 +10,13 @@ import { UpdateEventFeature } from "@/app/features/UpdateEventFeature/UpdateEven
 import { EventsTimelineProps } from "./EventsTimeline.typings";
 
 export const EventsTimeline: FC<EventsTimelineProps> = ({ events, mode }) => {
+  if (!events.length)
+    return (
+      <Text c="dimmed" size="sm">
+        Список событий пустой.
+      </Text>
+    );
+
   return (
     <Timeline color="dark" active={events.length}>
       {events.map((event) => (

@@ -9,7 +9,6 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Icon } from "@/app/components/Icon";
 import { IconPicker } from "@/app/components/IconPicker";
 import { ModalActions } from "@/app/components/ModalActions";
-import { useEventsModal } from "@/app/hooks/useEventsModal";
 
 import {
   UpsertEventFormData,
@@ -30,12 +29,9 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
     },
   });
 
-  const openEventsModal = useEventsModal();
-
   const handleBack = useCallback(() => {
-    closeModal(type);
-    openEventsModal();
-  }, [type, openEventsModal]);
+    closeModal("upsert-event");
+  }, []);
 
   const handleSubmit = form.onSubmit(onSubmit);
 
@@ -59,7 +55,7 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
 
       <ModalActions>
         <Button onClick={handleBack} leftSection={<Icon As={IconArrowLeft} />}>
-          К списку событий
+          Назад
         </Button>
         <Button loading={isButtonLoading} variant="filled" type="submit">
           {type === "create" ? "Создать событие" : "Редактировать событие"}
