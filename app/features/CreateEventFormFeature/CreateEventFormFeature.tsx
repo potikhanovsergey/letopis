@@ -11,6 +11,7 @@ import { useCreateEvent } from "@/db/hooks";
 import { CreateEventFormFeatureProps } from "./CreateEventFormFeature.typings";
 
 export const CreateEventFormFeature: FC<CreateEventFormFeatureProps> = ({
+  date,
   onCreated,
 }) => {
   const calendarId = useSelector(calendarData$.id);
@@ -32,6 +33,7 @@ export const CreateEventFormFeature: FC<CreateEventFormFeatureProps> = ({
   return (
     <UpsertEventForm
       type="create"
+      event={{ date }}
       isButtonLoading={isCreating}
       onSubmit={handleSubmit}
     />

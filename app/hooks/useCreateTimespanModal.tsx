@@ -3,15 +3,17 @@ import { modals } from "@mantine/modals";
 
 import { CreateTimespanFormFeature } from "@/app/features/CreateTimespanFormFeature";
 
-export const useCreateTimespanModal = () => {
+export const useCreateTimespanModal = (date?: Date) => {
   const onClick = useCallback(() => {
     modals.open({
-      modalId: "create-timespan",
+      modalId: "upsert-timespan",
       title: "Создать промежуток",
       size: "lg",
-      children: <CreateTimespanFormFeature onCreated={modals.closeAll} />,
+      children: (
+        <CreateTimespanFormFeature date={date} onCreated={modals.closeAll} />
+      ),
     });
-  }, []);
+  }, [date]);
 
   return onClick;
 };

@@ -3,15 +3,17 @@ import { modals } from "@mantine/modals";
 
 import { CreateEventFormFeature } from "@/app/features/CreateEventFormFeature";
 
-export const useCreateEventModal = () => {
+export const useCreateEventModal = (date?: Date) => {
   const onClick = useCallback(() => {
     modals.open({
-      modalId: "create",
+      modalId: "upsert-event",
       title: "Создать событие",
       size: "lg",
-      children: <CreateEventFormFeature onCreated={modals.closeAll} />,
+      children: (
+        <CreateEventFormFeature date={date} onCreated={modals.closeAll} />
+      ),
     });
-  }, []);
+  }, [date]);
 
   return onClick;
 };

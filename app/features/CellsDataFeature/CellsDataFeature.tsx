@@ -1,10 +1,14 @@
 "use client";
 import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
-import { Box, Button, Group, Tabs } from "@mantine/core";
+import { Box, Group, Tabs } from "@mantine/core";
 
 import { EventsTimeline } from "@/app/components/EventsTimeline";
 import { Timespans } from "@/app/components/Timespans";
+import {
+  CreateEventInvoker,
+  CreateTimespanInvoker,
+} from "@/app/features/clicked";
 import { mode$ } from "@/app/stores";
 import {
   clickedCellEvents$,
@@ -19,8 +23,8 @@ export const CellsDataFeature: FC = () => {
   return (
     <Box pos="relative">
       <Group gap={4}>
-        <Button size="compact-xs">Создать событие</Button>
-        <Button size="compact-xs">Создать промежуток</Button>
+        <CreateEventInvoker />
+        <CreateTimespanInvoker />
       </Group>
 
       <Tabs mt="sm" variant="pills" defaultValue="События">

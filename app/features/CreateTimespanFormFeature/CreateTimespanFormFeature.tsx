@@ -11,6 +11,7 @@ import { useCreateTimespan } from "@/db/hooks";
 import { CreateTimespanFormFeatureProps } from "./CreateTimespanFormFeature.typings";
 
 export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
+  date,
   onCreated,
 }) => {
   const calendarId = useSelector(calendarData$.id);
@@ -34,6 +35,7 @@ export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
   return (
     <UpsertTimespanForm
       type="create"
+      timespan={{ startDate: date, endDate: date }}
       isButtonLoading={isPending}
       onSubmit={handleSubmit}
     />
