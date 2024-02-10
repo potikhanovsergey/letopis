@@ -62,7 +62,7 @@ export const theme = createTheme({
     Button: Button.extend({
       defaultProps: {
         size: "compact-sm",
-        variant: "light",
+        variant: "subtle",
       },
     }),
     NumberInput: NumberInput.extend({

@@ -53,7 +53,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
       </Group>
       <Card.Section className={classes.footer}>
         <Group justify="space-between">
-          <Button component={Link} href={href}>
+          <Button variant="light" component={Link} href={href}>
             Смотреть
           </Button>
           <Group gap={0}>
