@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { batch } from "@legendapp/state";
 import { useSelector } from "@legendapp/state/react";
-import { Box, Divider, Skeleton } from "@mantine/core";
+import { Box, Skeleton } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
 import { RowHints } from "@/app/components/RowHints";
@@ -56,7 +56,6 @@ export const YearsCalendarFeature = () => {
 
   return (
     <Box pos="relative">
-      <Divider mb="xs" />
       <FloatingInfoFeature>
         <div>
           <Box style={{ display: "grid", gridTemplateColumns: "40px 1fr" }}>
