@@ -1,13 +1,13 @@
 "use client";
 import { FC, useMemo } from "react";
 import { Avatar, Badge, Button, Card, Group, Text } from "@mantine/core";
-import dayjs from "dayjs";
 import { Route } from "next";
 import Link from "next/link";
 
 import { CalendarPreviewImage } from "@/app/components/CalendarPreviewImage";
 import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
 import { ShareCalendarFeature } from "@/app/features/ShareCalendarFeature";
+import { formatShort } from "@/app/utils/date";
 
 import { CalendarCardProps } from "./CalendarCard.typings";
 
@@ -34,8 +34,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
         </Link>
       </Card.Section>
       <Badge size="sm" w="fit-content" variant="light">
-        {dayjs(startDate).format("DD.MM.YYYY")} -{" "}
-        {dayjs(endDate).format("DD.MM.YYYY")}
+        {formatShort(startDate)} - {formatShort(endDate)}
       </Badge>
       <Text className={classes.title} size="lg">
         {title}
@@ -48,7 +47,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
             {user.name}
           </Text>
           <Text fz="xs" c="dimmed">
-            Обновлено {dayjs(updatedAt).format("DD.MM.YYYY")}
+            Обновлено {formatShort(updatedAt)}
           </Text>
         </div>
       </Group>

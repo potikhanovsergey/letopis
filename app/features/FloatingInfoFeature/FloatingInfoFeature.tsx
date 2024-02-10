@@ -7,7 +7,7 @@ import { KeyValue } from "@/app/components/KeyValue";
 import { HoveredCellEventsFeature } from "@/app/features/HoveredCellEventsFeature";
 import { HoveredCellTimespansFeature } from "@/app/features/HoveredCellTimespansFeature";
 import { hoveredDates$ } from "@/app/stores/calendar/computed";
-import { getDayOfWeekLabel } from "@/app/utils/date";
+import { formatLong, getDayOfWeekLabel } from "@/app/utils/date";
 
 export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
   const hoveredDatesStart = useSelector(hoveredDates$.start);
@@ -22,13 +22,11 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
   }, [hoveredDatesEnd]);
 
   const startDateLabel = useMemo(() => {
-    return `${hoveredDatesStart?.format(
-      "DD MMMM YYYY"
-    )} года, ${startDayOfWeek}`;
+    return `${formatLong(hoveredDatesStart)} года, ${startDayOfWeek}`;
   }, [hoveredDatesStart, startDayOfWeek]);
 
   const endDateLabel = useMemo(() => {
-    return `${hoveredDatesEnd?.format("DD MMMM YYYY")} года, ${endDayOfWeek}`;
+    return `${formatLong(hoveredDatesEnd)} года, ${endDayOfWeek}`;
   }, [endDayOfWeek, hoveredDatesEnd]);
 
   return (

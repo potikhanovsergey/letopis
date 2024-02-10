@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { ColorSwatch, Group, Text, Timeline } from "@mantine/core";
-import dayjs from "dayjs";
 
 import { DeleteTimespanFeature } from "@/app/features/DeleteTimespanFeature";
 import { UpdateTimespanFeature } from "@/app/features/UpdateTimespanFeature";
+import { formatShort } from "@/app/utils/date";
 
 import { TimespansProps } from "./Timespans.typings";
 
@@ -24,8 +24,7 @@ export const Timespans: FC<TimespansProps> = ({ timespans, mode }) => {
           title={timespan.title}
         >
           <Text size="xs" mt={4}>
-            {dayjs(timespan.startDate).format("DD.MM.YYYY")} -{" "}
-            {dayjs(timespan.endDate).format("DD.MM.YYYY")}
+            {formatShort(timespan.startDate)} - {formatShort(timespan.endDate)}
           </Text>
           {mode === "edit" && (
             <Group mt={4}>

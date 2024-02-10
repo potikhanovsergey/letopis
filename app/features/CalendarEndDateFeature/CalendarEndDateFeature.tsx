@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
 import { Skeleton } from "@mantine/core";
-import dayjs from "dayjs";
 
 import { KeyValue } from "@/app/components/KeyValue";
 import { calendarData$, hasInitialized$ } from "@/app/stores";
+import { formatShort } from "@/app/utils/date";
 
 export const CalendarEndDateFeature: FC = () => {
   const endDate = useSelector(calendarData$.endDate);
@@ -12,7 +12,5 @@ export const CalendarEndDateFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton h={24} w={300} />;
 
-  return (
-    <KeyValue k="Конец календаря" v={dayjs(endDate).format("DD.MM.YYYY")} />
-  );
+  return <KeyValue k="Конец календаря" v={formatShort(endDate)} />;
 };
