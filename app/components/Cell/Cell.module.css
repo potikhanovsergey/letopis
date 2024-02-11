@@ -11,7 +11,7 @@
   cursor: pointer;
 
   &:hover {
-    background: var(--mantine-color-gray-4);
+    filter: brightness(90%)
   }
   margin: rem(0.5px);
 }
