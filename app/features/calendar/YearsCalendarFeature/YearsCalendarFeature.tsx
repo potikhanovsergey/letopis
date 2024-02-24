@@ -75,7 +75,7 @@ export const YearsCalendarFeature = () => {
                 if (columnIndex < startDateIndex) return null;
 
                 return (
-                  <CellFeature
+                  <Cell
                     rowIndex={0}
                     columnIndex={columnIndex}
                     key={columnIndex}
