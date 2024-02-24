@@ -10,16 +10,19 @@ import {
   Menu,
   Modal,
   NumberInput,
+  Paper,
+  Popover,
   Select,
   Textarea,
   TextInput,
-  Tooltip,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { Nunito_Sans } from "next/font/google";
 
 import AppShellClassNames from "./AppShell.module.css";
 import MenuClassNames from "./Menu.module.css";
+import PaperClassNames from "./Paper.module.css";
+import PopoverClassNames from "./Popover.module.css";
 
 const font = Nunito_Sans({
   subsets: ["cyrillic", "latin"],
@@ -44,6 +47,9 @@ export const theme = createTheme({
     lightgray: "rgba(25, 25, 25, 0.05)",
   },
   components: {
+    Popover: Popover.extend({
+      classNames: PopoverClassNames,
+    }),
     ActionIcon: ActionIcon.extend({
       defaultProps: {
         variant: "subtle",
@@ -54,10 +60,8 @@ export const theme = createTheme({
         size: "xl",
       },
     }),
-    Tooltip: Tooltip.extend({
-      defaultProps: {
-        radius: "xl",
-      },
+    Paper: Paper.extend({
+      classNames: PaperClassNames,
     }),
     Modal: Modal.extend({
       defaultProps: {
