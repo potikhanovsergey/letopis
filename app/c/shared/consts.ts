@@ -1,0 +1,2 @@
+export const TOOLTIP_EVENTS_LIMIT = 5;
+export const TOOLTIP_TIMESPANS_LIMIT = 2;

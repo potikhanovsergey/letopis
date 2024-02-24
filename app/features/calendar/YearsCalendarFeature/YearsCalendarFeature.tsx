@@ -5,9 +5,9 @@ import { useSelector } from "@legendapp/state/react";
 import { Box, Skeleton } from "@mantine/core";
 import { range } from "@mantine/hooks";
 
+import Cell from "@/app/c/features/Cell";
 import { RowHints } from "@/app/components/RowHints";
 import { YearsGrid } from "@/app/components/YearsGrid";
-import { CellFeature } from "@/app/features/calendar/CellFeature";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
 import {
   hasInitialized$,
@@ -91,7 +91,7 @@ export const YearsCalendarFeature = () => {
                 <React.Fragment key={rowIndex}>
                   {/* <RowHintFeature index={rowIndex} /> */}
                   {array53.map((columnIndex) => (
-                    <CellFeature
+                    <Cell
                       rowIndex={rowIndex}
                       columnIndex={columnIndex}
                       key={columnIndex}
@@ -107,7 +107,7 @@ export const YearsCalendarFeature = () => {
               {/* Последний ряд клеток может быть меньше из-за стартовой даты */}
               {range(0, endDateIndex).map((columnIndex) => {
                 return (
-                  <CellFeature
+                  <Cell
                     rowIndex={rowsCount - 1}
                     columnIndex={columnIndex}
                     key={columnIndex}

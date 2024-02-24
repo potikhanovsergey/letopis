@@ -2,7 +2,7 @@
 import { FC, useCallback, useMemo } from "react";
 import { useSelector } from "@legendapp/state/react";
 
-import { Cell } from "@/app/components/Cell";
+import { Cell as CellUI } from "@/app/components/Cell";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { useCellsDataModal } from "@/app/hooks/useCellsDataModal";
@@ -10,9 +10,9 @@ import { useTimespansColor } from "@/app/hooks/useTimespansColor";
 import { events$, timespans$ } from "@/app/stores/calendar/computed";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
-import { CellFeatureProps } from "./CellFeature.typings";
+import { CellProps } from "./Cell.typings";
 
-export const CellFeature: FC<CellFeatureProps> = ({
+const Cell: FC<CellProps> = ({
   rowIndex,
   columnIndex,
   onMouseEnter,
@@ -56,13 +56,15 @@ export const CellFeature: FC<CellFeatureProps> = ({
   }, [rowIndex, columnIndex, events]);
 
   return (
-    <Cell
+    <CellUI
       color={color}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={openCellData}
     >
       {children}
-    </Cell>
+    </CellUI>
   );
 };
+
+export default Cell;

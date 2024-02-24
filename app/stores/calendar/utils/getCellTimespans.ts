@@ -1,4 +1,4 @@
-import { CellIndexes } from "@/app/features/CellFeature/CellFeature.typings";
+import { CellIndexes } from "@/app/c/shared/typings";
 import { IndexedTimespan } from "@/app/stores/calendar/calendar.typings";
 
 export const getCellTimespans = ({

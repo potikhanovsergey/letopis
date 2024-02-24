@@ -1,7 +1,7 @@
 import { Event, Timespan } from "@prisma/client";
 import { Dayjs } from "dayjs";
 
-import { CellIndexes } from "@/app/features/CellFeature/CellFeature.typings";
+import { CellIndexes } from "@/app/c/shared/typings";
 import { ExtendedCalendar } from "@/app/typings";
 
 export interface CalendarStore {

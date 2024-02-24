@@ -1,4 +1,4 @@
-import { CellIndexes } from "@/app/features/CellFeature/CellFeature.typings";
+import { CellIndexes } from "@/app/c/shared/typings";
 import { IndexedEvent } from "@/app/stores/calendar/calendar.typings";
 
 export const getCellEvents = ({
@@ -9,6 +9,6 @@ export const getCellEvents = ({
   events: IndexedEvent[];
 }) => {
   return events.filter(
-    (e) => e.columnIndex === columnIndex && e.rowIndex === rowIndex
+    (e) => e.columnIndex === columnIndex && e.rowIndex === rowIndex,
   );
 };
