@@ -7,7 +7,7 @@ import { HeaderSessionFeature } from "@/app/features/layout/HeaderSessionFeature
 
 export const Header: FC = () => {
   return (
-    <AppShellHeader withBorder={false}>
+    <AppShellHeader>
       <Group h="100%" px="md" justify="space-between">
         <Logo />
         <BurgerFeature />
