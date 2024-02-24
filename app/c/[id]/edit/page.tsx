@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { CalendarEditorFeature } from "@/app/features/calendar/editor";
+import { CalendarEditorFeature } from "@/app/features/calendar/editor/CalendarEditorFeature";
 import { calendarInclude } from "@/app/validators";
 import { getEnhancedDb, getSession } from "@/server/utils";
 

@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 import { Calendar } from "@/app/components/calendar/Calendar";
-import { EditToolbarFeature } from "@/app/features/calendar/editor";
+import { EditToolbarFeature } from "@/app/features/calendar/editor/EditToolbarFeature";
 import { useInitCalendar } from "@/app/hooks/useInitCalendar";
 
 import { CalendarEditorFeatureProps } from "./CalendarEditorFeature.typings";
