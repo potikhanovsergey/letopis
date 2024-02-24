@@ -21,9 +21,9 @@ export const EditInfoModalFeature: FC = () => {
 
   const form = useForm({
     initialValues: {
-      title,
-      description,
-      previewUrl,
+      title: title || "",
+      description: description || "",
+      previewUrl: previewUrl || "",
     },
     validate: {
       previewUrl: (url) =>
@@ -48,7 +48,7 @@ export const EditInfoModalFeature: FC = () => {
         });
       }
       modals.closeAll();
-    }
+    },
   );
 
   return (
