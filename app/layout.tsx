@@ -7,7 +7,7 @@ import { StylesProvider } from "@/app/providers/StylesProvider";
 import { ZenstackHooksProvider } from "@/app/providers/ZenstackHooksProvider";
 import { getSession } from "@/server/utils";
 
-import { Shell } from "./components/Shell";
+import { Shell } from "./components/layout/Shell";
 import { ModalsProvider } from "./providers/ModalsProvider";
 
 import "./globals.css";

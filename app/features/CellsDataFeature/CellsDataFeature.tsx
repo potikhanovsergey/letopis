@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
 import { Box, Group, Tabs } from "@mantine/core";
 
-import { EventsTimeline } from "@/app/components/EventsTimeline";
+import { EventsTimeline } from "@/app/components/calendar/EventsTimeline";
 import { Timespans } from "@/app/components/Timespans";
 import {
   CreateEventInvoker,

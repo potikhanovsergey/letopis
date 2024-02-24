@@ -1,19 +1,18 @@
 "use client";
-
 import { useSelector } from "@legendapp/state/react";
 import { Divider } from "@mantine/core";
 
+import { DotsActions } from "@/app/components/DotsActions";
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
 import {
   BookmarkButtonFeature,
   ShareCalendarFeature,
 } from "@/app/features/calendar/common";
-import { EditCalendarLinkFeature } from "@/app/features/EditCalendarLinkFeature";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
 import { calendarData$ } from "@/app/stores";
 
-export const ViewToolbarFeature = () => {
+export const EditToolbarFeature = () => {
   const id = useSelector(calendarData$.id);
 
   return (
@@ -23,7 +22,8 @@ export const ViewToolbarFeature = () => {
       <Divider orientation="vertical" />
       <BookmarkButtonFeature id={id} />
       <ShareCalendarFeature id={id} />
-      <EditCalendarLinkFeature />
+      <Divider orientation="vertical" />
+      <DotsActions />
     </FloatingToolbar>
   );
 };

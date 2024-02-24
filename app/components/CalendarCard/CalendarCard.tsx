@@ -5,8 +5,10 @@ import { Route } from "next";
 import Link from "next/link";
 
 import { CalendarPreviewImage } from "@/app/components/CalendarPreviewImage";
-import { BookmarkButtonFeature } from "@/app/features/BookmarkButtonFeature";
-import { ShareCalendarFeature } from "@/app/features/ShareCalendarFeature";
+import {
+  BookmarkButtonFeature,
+  ShareCalendarFeature,
+} from "@/app/features/calendar/common";
 import { formatShort } from "@/app/utils/date";
 
 import { CalendarCardProps } from "./CalendarCard.typings";

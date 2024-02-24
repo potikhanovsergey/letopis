@@ -4,7 +4,7 @@ import { modals } from "@mantine/modals";
 
 import { CreateIconButton } from "@/app/components/CreateIconButton";
 import { ModalTitle } from "@/app/components/ModalTitle";
-import { EventsModalFeature } from "@/app/features/EventsModalFeature";
+import { EventsModalFeature } from "@/app/features/calendar/modals";
 import { mode$ } from "@/app/stores";
 
 import { useCreateEventModal } from "./useCreateEventModal";
