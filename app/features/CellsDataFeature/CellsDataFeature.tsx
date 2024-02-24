@@ -22,10 +22,12 @@ export const CellsDataFeature: FC = () => {
 
   return (
     <Box pos="relative">
-      <Group gap={4}>
-        <CreateEventInvoker />
-        <CreateTimespanInvoker />
-      </Group>
+      {mode === "edit" && (
+        <Group gap={4}>
+          <CreateEventInvoker />
+          <CreateTimespanInvoker />
+        </Group>
+      )}
 
       <Tabs mt="sm" variant="pills" defaultValue="События">
         <Tabs.List mb="sm">
