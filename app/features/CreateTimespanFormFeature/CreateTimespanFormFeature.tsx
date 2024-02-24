@@ -7,6 +7,7 @@ import { UpsertTimespanFormData } from "@/app/components/UpsertTimespanForm/Upse
 import { calendarData$ } from "@/app/stores";
 import { addTimespan } from "@/app/stores/calendar/actions";
 import { useCreateTimespan } from "@/db/hooks";
+import { addYear } from "@/app/utils/date";
 
 import { CreateTimespanFormFeatureProps } from "./CreateTimespanFormFeature.typings";
 
@@ -29,13 +30,13 @@ export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
         onCreated?.();
       }
     },
-    [calendarId, createTimespan, onCreated]
+    [calendarId, createTimespan, onCreated],
   );
 
   return (
     <UpsertTimespanForm
       type="create"
-      timespan={{ startDate: date, endDate: date }}
+      timespan={{ startDate: date, endDate: addYear(date) }}
       isButtonLoading={isPending}
       onSubmit={handleSubmit}
     />

@@ -28,35 +28,6 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
-    ],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
-  },
-  "overrides": [
-    // override "simple-import-sort" config
-    {
-      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
-      "rules": {
-        "simple-import-sort/imports": [
-          "error",
-          {
-            "groups": [
-              // Реакт и библиотеки с @
-              ["^react", "^@?\\w"],
-              // Наши компоненты
-              ["^(@)(/.*|$)"],
-              // Side effect imports.
-              ["^\\u0000"],
-              // Parent imports. Put `..` last.
-              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-              // Other relative imports. Put same-folder imports and `.` last.
-              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-              // Style imports.
-              ["^.+\\.?(css)$"]
-            ]
-          }
-        ]
-      }
-    }
-  ]
+    ]
+  }
 }

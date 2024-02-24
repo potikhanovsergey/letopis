@@ -1,10 +1,10 @@
 "use client";
-import { FC, useCallback } from "react";
 import { Button, DEFAULT_THEME, Stack, TextInput } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { closeModal } from "@mantine/modals";
 import { IconArrowLeft } from "@tabler/icons-react";
+import { FC, useCallback } from "react";
 
 import { ColorPicker } from "@/app/components/ColorPicker";
 import { Icon } from "@/app/components/Icon";

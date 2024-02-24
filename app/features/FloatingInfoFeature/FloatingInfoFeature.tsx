@@ -1,7 +1,7 @@
 "use client";
 import { FC, PropsWithChildren, useMemo } from "react";
 import { useSelector } from "@legendapp/state/react";
-import { Stack, Tooltip } from "@mantine/core";
+import { Stack, Text, Tooltip } from "@mantine/core";
 
 import { KeyValue } from "@/app/components/KeyValue";
 import { HoveredCellEventsFeature } from "@/app/features/HoveredCellEventsFeature";
@@ -47,6 +47,7 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
           <KeyValue k="Конец клетки" v={endDateLabel} />
           <HoveredCellEventsFeature />
           <HoveredCellTimespansFeature />
+          <Text size="sm">Кликните, чтобы увидеть больше</Text>
         </Stack>
       }
     >
