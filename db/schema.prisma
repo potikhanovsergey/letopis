@@ -85,6 +85,8 @@ model Calendar {
 /// @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
 /// @@allow('all', auth() == calendar.user)
 model Event {
+    referenceLink String?
+    description String?
     id Int @id() @default(autoincrement())
     title String
     date DateTime
@@ -96,6 +98,8 @@ model Event {
 /// @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
 /// @@allow('all', auth() == calendar.user)
 model Timespan {
+    referenceLink String?
+    description String?
     id Int @id() @default(autoincrement())
     title String
     startDate DateTime

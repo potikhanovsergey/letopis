@@ -1,6 +1,7 @@
 import "./calendar"
+import "./common"
 
-model Event {
+model Event extends ReferenceLink, Description {
   id Int @id @default(autoincrement())
   title String
   date DateTime

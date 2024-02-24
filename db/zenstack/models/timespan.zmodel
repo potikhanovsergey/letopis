@@ -1,6 +1,7 @@
 import "./calendar"
+import "./common"
 
-model Timespan {
+model Timespan extends ReferenceLink, Description {
   id Int @id @default(autoincrement())
 
   title String
