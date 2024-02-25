@@ -16,12 +16,13 @@ export const UpdateTimespanFormFeature: FC<UpdateTimespanFormFeatureProps> = ({
     useUpdateTimespan();
 
   const handleSubmit = useCallback(
-    async (values: UpsertTimespanFormData) => {
+    async ({ referenceLink, ...values }: UpsertTimespanFormData) => {
       const newTimespan = await updateTimespanMutation({
         where: {
           id: timespan.id,
         },
         data: {
+          referenceLink: referenceLink || null,
           ...values,
         },
       });

@@ -12,4 +12,5 @@ export interface UpsertTimespanFormData {
   startDate: Date;
   endDate: Date;
   color: string;
+  referenceLink: string;
 }

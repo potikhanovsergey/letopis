@@ -27,6 +27,7 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
       startDate: timespan?.startDate || new Date(),
       endDate: timespan?.endDate || new Date(),
       color: timespan?.color || DEFAULT_THEME.colors.green[5],
+      referenceLink: timespan?.referenceLink || "",
     },
   });
 
@@ -44,6 +45,7 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
           label="Название промежутка"
           {...form.getInputProps("title")}
         />
+
         <DateInput
           required
           maxDate={form.values.endDate}
@@ -55,6 +57,10 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
           minDate={form.values.startDate}
           label="Конец промежутка"
           {...form.getInputProps("endDate")}
+        />
+        <TextInput
+          label="Ссылка на источник"
+          {...form.getInputProps("referenceLink")}
         />
         <ColorPicker
           required

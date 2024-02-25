@@ -11,4 +11,5 @@ export interface UpsertEventFormData {
   title: string;
   date: Date;
   icon: string;
+  referenceLink: string;
 }

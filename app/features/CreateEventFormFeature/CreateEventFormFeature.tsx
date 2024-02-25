@@ -19,8 +19,8 @@ export const CreateEventFormFeature: FC<CreateEventFormFeatureProps> = ({
   const { mutateAsync: createEvent, isPending: isCreating } = useCreateEvent();
 
   const handleSubmit = useCallback(
-    async (values: UpsertEventFormData) => {
-      const newEvent = await createEvent({ data: { calendarId, ...values } });
+    async ({ referenceLink, ...values }: UpsertEventFormData) => {
+      const newEvent = await createEvent({ data: { calendarId, referenceLink: referenceLink || null, ...values } });
 
       if (newEvent) {
         addCellEvent(newEvent);

@@ -20,9 +20,9 @@ export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
   const { mutateAsync: createTimespan, isPending } = useCreateTimespan();
 
   const handleSubmit = useCallback(
-    async (values: UpsertTimespanFormData) => {
+    async ({ referenceLink, ...values }: UpsertTimespanFormData) => {
       const newTimespan = await createTimespan({
-        data: { calendarId, ...values },
+        data: { calendarId, referenceLink: referenceLink || null, ...values },
       });
 
       if (newTimespan) {
@@ -30,7 +30,7 @@ export const CreateTimespanFormFeature: FC<CreateTimespanFormFeatureProps> = ({
         onCreated?.();
       }
     },
-    [calendarId, createTimespan, onCreated],
+    [calendarId, createTimespan, onCreated]
   );
 
   return (

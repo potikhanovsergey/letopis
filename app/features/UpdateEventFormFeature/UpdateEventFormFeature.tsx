@@ -15,12 +15,13 @@ export const UpdateEventFormFeature: FC<UpdateEventFormFeatureProps> = ({
   const { mutateAsync: updateEvent, isPending } = useUpdateEvent();
 
   const handleSubmit = useCallback(
-    async (values: UpsertEventFormData) => {
+    async ({ referenceLink, ...values }: UpsertEventFormData) => {
       const newEvent = await updateEvent({
         where: {
           id: event.id,
         },
         data: {
+          referenceLink: referenceLink || null,
           ...values,
         },
       });

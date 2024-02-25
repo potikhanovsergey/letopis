@@ -26,6 +26,7 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
       title: event?.title || "",
       date: event?.date || new Date(),
       icon: event?.icon || "circle",
+      referenceLink: event?.referenceLink || "",
     },
   });
 
@@ -48,6 +49,7 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
           label="Дата события"
           {...form.getInputProps("date")}
         />
+        <TextInput label="Ссылка на источник" {...form.getInputProps('referenceLink')} />
         <Input.Wrapper label="Иконка события" required>
           <IconPicker {...form.getInputProps("icon")} defaultValue="star" />
         </Input.Wrapper>
