@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { CalendarViewerFeature } from "@/app/features/calendar/CalendarViewerFeature";
+import ViewerCalendar from "@/app/c/features/ViewerCalendar";
 import { calendarInclude } from "@/app/validators";
 import { getEnhancedDb } from "@/server/utils";
 
@@ -16,7 +16,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     return notFound();
   }
 
-  return <CalendarViewerFeature calendar={calendar} />;
+  return <ViewerCalendar calendar={calendar} />;
 };
 
 export default Page;
