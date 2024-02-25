@@ -10,3 +10,7 @@ abstract model ReferenceLink {
 abstract model Description {
   description String?
 }
+
+abstract model CUID {
+  id String @id @default(cuid())
+}

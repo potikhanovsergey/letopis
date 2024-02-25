@@ -2,6 +2,7 @@ import "./session"
 import "./account"
 import "./calendar"
 import "./bookmark"
+import "./comment"
 
 model User {
   id String @id @default(cuid())
@@ -15,6 +16,7 @@ model User {
   sessions Session[]
   calendars Calendar[]
   bookmarks Bookmark[]
+  comments Comment[]
 
   /* Все пользователи могут создавать аккаунт */
   @@allow('create', true)
@@ -22,4 +24,9 @@ model User {
   @@allow('read', true)
   /* Все остальные действия доступны только самому себе */
   @@allow('all', auth() == this)
+}
+
+abstract model UserReference {
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

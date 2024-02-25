@@ -1,0 +1,7 @@
+import "./common"
+import "./user"
+import "./calendar"
+
+model Comment extends Dates, CUID, UserReference, CalendarReference {
+    message String
+}

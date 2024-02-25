@@ -1,8 +1,8 @@
 import "./user"
 import "./event"
 import "./timespan"
-import './common'
-import "./calendar"
+import "./common"
+import "./comment"
 
 enum CalendarVisibility {
   hidden
@@ -26,9 +26,15 @@ model Calendar extends Dates {
   events Event[]
   timespans Timespan[]
   bookmarks Bookmark[]
+  comments Comment[]
 
   /* Все пользователи могут видеть публичные календари, непубличные только его создатели */
   @@allow('read', visibility != hidden || auth() == user)
   /* Все остальные действия может делать только создатель календаря */
   @@allow('all', auth() == user)
+}
+
+abstract model CalendarReference {
+  calendarId String
+  calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
 }

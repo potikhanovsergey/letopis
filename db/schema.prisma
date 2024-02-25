@@ -33,6 +33,7 @@ model User {
     sessions Session[]
     calendars Calendar[]
     bookmarks Bookmark[]
+    comments Comment[]
 }
 
 /// @@allow('all', auth() == user)
@@ -80,6 +81,7 @@ model Calendar {
     events Event[]
     timespans Timespan[]
     bookmarks Bookmark[]
+    comments Comment[]
 }
 
 /// @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
@@ -107,6 +109,17 @@ model Timespan {
     color String
     calendarId String
     calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt() @default(now())
+    id String @id() @default(cuid())
+    userId String
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    calendarId String
+    calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
+    message String
 }
 
 /// @@allow('all', auth() == user)

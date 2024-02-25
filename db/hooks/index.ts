@@ -4,6 +4,7 @@ export * from './account';
 export * from './calendar';
 export * from './event';
 export * from './timespan';
+export * from './comment';
 export * from './bookmark';
 export { getQueryKey } from '@zenstackhq/tanstack-query/runtime';
 export { Provider } from '@zenstackhq/tanstack-query/runtime/react';
