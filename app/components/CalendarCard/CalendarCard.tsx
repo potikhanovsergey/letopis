@@ -29,7 +29,7 @@ export const CalendarCard: FC<CalendarCardProps> = ({
   }, [id]);
 
   return (
-    <Card component="li" radius="md" withBorder className={classes.card}>
+    <Card radius="md" withBorder className={classes.card}>
       <Card.Section mb="sm">
         <Link href={href}>
           <CalendarPreviewImage alt={title} src={previewUrl} />

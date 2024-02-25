@@ -15,7 +15,7 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
         {title}
       </Title>
       {calendars.length > 0 ? (
-        <SimpleGrid component="ul" cols={4}>
+        <SimpleGrid cols={4}>
           {calendars.map((calendar) => (
             <CalendarCard
               key={calendar.id}
