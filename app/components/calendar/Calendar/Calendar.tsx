@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Container, Stack } from "@mantine/core";
+import { Container, Stack, Title } from "@mantine/core";
 
 import CalendarDescription from "@/app/c/features/CalendarDescription";
 import CalendarEndDate from "@/app/c/features/CalendarEndDate";
@@ -10,6 +10,7 @@ import YearsCalendar from "@/app/c/features/YearsCalendar";
 import { TimespansLegendFeature } from "@/app/features/TimespansLegendFeature";
 
 import { CalendarProps } from "./Calendar.typings";
+import CalendarComponents from "@/app/c/features/CalendarComments";
 
 export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
   return (
@@ -25,6 +26,8 @@ export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
       </Stack>
 
       <YearsCalendar />
+
+      <CalendarComponents mt="md" />
       {toolbar}
     </Container>
   );

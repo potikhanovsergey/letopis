@@ -23,9 +23,7 @@ const CalendarDescription: FC = () => {
       showLabel="Читать полное описание"
       hideLabel="Скрыть описание"
     >
-      <Title order={2} size="h3">
-        Описание
-      </Title>
+      <Title order={2}>Описание</Title>
       <TypographyStylesProvider>
         <div dangerouslySetInnerHTML={{ __html: description }} />
       </TypographyStylesProvider>
