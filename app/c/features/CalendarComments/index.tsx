@@ -6,10 +6,10 @@ import { useSession } from "next-auth/react";
 import { FC } from "react";
 
 const CalendarComponents: FC = () => {
-  const { data: session } = useSession();
   const id = useSelector(calendarData$.id);
   const opened = useSelector(commentsVisible$);
 
+  const { data: session } = useSession();
   const { data: comments } = useFindManyComment({ where: { calendarId: id } });
 
   const disabled = !session?.user;
@@ -26,10 +26,11 @@ const CalendarComponents: FC = () => {
         autosize
         maxRows={12}
         disabled={disabled}
+        data-autofocus
         label="Оставить комментарий"
       />
       <Group justify="flex-end">
-        <Button disabled={disabled} size="compact-sm" variant="filled" mt="sm">
+        <Button disabled={disabled} variant="filled" mt="sm">
           Отправить
         </Button>
       </Group>

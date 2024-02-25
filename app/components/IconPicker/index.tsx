@@ -22,7 +22,7 @@ const IconPicker: FC<IconPickerProps> = ({ value, onChange }) => {
     <div>
       <Popover onClose={close} withinPortal opened={opened}>
         <Popover.Target>
-          <Button leftSection={value} size="compact-sm" onClick={toggle}>
+          <Button leftSection={value} onClick={toggle}>
             Выбрать иконку
           </Button>
         </Popover.Target>

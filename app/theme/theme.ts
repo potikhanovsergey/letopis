@@ -5,6 +5,7 @@ import {
   Container,
   createTheme,
   CSSVariablesResolver,
+  Drawer,
   Menu,
   Modal,
   Paper,
@@ -61,6 +62,16 @@ export const theme = createTheme({
     Paper: Paper.extend({
       classNames: PaperClassNames,
     }),
+    Drawer: Drawer.extend({
+      defaultProps: {
+        lockScroll: false,
+      },
+      styles: {
+        title: {
+          fontWeight: 700,
+        },
+      },
+    }),
     Modal: Modal.extend({
       defaultProps: {
         centered: true,
@@ -78,6 +89,7 @@ export const theme = createTheme({
     Button: Button.extend({
       defaultProps: {
         variant: "subtle",
+        size: "compact-md",
       },
     }),
     DateInput: DateInput.extend({

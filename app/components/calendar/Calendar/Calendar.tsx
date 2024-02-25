@@ -8,9 +8,9 @@ import CalendarStartDate from "@/app/c/features/CalendarStartDate";
 import CalendarTitle from "@/app/c/features/CalendarTitle";
 import YearsCalendar from "@/app/c/features/YearsCalendar";
 import { TimespansLegendFeature } from "@/app/features/TimespansLegendFeature";
+import CalendarComponents from "@/app/c/features/CalendarComments";
 
 import { CalendarProps } from "./Calendar.typings";
-import CalendarComponents from "@/app/c/features/CalendarComments";
 
 export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
   return (
