@@ -21,7 +21,7 @@ const RichTextEditor: FC<RichTextEditorProps> = ({
     content: value,
     onUpdate: ({ editor }) => {
       if (onChange) {
-        const string = editor.getHTML();
+        const string = editor.isEmpty ? "" : editor.getHTML();
         onChange(string);
       }
     },

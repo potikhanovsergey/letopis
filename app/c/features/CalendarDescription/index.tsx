@@ -1,6 +1,11 @@
 import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
-import { Skeleton, Spoiler, TypographyStylesProvider } from "@mantine/core";
+import {
+  Skeleton,
+  Spoiler,
+  Title,
+  TypographyStylesProvider,
+} from "@mantine/core";
 
 import { calendarData$, hasInitialized$ } from "@/app/stores";
 
@@ -18,6 +23,9 @@ const CalendarDescription: FC = () => {
       showLabel="Читать полное описание"
       hideLabel="Скрыть описание"
     >
+      <Title order={2} size="h3">
+        Описание
+      </Title>
       <TypographyStylesProvider>
         <div dangerouslySetInnerHTML={{ __html: description }} />
       </TypographyStylesProvider>
