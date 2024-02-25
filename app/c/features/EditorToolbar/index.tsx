@@ -11,6 +11,7 @@ import {
 } from "@/app/features/calendar/common";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
 import { calendarData$ } from "@/app/stores";
+import CommentsInvoker from "@/app/c/features/CommentsInvoker";
 
 const EditorToolbar = () => {
   const id = useSelector(calendarData$.id);
@@ -22,6 +23,7 @@ const EditorToolbar = () => {
       <Divider orientation="vertical" />
       <BookmarkButtonFeature id={id} />
       <ShareCalendarFeature id={id} />
+      <CommentsInvoker />
       <Divider orientation="vertical" />
       <DotsActions />
     </FloatingToolbar>

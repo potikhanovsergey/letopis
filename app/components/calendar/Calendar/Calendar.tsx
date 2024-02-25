@@ -27,7 +27,7 @@ export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
 
       <YearsCalendar />
 
-      <CalendarComponents mt="md" />
+      <CalendarComponents />
       {toolbar}
     </Container>
   );

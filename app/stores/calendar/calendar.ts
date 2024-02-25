@@ -27,3 +27,5 @@ export const hoveredColumnIndex$ = observable(null as number | null);
 
 export const clickedRowIndex$ = observable(null as number | null);
 export const clickedColumnIndex$ = observable(null as number | null);
+
+export const commentsVisible$ = observable(false);

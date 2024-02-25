@@ -1,15 +1,26 @@
-import { Box, BoxProps, Group, Textarea, Title, Button } from "@mantine/core";
+import { calendarData$, commentsVisible$ } from "@/app/stores";
+import { useFindManyComment } from "@/db/hooks";
+import { useSelector } from "@legendapp/state/react";
+import { Drawer, Group, Textarea, Button, Loader } from "@mantine/core";
 import { useSession } from "next-auth/react";
 import { FC } from "react";
 
-const CalendarComponents: FC<BoxProps> = (props) => {
+const CalendarComponents: FC = () => {
   const { data: session } = useSession();
+  const id = useSelector(calendarData$.id);
+  const opened = useSelector(commentsVisible$);
+
+  const { data: comments } = useFindManyComment({ where: { calendarId: id } });
 
   const disabled = !session?.user;
 
   return (
-    <Box {...props}>
-      <Title order={2}>Комментарии</Title>
+    <Drawer
+      position="right"
+      opened={opened}
+      onClose={commentsVisible$.toggle}
+      title="Комментарии"
+    >
       <Textarea
         minRows={4}
         autosize
@@ -22,7 +33,8 @@ const CalendarComponents: FC<BoxProps> = (props) => {
           Отправить
         </Button>
       </Group>
-    </Box>
+      {comments ? <></> : <Loader size="sm" />}
+    </Drawer>
   );
 };
 
