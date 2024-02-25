@@ -7,7 +7,7 @@ import { closeModal } from "@mantine/modals";
 import { IconArrowLeft } from "@tabler/icons-react";
 
 import { Icon } from "@/app/components/Icon";
-import { IconPicker } from "@/app/components/IconPicker";
+import IconPicker from "@/app/components/IconPicker";
 import { ModalActions } from "@/app/components/ModalActions";
 
 import {
@@ -25,7 +25,7 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
     initialValues: {
       title: event?.title || "",
       date: event?.date || new Date(),
-      icon: event?.icon || "circle",
+      icon: event?.icon || "🔴",
       referenceLink: event?.referenceLink || "",
     },
   });
@@ -35,6 +35,10 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
   }, []);
 
   const handleSubmit = form.onSubmit(onSubmit);
+
+  const handleIconPick = useCallback((value: string) => {
+    form.setFieldValue("icon", value);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -49,9 +53,12 @@ export const UpsertEventForm: FC<UpsertEventFormProps> = ({
           label="Дата события"
           {...form.getInputProps("date")}
         />
-        <TextInput label="Ссылка на источник" {...form.getInputProps('referenceLink')} />
+        <TextInput
+          label="Ссылка на источник"
+          {...form.getInputProps("referenceLink")}
+        />
         <Input.Wrapper label="Иконка события" required>
-          <IconPicker {...form.getInputProps("icon")} defaultValue="star" />
+          <IconPicker value={form.values.icon} onChange={handleIconPick} />
         </Input.Wrapper>
       </Stack>
 

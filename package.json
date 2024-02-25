@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.1.0",
+    "@emoji-mart/react": "^1.1.1",
     "@legendapp/state": "2.1.5",
     "@mantine/core": "7.5.3",
     "@mantine/dates": "7.5.3",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "1.0.0",
+    "@types/emoji-mart": "^3.0.14",
     "@types/node": "20",
     "@types/react": "18",
     "@types/react-dom": "18",

@@ -1,7 +1,7 @@
 .iconWrapper {
-  display: none;
+    display: none;
 }
 
 .label {
-  padding: 0 var(--mantine-spacing-sm);
+    padding: 0 var(--mantine-spacing-sm);
 }

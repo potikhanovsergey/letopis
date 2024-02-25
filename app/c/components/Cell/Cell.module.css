@@ -1,17 +1,18 @@
 .cell {
-  aspect-ratio: 1;
-  background: var(--mantine-color-gray-3);
-  border-radius: var(--mantine-radius-xs);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--mantine-font-size-xs);
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
+    aspect-ratio: 1;
+    background: var(--mantine-color-gray-3);
+    border-radius: var(--mantine-radius-xs);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 75%;
 
-  &:hover {
-    filter: brightness(90%)
-  }
-  margin: rem(0.5px);
+    &:hover {
+        filter: brightness(90%);
+    }
+    margin: rem(0.5px);
 }

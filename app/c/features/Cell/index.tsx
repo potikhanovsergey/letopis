@@ -3,8 +3,6 @@ import { FC, useCallback, useMemo } from "react";
 import { useSelector } from "@legendapp/state/react";
 
 import CellUI from "@/app/c/components/Cell";
-import { DynamicIcon } from "@/app/components/DynamicIcon";
-import { EventIconKey } from "@/app/components/IconPicker/IconPicker.typings";
 import { useCellsDataModal } from "@/app/hooks/useCellsDataModal";
 import { useTimespansColor } from "@/app/hooks/useTimespansColor";
 import { events$, timespans$ } from "@/app/stores/calendar/computed";
@@ -45,9 +43,7 @@ const Cell: FC<CellProps> = ({
     });
 
     if (cellEvents.length === 1) {
-      return (
-        <DynamicIcon size="100%" name={cellEvents[0].icon as EventIconKey} />
-      );
+      return cellEvents[0].icon;
     }
 
     if (cellEvents.length === 0) return null;
