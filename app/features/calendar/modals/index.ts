@@ -1,4 +1,4 @@
 export * from "./DeleteCalendarButtonFeature";
-export * from "./EditInfoModalFeature";
-export * from "./EditInfoModalFeature";
+export * from "./EditInfoFormFeature";
+export * from "./EditInfoFormFeature";
 export * from "./EventsModalFeature";

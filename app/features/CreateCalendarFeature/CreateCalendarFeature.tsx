@@ -28,7 +28,7 @@ export const CreateCalendarFeature: FC = () => {
   if (!session.data) return null;
 
   return (
-    <Button loading={isPending} onClick={handleClick}>
+    <Button size="compact-sm" loading={isPending} onClick={handleClick}>
       Создать календарь
     </Button>
   );

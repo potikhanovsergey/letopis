@@ -12,5 +12,5 @@ export const CalendarEndDateFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton h={24} w={300} />;
 
-  return <KeyValue k="Конец календаря" v={formatShort(endDate)} />;
+  return <KeyValue size="md" k="Конец календаря" v={formatShort(endDate)} />;
 };

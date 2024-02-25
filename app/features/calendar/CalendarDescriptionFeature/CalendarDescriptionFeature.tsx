@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useSelector } from "@legendapp/state/react";
-import { Skeleton, Text } from "@mantine/core";
+import { Skeleton, Spoiler, TypographyStylesProvider } from "@mantine/core";
 
 import { calendarData$, hasInitialized$ } from "@/app/stores";
 
@@ -10,9 +10,17 @@ export const CalendarDescriptionFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton h={24} />;
 
+  if (!description) return null;
+
   return (
-    <Text size="sm" c="dimmed">
-      {description}
-    </Text>
+    <Spoiler
+      maxHeight={240}
+      showLabel="Читать полное описание"
+      hideLabel="Скрыть описание"
+    >
+      <TypographyStylesProvider>
+        <div dangerouslySetInnerHTML={{ __html: description }} />
+      </TypographyStylesProvider>
+    </Spoiler>
   );
 };

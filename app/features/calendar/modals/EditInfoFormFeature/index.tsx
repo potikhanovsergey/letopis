@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { batch } from "@legendapp/state";
 import { useSelector } from "@legendapp/state/react";
-import { Button, Stack, Textarea, TextInput } from "@mantine/core";
+import { Button, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 
@@ -9,8 +9,9 @@ import { ModalActions } from "@/app/components/ModalActions";
 import { calendarData$ } from "@/app/stores";
 import { isImageUrlValid } from "@/app/utils/isImageUrlValid";
 import { useUpdateCalendar } from "@/db/hooks";
+import RichTextEditor from "@/app/components/RichTextEditor";
 
-export const EditInfoModalFeature: FC = () => {
+export const EditInfoFormFeature: FC = () => {
   const id = useSelector(calendarData$.id);
   const title = useSelector(calendarData$.title);
   const description = useSelector(calendarData$.description);
@@ -48,8 +49,12 @@ export const EditInfoModalFeature: FC = () => {
         });
       }
       modals.closeAll();
-    },
+    }
   );
+
+  const updateDescription = useCallback((value: string) => {
+    form.setFieldValue("description", value);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -63,15 +68,21 @@ export const EditInfoModalFeature: FC = () => {
           label="Ссылка на изображение"
           {...form.getInputProps("previewUrl")}
         />
-        <Textarea
+        {/* <Textarea
           required
           label="Описание"
           {...form.getInputProps("description")}
+        /> */}
+        <RichTextEditor
+          value={form.values.description}
+          onChange={updateDescription}
+          label="Описание"
+          description="Можно добавлять ссылки, изображения, заголовки"
         />
       </Stack>
 
       <ModalActions>
-        <Button loading={loading} type="submit">
+        <Button loading={loading} type="submit" variant="filled">
           Подтвердить
         </Button>
       </ModalActions>

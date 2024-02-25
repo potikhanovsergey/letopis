@@ -1,8 +1,4 @@
-body, html {
+body,
+html {
   overflow-x: clip;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
 }

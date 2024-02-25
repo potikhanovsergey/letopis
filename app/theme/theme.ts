@@ -2,19 +2,13 @@ import {
   ActionIcon,
   AppShell,
   Button,
-  ColorInput,
   Container,
   createTheme,
   CSSVariablesResolver,
-  InputWrapper,
   Menu,
   Modal,
-  NumberInput,
   Paper,
   Popover,
-  Select,
-  Textarea,
-  TextInput,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { Nunito_Sans } from "next/font/google";
@@ -33,8 +27,12 @@ export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
   variables: {
     "--lightgray": theme.other.lightgray,
   },
-  dark: {},
-  light: {},
+  dark: {
+    "--mantine-color-anchor": theme.colors.blue[5],
+  },
+  light: {
+    "--mantine-color-anchor": theme.colors.blue[5],
+  },
 });
 
 export const theme = createTheme({
@@ -79,45 +77,13 @@ export const theme = createTheme({
     }),
     Button: Button.extend({
       defaultProps: {
-        size: "compact-sm",
         variant: "subtle",
-      },
-    }),
-    NumberInput: NumberInput.extend({
-      defaultProps: {
-        size: "xs",
       },
     }),
     DateInput: DateInput.extend({
       defaultProps: {
-        size: "xs",
         locale: "ru",
         hideOutsideDates: true,
-      },
-    }),
-    TextInput: TextInput.extend({
-      defaultProps: {
-        size: "xs",
-      },
-    }),
-    Textarea: Textarea.extend({
-      defaultProps: {
-        size: "xs",
-      },
-    }),
-    ColorInput: ColorInput.extend({
-      defaultProps: {
-        size: "xs",
-      },
-    }),
-    Select: Select.extend({
-      defaultProps: {
-        size: "xs",
-      },
-    }),
-    InputWrapper: InputWrapper.extend({
-      defaultProps: {
-        size: "xs",
       },
     }),
     Menu: Menu.extend({

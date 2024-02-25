@@ -12,5 +12,5 @@ export const CalendarStartDateFeature: FC = () => {
 
   if (!hasInitialized) return <Skeleton h={24} w={300} />;
 
-  return <KeyValue k="Начало календаря" v={formatShort(startDate)} />;
+  return <KeyValue size="md" k="Начало календаря" v={formatShort(startDate)} />;
 };
