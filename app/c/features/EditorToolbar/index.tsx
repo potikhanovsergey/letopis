@@ -5,13 +5,9 @@ import { Divider } from "@mantine/core";
 import { DotsActions } from "@/app/components/DotsActions";
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
-import {
-  BookmarkButtonFeature,
-  ShareCalendarFeature,
-} from "@/app/features/calendar/common";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
 import { calendarData$ } from "@/app/stores";
-import CommentsInvoker from "@/app/c/features/CommentsInvoker";
+import ToolbarMediaButtons from "@/app/c/features/ToolbarMediaButtons";
 
 const EditorToolbar = () => {
   const id = useSelector(calendarData$.id);
@@ -21,9 +17,7 @@ const EditorToolbar = () => {
       <TimespansButtonFeature />
       <EventsButtonFeature />
       <Divider orientation="vertical" />
-      <BookmarkButtonFeature id={id} />
-      <ShareCalendarFeature id={id} />
-      <CommentsInvoker />
+      <ToolbarMediaButtons />
       <Divider orientation="vertical" />
       <DotsActions />
     </FloatingToolbar>

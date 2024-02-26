@@ -5,13 +5,10 @@ import { Divider } from "@mantine/core";
 
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
-import {
-  BookmarkButtonFeature,
-  ShareCalendarFeature,
-} from "@/app/features/calendar/common";
 import { EditCalendarLinkFeature } from "@/app/features/EditCalendarLinkFeature";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
 import { calendarData$ } from "@/app/stores";
+import ToolbarMediaButtons from "@/app/c/features/ToolbarMediaButtons";
 
 const ViewerToolbar = () => {
   const id = useSelector(calendarData$.id);
@@ -21,8 +18,7 @@ const ViewerToolbar = () => {
       <TimespansButtonFeature />
       <EventsButtonFeature />
       <Divider orientation="vertical" />
-      <BookmarkButtonFeature id={id} />
-      <ShareCalendarFeature id={id} />
+      <ToolbarMediaButtons />
       <EditCalendarLinkFeature />
     </FloatingToolbar>
   );
