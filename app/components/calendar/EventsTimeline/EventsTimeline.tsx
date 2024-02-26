@@ -16,7 +16,7 @@ export const EventsTimeline: FC<EventsTimelineProps> = ({ events, mode }) => {
     );
 
   return (
-    <Timeline color="dark" active={events.length}>
+    <Timeline color="gray.3" active={events.length}>
       {events.map((event) => (
         <Timeline.Item bullet={event.icon} key={event.id} title={event.title}>
           <Text size="xs" mt={4}>

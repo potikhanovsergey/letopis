@@ -10,6 +10,7 @@ import {
   Modal,
   Paper,
   Popover,
+  Timeline,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { Nunito_Sans } from "next/font/google";
@@ -103,6 +104,12 @@ export const theme = createTheme({
     }),
     AppShell: AppShell.extend({
       classNames: AppShellClassNames,
+    }),
+    Timeline: Timeline.extend({
+      defaultProps: {
+        bulletSize: 32,
+        color: "gray.3",
+      },
     }),
   },
   activeClassName: "",
