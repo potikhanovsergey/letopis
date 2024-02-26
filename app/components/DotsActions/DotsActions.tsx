@@ -6,7 +6,7 @@ import { IconDotsVertical } from "@tabler/icons-react";
 import { IconButton } from "@/app/components/IconButton";
 import { DeleteCalendarButtonFeature } from "@/app/features/calendar/modals/DeleteCalendarButtonFeature";
 import { EditInfoButtonFeature } from "@/app/features/calendar/modals/EditInfoButtonFeature";
-import { SettingsButtonFeature } from "@/app/features/SettingsButtonFeature";
+import { SettingsFormInvoker } from "@/app/c/features/SettingsForm";
 
 export const DotsActions: FC = () => {
   return (
@@ -16,7 +16,7 @@ export const DotsActions: FC = () => {
       </Menu.Target>
       <Menu.Dropdown>
         <Stack gap={4}>
-          <SettingsButtonFeature />
+          <SettingsFormInvoker />
           <EditInfoButtonFeature />
           <DeleteCalendarButtonFeature />
         </Stack>

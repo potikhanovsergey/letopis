@@ -49,7 +49,7 @@ export const EditInfoFormFeature: FC = () => {
         });
       }
       modals.closeAll();
-    }
+    },
   );
 
   const updateDescription = useCallback((value: string) => {
@@ -68,11 +68,6 @@ export const EditInfoFormFeature: FC = () => {
           label="Ссылка на изображение"
           {...form.getInputProps("previewUrl")}
         />
-        {/* <Textarea
-          required
-          label="Описание"
-          {...form.getInputProps("description")}
-        /> */}
         <RichTextEditor
           value={form.values.description}
           onChange={updateDescription}

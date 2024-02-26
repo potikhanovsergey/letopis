@@ -11,7 +11,7 @@ import { ModalActions } from "@/app/components/ModalActions";
 import { calendarData$ } from "@/app/stores";
 import { useUpdateCalendar } from "@/db/hooks";
 
-export const SettingsModalFeature: FC = () => {
+const SettingsForm: FC = () => {
   const id = useSelector(calendarData$.id);
   const startDate = useSelector(calendarData$.startDate);
   const endDate = useSelector(calendarData$.endDate);
@@ -43,7 +43,7 @@ export const SettingsModalFeature: FC = () => {
         });
       }
       modals.closeAll();
-    }
+    },
   );
 
   return (
@@ -67,10 +67,12 @@ export const SettingsModalFeature: FC = () => {
       </Stack>
 
       <ModalActions>
-        <Button loading={loading} type="submit">
+        <Button loading={loading} type="submit" variant="filled">
           Подтвердить
         </Button>
       </ModalActions>
     </form>
   );
 };
+
+export default SettingsForm;
