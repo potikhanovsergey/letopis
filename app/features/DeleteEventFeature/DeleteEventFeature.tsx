@@ -17,7 +17,12 @@ export const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
   }, [id, deleteEvent]);
 
   return (
-    <Button loading={isPending} onClick={handleClick} variant="subtle">
+    <Button
+      size="compact-sm"
+      loading={isPending}
+      onClick={handleClick}
+      variant="subtle"
+    >
       Удалить
     </Button>
   );

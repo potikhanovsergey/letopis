@@ -23,7 +23,12 @@ export const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({
   }, [id, deleteTimespanMutation]);
 
   return (
-    <Button loading={isPending} onClick={handleClick} variant="subtle">
+    <Button
+      size="compact-sm"
+      loading={isPending}
+      onClick={handleClick}
+      variant="subtle"
+    >
       Удалить
     </Button>
   );
