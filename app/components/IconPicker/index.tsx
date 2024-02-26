@@ -28,7 +28,12 @@ const IconPicker: FC<IconPickerProps> = ({ value, onChange }) => {
         </Popover.Target>
         <Popover.Dropdown bg="transparent" p={0}>
           {opened && (
-            <Picker icons="outline" locale="ru" onEmojiSelect={handleSelect} />
+            <Picker
+              theme="dark"
+              icons="outline"
+              locale="ru"
+              onEmojiSelect={handleSelect}
+            />
           )}
         </Popover.Dropdown>
       </Popover>
