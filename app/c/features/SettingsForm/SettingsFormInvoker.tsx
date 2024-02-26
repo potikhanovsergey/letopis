@@ -4,7 +4,7 @@ import { modals } from "@mantine/modals";
 
 import { SettingsForm } from "./";
 
-import { LABEL } from "./const";
+import { LABEL } from "./consts";
 
 const SettingsFormInvoker: FC = () => {
   const handleClick = useCallback(() => {
