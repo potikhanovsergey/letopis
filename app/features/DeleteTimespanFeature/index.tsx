@@ -4,13 +4,10 @@ import { Button } from "@mantine/core";
 import { deleteTimespan } from "@/app/stores/calendar/actions";
 import { useDeleteTimespan } from "@/db/hooks";
 
-import { DeleteTimespanFeatureProps } from "./DeleteTimespanFeature.typings";
+import { DeleteTimespanFeatureProps } from "./typings";
 
-export const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({
-  id,
-}) => {
-  const { mutateAsync: deleteTimespanMutation, isPending } =
-    useDeleteTimespan();
+const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({ id }) => {
+  const { mutateAsync: deleteTimespanMutation } = useDeleteTimespan();
 
   const handleClick = useCallback(async () => {
     const timespan = await deleteTimespanMutation({
@@ -23,13 +20,10 @@ export const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({
   }, [id, deleteTimespanMutation]);
 
   return (
-    <Button
-      size="compact-sm"
-      loading={isPending}
-      onClick={handleClick}
-      variant="subtle"
-    >
+    <Button size="compact-sm" onClick={handleClick} variant="subtle">
       Удалить
     </Button>
   );
 };
+
+export default DeleteTimespanFeature;

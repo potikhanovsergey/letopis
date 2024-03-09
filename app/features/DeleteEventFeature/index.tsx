@@ -4,10 +4,10 @@ import { Button } from "@mantine/core";
 import { deleteCellEvent } from "@/app/stores/calendar/actions";
 import { useDeleteEvent } from "@/db/hooks";
 
-import { DeleteEventFeatureProps } from "./DeleteEventFeature.typings";
+import { DeleteEventFeatureProps } from "./typings";
 
-export const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
-  const { mutateAsync: deleteEvent, isPending } = useDeleteEvent();
+const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
+  const { mutateAsync: deleteEvent } = useDeleteEvent();
 
   const handleClick = useCallback(async () => {
     const event = await deleteEvent({ where: { id }, select: { id: true } });
@@ -17,13 +17,10 @@ export const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
   }, [id, deleteEvent]);
 
   return (
-    <Button
-      size="compact-sm"
-      loading={isPending}
-      onClick={handleClick}
-      variant="subtle"
-    >
+    <Button onClick={handleClick} size="compact-sm" variant="subtle">
       Удалить
     </Button>
   );
 };
+
+export default DeleteEventFeature;

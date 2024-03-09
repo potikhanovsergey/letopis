@@ -2,12 +2,11 @@ import { FC, useCallback, useMemo } from "react";
 import { IconBookmark, IconBookmarkFilled } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 
-import { AsyncButton } from "@/app/components/AsyncButton";
-import { AsyncButtonProps } from "@/app/components/AsyncButton/AsyncButton.typings";
 import { IconButton } from "@/app/components/IconButton";
 import { useCreateBookmark, useDeleteBookmark } from "@/db/hooks";
 
 import { BookmarkButtonFeatureProps } from "./BookmarkButtonFeature.typings";
+import { useAsyncClick } from "@/app/hooks/useAsyncClick";
 
 export const BookmarkButtonFeature: FC<BookmarkButtonFeatureProps> = ({
   id,
@@ -38,24 +37,16 @@ export const BookmarkButtonFeature: FC<BookmarkButtonFeatureProps> = ({
     }
   }, [bookmarked, createBookmark, deleteBookmark, id, session]);
 
-  const renderRoot = useCallback(
-    (props: AsyncButtonProps) => (
-      <IconButton
-        icon={bookmarked ? IconBookmarkFilled : IconBookmark}
-        label={bookmarked ? "Убрать из закладок" : "Добавить в закладки"}
-        {...props}
-      />
-    ),
-    [bookmarked]
-  );
+  const { onClick, loading } = useAsyncClick(toggleBookmark);
 
   if (!session.data) return null;
 
   return (
-    <AsyncButton
-      component={IconButton}
-      renderRoot={renderRoot}
-      onClick={toggleBookmark}
+    <IconButton
+      icon={bookmarked ? IconBookmarkFilled : IconBookmark}
+      label={bookmarked ? "Убрать из закладок" : "Добавить в закладки"}
+      onClick={onClick}
+      loading={loading}
     />
   );
 };

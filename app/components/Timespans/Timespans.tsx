@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ColorSwatch, Group, Text, Timeline } from "@mantine/core";
 
-import { DeleteTimespanFeature } from "@/app/features/DeleteTimespanFeature";
+import DeleteTimespanFeature from "@/app/features/DeleteTimespanFeature";
 import { UpdateTimespanFeature } from "@/app/features/UpdateTimespanFeature";
 import { formatShort } from "@/app/utils/date";
 

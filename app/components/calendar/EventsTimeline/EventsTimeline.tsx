@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Group, Text, Timeline } from "@mantine/core";
 
-import { DeleteEventFeature } from "@/app/features/DeleteEventFeature";
+import DeleteEventFeature from "@/app/features/DeleteEventFeature";
 import { UpdateEventFeature } from "@/app/features/UpdateEventFeature/UpdateEventFeature";
 import { formatShort } from "@/app/utils/date";
 
