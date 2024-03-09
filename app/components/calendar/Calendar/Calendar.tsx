@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Container, Stack, Title } from "@mantine/core";
+import { Container, Stack } from "@mantine/core";
 
 import CalendarDescription from "@/app/c/features/CalendarDescription";
 import CalendarEndDate from "@/app/c/features/CalendarEndDate";

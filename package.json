@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "docker-compose up -d",
     "dev": "next dev",
+    "dev:docker": "docker-compose up -d next dev",
     "build": "next build",
     "start": "next start",
-    "start:local": "docker-compose up -d next start",
+    "start:docker": "docker-compose up -d next start",
     "lint": "next lint",
     "db:pull": "dotenv -e .env.local -- npx prisma db pull --schema=./db/schema.prisma",
     "db:push": "dotenv -e .env.local -- npx prisma db push --schema=./db/schema.prisma",
