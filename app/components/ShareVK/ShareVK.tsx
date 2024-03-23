@@ -18,11 +18,10 @@ export const ShareVK: FC<ShareVKProps> = ({ url }) => {
       component="a"
       href={href}
       target="_blank"
-      color="#0077FF"
-      variant="filled"
+      variant="outline"
       leftSection={<Icon As={IconBrandVk} />}
     >
-      ВКонтакте
+      Поделиться в VK
     </Button>
   );
 };

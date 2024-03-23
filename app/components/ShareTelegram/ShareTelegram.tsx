@@ -18,11 +18,10 @@ export const ShareTelegram: FC<ShareTelegramProps> = ({ url }) => {
       component="a"
       href={href}
       target="_blank"
-      color="#0088cc"
-      variant="filled"
+      variant="outline"
       leftSection={<Icon As={IconBrandTelegram} />}
     >
-      Telegram
+      Поделиться в Telegram
     </Button>
   );
 };
