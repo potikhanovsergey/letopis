@@ -1,18 +1,18 @@
 import { calendarData$, commentsVisible$ } from "@/app/stores";
 import { useFindManyComment } from "@/db/hooks";
 import { useSelector } from "@legendapp/state/react";
-import { Drawer, Group, Textarea, Button, Loader } from "@mantine/core";
-import { useSession } from "next-auth/react";
+import { Drawer, Loader } from "@mantine/core";
 import { FC } from "react";
+import CommentForm from "@/app/c/features/CommentForm";
 
 const CalendarComponents: FC = () => {
   const id = useSelector(calendarData$.id);
   const opened = useSelector(commentsVisible$);
 
-  const { data: session } = useSession();
-  const { data: comments } = useFindManyComment({ where: { calendarId: id } });
-
-  const disabled = !session?.user;
+  const { data: comments } = useFindManyComment({
+    where: { calendarId: id },
+    include: { user: true },
+  });
 
   return (
     <Drawer
@@ -21,19 +21,7 @@ const CalendarComponents: FC = () => {
       onClose={commentsVisible$.toggle}
       title="Комментарии"
     >
-      <Textarea
-        minRows={4}
-        autosize
-        maxRows={12}
-        disabled={disabled}
-        data-autofocus
-        label="Оставить комментарий"
-      />
-      <Group justify="flex-end">
-        <Button disabled={disabled} variant="filled" mt="sm">
-          Отправить
-        </Button>
-      </Group>
+      <CommentForm />
       {comments ? <></> : <Loader size="sm" />}
     </Drawer>
   );
