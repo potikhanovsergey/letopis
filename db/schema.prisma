@@ -112,6 +112,8 @@ model Timespan {
     calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
 }
 
+/// @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
+/// @@allow('all', auth() != null)
 model Comment {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt() @default(now())

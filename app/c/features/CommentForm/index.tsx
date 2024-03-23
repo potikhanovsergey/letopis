@@ -15,7 +15,7 @@ const CommentForm: FC = () => {
   });
 
   const { data: session } = useSession();
-  const { mutateAsync: createComment } = useCreateComment();
+  const { mutateAsync: createComment, isPending } = useCreateComment();
 
   if (!session?.user.id) return null;
 
@@ -23,6 +23,7 @@ const CommentForm: FC = () => {
     await createComment({
       data: { calendarId: id, message, userId: session?.user.id },
     });
+    form.setFieldValue("message", "");
   });
 
   return (
@@ -36,9 +37,10 @@ const CommentForm: FC = () => {
         data-autofocus
         label="Оставить комментарий"
         {...form.getInputProps("message")}
+        disabled={isPending}
       />
       <Group justify="flex-end">
-        <Button type="submit" variant="filled" mt="sm">
+        <Button disabled={isPending} type="submit" variant="filled" mt="sm">
           Отправить
         </Button>
       </Group>

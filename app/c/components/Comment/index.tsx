@@ -9,17 +9,17 @@ const Comment: FC<CommentProps> = ({ name, imageUrl, createdAt, message }) => {
       <Group>
         <Avatar src={imageUrl} alt={name} radius="xl" />
         <div>
-          <Text size="sm">{name}</Text>
-          <Text size="xs">
-            {dayjs(createdAt).format("HH:MM DD.MM.YYYY")}
+          <Text fw="bold" size="sm">
+            {name}
           </Text>
+          <Text size="xs">{dayjs(createdAt).format("DD.MM.YYYY, HH:mm ")}</Text>
         </div>
       </Group>
-      <Text pl={54} pt="sm" size="sm">
+      <Text pl={54} pt={4} size="sm">
         {message}
       </Text>
     </div>
-  )
-}
+  );
+};
 
 export default Comment;

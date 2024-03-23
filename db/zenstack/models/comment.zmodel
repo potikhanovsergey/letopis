@@ -4,4 +4,9 @@ import "./calendar"
 
 model Comment extends Dates, CUID, UserReference, CalendarReference {
     message String
+    
+    /* Все пользователи могут видеть все комментарии публичных, непубличных только его создатели */
+    @@allow('read', calendar.visibility != hidden || auth() == calendar.user)
+    /* Комментировать могут авторизованные пользователи */
+    @@allow('all', auth() != null)
 }
