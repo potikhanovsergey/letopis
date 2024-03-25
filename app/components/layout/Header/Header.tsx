@@ -1,21 +1,25 @@
 import { FC } from "react";
-import { AppShellHeader, Group } from "@mantine/core";
+import { AppShellHeader, Button, Group } from "@mantine/core";
 
 import { Logo } from "@/app/components/layout/Logo";
 import { BurgerFeature } from "@/app/features/layout/BurgerFeature";
 import { HeaderSessionFeature } from "@/app/features/layout/HeaderSessionFeature";
 
+import styles from "./Header.module.css";
+
 export const Header: FC = () => {
   return (
     <AppShellHeader>
-      <Group h="100%" px="md" justify="space-between">
+      <div className={styles.grid}>
+        <Group>
+          <Button>О проекте</Button>
+        </Group>
         <Logo />
         <BurgerFeature />
-        <Group visibleFrom="sm">
-          {/* <Button>О проекте</Button> */}
+        <Group visibleFrom="sm" justify="flex-end">
           <HeaderSessionFeature />
         </Group>
-      </Group>
+      </div>
     </AppShellHeader>
   );
 };

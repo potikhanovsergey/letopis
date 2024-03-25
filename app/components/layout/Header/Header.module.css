@@ -1,0 +1,7 @@
+.grid {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 120px 1fr;
+  padding: 0 var(--mantine-spacing-xs);
+}
