@@ -1,17 +1,14 @@
 import { FC } from "react";
-import { Container, Stack } from "@mantine/core";
-
-import { CurrentUserCalendarsFeature } from "@/app/features/CurrentUserCalendarsFeature";
-
-import { UserBookmarksFeature } from "./features/UserBookmarksFeature";
+import { Container, Title } from "@mantine/core";
+import { FeedWidget } from "@/app/(fsd)/widgets/feed";
 
 const HomePage: FC = async () => {
   return (
     <Container>
-      <Stack gap="xl">
-        <CurrentUserCalendarsFeature />
-        <UserBookmarksFeature />
-      </Stack>
+      <Title mt={80} mb={40} ta="center" maw={800} mx="auto" size={48}>
+        Находите интересные Вам календари в этой ленте.
+      </Title>
+      <FeedWidget />
     </Container>
   );
 };

@@ -11,9 +11,11 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
 }) => {
   return (
     <div>
-      <Title order={2} mb="xs">
-        {title}
-      </Title>
+      {title && (
+        <Title order={2} mb="xs">
+          {title}
+        </Title>
+      )}
       {calendars.length > 0 ? (
         <SimpleGrid cols={4}>
           {calendars.map((calendar) => (

@@ -1,6 +1,6 @@
 import { CalendarCardProps } from "@/app/components/CalendarCard/CalendarCard.typings";
 
 export interface CalendarsIncutProps {
-  title: string;
+  title?: string;
   calendars: CalendarCardProps[];
 }
