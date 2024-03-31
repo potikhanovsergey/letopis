@@ -3,7 +3,7 @@ import { Button, Stack } from "@mantine/core";
 import { modals } from "@mantine/modals";
 
 import { GoogleButtonFeature } from "@/app/features/auth/GoogleButtonFeature";
-
+import { YandexAuth } from "@/app/(fsd)/features";
 import { title } from "./AuthButtonFeature.const";
 
 export const AuthButtonFeature: FC = () => {
@@ -11,7 +11,8 @@ export const AuthButtonFeature: FC = () => {
     modals.open({
       title,
       children: (
-        <Stack>
+        <Stack gap="xs">
+          <YandexAuth />
           <GoogleButtonFeature />
         </Stack>
       ),
