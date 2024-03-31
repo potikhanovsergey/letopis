@@ -1,0 +1,9 @@
+.logo {
+  @mixin light {
+    fill: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    fill: var(--mantine-color-white);
+  }
+}

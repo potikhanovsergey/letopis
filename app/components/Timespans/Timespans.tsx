@@ -19,7 +19,7 @@ export const Timespans: FC<TimespansProps> = ({ timespans, mode }) => {
     <Timeline active={timespans.length}>
       {timespans.map((timespan) => (
         <Timeline.Item
-          bullet={<ColorSwatch size={30} color={timespan.color} />}
+          bullet={<ColorSwatch size={32} color={timespan.color} />}
           key={timespan.id}
           title={timespan.title}
         >

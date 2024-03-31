@@ -26,12 +26,7 @@ export const DeleteCalendarFormFeature: FC<DeleteCalendarFormFeatureProps> = ({
         Вы действительно хотите удалить календарь? Это действие необратимо.
       </Text>
       <ModalActions>
-        <Button
-          onClick={handleClick}
-          loading={isPending}
-          variant="filled"
-          color="red"
-        >
+        <Button onClick={handleClick} loading={isPending} color="red">
           Удалить календарь
         </Button>
       </ModalActions>

@@ -13,6 +13,9 @@ export const Shell: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <AppShell
+      footer={{
+        height: 60,
+      }}
       header={{ height: 40 }}
       navbar={{
         width: 300,

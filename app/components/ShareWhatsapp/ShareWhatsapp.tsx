@@ -18,7 +18,6 @@ export const ShareWhatsapp: FC<ShareWhatsappProps> = ({ url }) => {
       component="a"
       href={href}
       target="_blank"
-      variant="outline"
       leftSection={<Icon As={IconBrandWhatsapp} />}
     >
       Поделиться в Whatsapp

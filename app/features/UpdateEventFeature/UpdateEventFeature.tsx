@@ -9,7 +9,7 @@ export const UpdateEventFeature: FC<UpdateEventFeatureProps> = ({ event }) => {
   const openUpdateEventModal = useUpdateEventModal(event);
 
   return (
-    <Button size="compact-sm" onClick={openUpdateEventModal} variant="subtle">
+    <Button size="compact-sm" onClick={openUpdateEventModal}>
       Редактировать
     </Button>
   );

@@ -20,7 +20,7 @@ const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({ id }) => {
   }, [id, deleteTimespanMutation]);
 
   return (
-    <Button size="compact-sm" onClick={handleClick} variant="subtle">
+    <Button size="compact-sm" onClick={handleClick}>
       Удалить
     </Button>
   );

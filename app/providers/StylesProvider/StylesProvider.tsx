@@ -9,7 +9,11 @@ import "@mantine/dates/styles.css";
 
 export const StylesProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <MantineProvider cssVariablesResolver={cssVariablesResolver} theme={theme}>
+    <MantineProvider
+      defaultColorScheme="auto"
+      cssVariablesResolver={cssVariablesResolver}
+      theme={theme}
+    >
       {children}
     </MantineProvider>
   );

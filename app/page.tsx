@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Container, Title } from "@mantine/core";
-import { FeedWidget } from "@/app/(fsd)/widgets/feed";
+import { FeedWidget } from "@/app/(fsd)/widgets";
 
 const HomePage: FC = async () => {
   return (

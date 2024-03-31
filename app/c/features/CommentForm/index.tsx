@@ -40,7 +40,7 @@ const CommentForm: FC = () => {
         disabled={isPending}
       />
       <Group justify="flex-end">
-        <Button disabled={isPending} type="submit" variant="filled" mt="sm">
+        <Button disabled={isPending} type="submit" mt="sm">
           Отправить
         </Button>
       </Group>

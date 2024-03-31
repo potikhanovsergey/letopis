@@ -73,7 +73,7 @@ export const UpsertTimespanForm: FC<UpsertTimespanFormProps> = ({
         <Button onClick={handleBack} leftSection={<Icon As={IconArrowLeft} />}>
           Назад
         </Button>
-        <Button loading={isButtonLoading} variant="filled" type="submit">
+        <Button loading={isButtonLoading} type="submit">
           {type === "create"
             ? "Создать промежуток"
             : "Редактировать промежуток"}

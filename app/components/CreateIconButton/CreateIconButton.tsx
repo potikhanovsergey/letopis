@@ -12,7 +12,6 @@ export const CreateIconButton: FC<CreateIconButtonProps> = ({
 }) => {
   return (
     <IconButton
-      variant="filled"
       size="xs"
       label={label}
       onClick={onClick}

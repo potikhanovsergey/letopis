@@ -11,11 +11,7 @@ export const UpdateTimespanFeature: FC<UpdateTimespanFeatureProps> = ({
   const openUpdateTimespanModal = useUpdateTimespanModal(timespan);
 
   return (
-    <Button
-      size="compact-sm"
-      onClick={openUpdateTimespanModal}
-      variant="subtle"
-    >
+    <Button size="compact-sm" onClick={openUpdateTimespanModal}>
       Редактировать
     </Button>
   );

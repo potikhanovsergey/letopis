@@ -11,6 +11,7 @@ import { Shell } from "./components/layout/Shell";
 import { ModalsProvider } from "./providers/ModalsProvider";
 
 import "./globals.css";
+import { FooterWidget } from "@/app/(fsd)/widgets";
 
 const Layout: FC<PropsWithChildren> = async ({ children }) => {
   const session = await getSession();
@@ -18,7 +19,7 @@ const Layout: FC<PropsWithChildren> = async ({ children }) => {
   return (
     <html lang="ru">
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
         <SessionProvider session={session}>
@@ -27,6 +28,7 @@ const Layout: FC<PropsWithChildren> = async ({ children }) => {
               <ModalsProvider>
                 <DatesProvider>
                   <Shell>{children}</Shell>
+                  <FooterWidget />
                 </DatesProvider>
               </ModalsProvider>
             </StylesProvider>

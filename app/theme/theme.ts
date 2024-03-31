@@ -8,8 +8,6 @@ import {
   Drawer,
   Menu,
   Modal,
-  Paper,
-  Popover,
   Timeline,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
@@ -17,8 +15,6 @@ import { Nunito_Sans } from "next/font/google";
 
 import AppShellClassNames from "./AppShell.module.css";
 import MenuClassNames from "./Menu.module.css";
-import PaperClassNames from "./Paper.module.css";
-import PopoverClassNames from "./Popover.module.css";
 
 const font = Nunito_Sans({
   subsets: ["cyrillic", "latin"],
@@ -26,9 +22,7 @@ const font = Nunito_Sans({
 });
 
 export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
-  variables: {
-    "--lightgray": theme.other.lightgray,
-  },
+  variables: {},
   dark: {
     "--mantine-color-anchor": theme.colors.blue[5],
   },
@@ -43,25 +37,16 @@ export const theme = createTheme({
   headings: {
     fontFamily: font.style.fontFamily,
   },
-  other: {
-    lightgray: "rgba(25, 25, 25, 0.05)",
-  },
   components: {
-    Popover: Popover.extend({
-      classNames: PopoverClassNames,
-    }),
     ActionIcon: ActionIcon.extend({
       defaultProps: {
-        variant: "subtle",
+        variant: "default",
       },
     }),
     Container: Container.extend({
       defaultProps: {
         size: "xl",
       },
-    }),
-    Paper: Paper.extend({
-      classNames: PaperClassNames,
     }),
     Drawer: Drawer.extend({
       defaultProps: {
@@ -89,7 +74,7 @@ export const theme = createTheme({
     }),
     Button: Button.extend({
       defaultProps: {
-        variant: "subtle",
+        variant: "default",
         size: "compact-md",
       },
     }),

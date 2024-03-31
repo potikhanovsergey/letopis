@@ -1,0 +1,10 @@
+.footer {
+  @mixin light {
+    border-color: var(--mantine-color-gray-3);
+  }
+  @mixin dark {
+    border-color: var(--mantine-color-dark-4);
+  }
+
+  border-top: rem(1px) solid;
+}

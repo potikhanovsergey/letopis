@@ -12,7 +12,6 @@ export const CopyButton: FC<CopyButtonProps> = ({ value }) => {
       {({ copied, copy }) => (
         <Button
           onClick={copy}
-          variant="outline"
           leftSection={<Icon As={copied ? IconCheck : IconLink} />}
           color={copied ? "green" : undefined}
         >

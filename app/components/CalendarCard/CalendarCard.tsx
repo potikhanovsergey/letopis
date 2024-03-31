@@ -55,10 +55,10 @@ export const CalendarCard: FC<CalendarCardProps> = ({
       </Group>
       <Card.Section className={classes.footer}>
         <Group justify="space-between">
-          <Button variant="light" component={Link} href={href}>
+          <Button component={Link} href={href}>
             Смотреть
           </Button>
-          <Group gap={0}>
+          <Group gap={4}>
             <BookmarkButtonFeature id={id} />
             <ShareCalendarFeature id={id} />
           </Group>

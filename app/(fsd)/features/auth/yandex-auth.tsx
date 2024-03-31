@@ -11,11 +11,7 @@ export const YandexAuth: FC = () => {
   }, []);
 
   return (
-    <Button
-      variant="default"
-      leftSection={<Icon As={IconBrandYandex} />}
-      onClick={handleClick}
-    >
+    <Button leftSection={<Icon As={IconBrandYandex} />} onClick={handleClick}>
       Яндекс
     </Button>
   );

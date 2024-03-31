@@ -43,7 +43,7 @@ const SettingsForm: FC = () => {
         });
       }
       modals.closeAll();
-    },
+    }
   );
 
   return (
@@ -67,7 +67,7 @@ const SettingsForm: FC = () => {
       </Stack>
 
       <ModalActions>
-        <Button loading={loading} type="submit" variant="filled">
+        <Button loading={loading} type="submit">
           Подтвердить
         </Button>
       </ModalActions>

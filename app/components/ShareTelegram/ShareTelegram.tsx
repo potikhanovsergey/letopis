@@ -18,7 +18,6 @@ export const ShareTelegram: FC<ShareTelegramProps> = ({ url }) => {
       component="a"
       href={href}
       target="_blank"
-      variant="outline"
       leftSection={<Icon As={IconBrandTelegram} />}
     >
       Поделиться в Telegram

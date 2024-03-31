@@ -1,8 +1,4 @@
 .item {
-    padding: rem(4px) rem(8px);
-    font-weight: 700;
-}
-
-.dropdown {
-    --popover-border-color: var(--lightgray);
+  padding: rem(4px) rem(8px);
+  font-weight: 700;
 }

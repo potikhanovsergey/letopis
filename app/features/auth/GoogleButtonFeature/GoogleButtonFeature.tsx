@@ -10,11 +10,7 @@ export const GoogleButtonFeature: FC = () => {
   }, []);
 
   return (
-    <Button
-      leftSection={<Icon As={IconBrandGoogle} />}
-      onClick={handleClick}
-      variant="default"
-    >
+    <Button leftSection={<Icon As={IconBrandGoogle} />} onClick={handleClick}>
       Google
     </Button>
   );

@@ -17,7 +17,7 @@ const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
   }, [id, deleteEvent]);
 
   return (
-    <Button onClick={handleClick} size="compact-sm" variant="subtle">
+    <Button onClick={handleClick} size="compact-sm">
       Удалить
     </Button>
   );
