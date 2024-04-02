@@ -9,7 +9,7 @@ export const FooterWidget: FC = () => {
     <footer className={classes.footer}>
       <Container py="xs">
         <Group justify="space-between">
-          <Logo size={100} />
+          <Logo size={128} />
           <ThemeSwitcher />
         </Group>
       </Container>

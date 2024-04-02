@@ -12,15 +12,15 @@ export const Header: FC = () => {
   return (
     <AppShellHeader>
       <div className={styles.grid}>
-        <Group>
-          <Button size="compact-sm" component={Link} href="/">
+        <Group visibleFrom="sm" gap="xs">
+          <Button component={Link} href="/">
             Календари
           </Button>
-          <Button size="compact-sm" component={Link} href="/">
+          <Button component={Link} href="/">
             О проекте
           </Button>
         </Group>
-        <Logo />
+        <Logo size={128} />
         <BurgerFeature />
         <Group visibleFrom="sm" justify="flex-end">
           <HeaderSessionFeature />

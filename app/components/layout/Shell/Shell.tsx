@@ -16,7 +16,7 @@ export const Shell: FC<PropsWithChildren> = ({ children }) => {
       footer={{
         height: 60,
       }}
-      header={{ height: 40 }}
+      header={{ height: 48 }}
       navbar={{
         width: 300,
         breakpoint: "sm",
