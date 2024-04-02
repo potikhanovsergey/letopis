@@ -21,7 +21,7 @@ export const CreateCalendarFeature: FC = () => {
       },
     });
     if (calendar) {
-      router.push(`/c/${calendar.id}`);
+      router.push(`/c/${calendar.id}/edit`);
     }
   }, [createCalendar, router, session.data]);
 

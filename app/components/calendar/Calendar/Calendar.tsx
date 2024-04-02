@@ -6,11 +6,11 @@ import CalendarEndDate from "@/app/c/features/CalendarEndDate";
 import CalendarPreview from "@/app/c/features/CalendarPreview";
 import CalendarStartDate from "@/app/c/features/CalendarStartDate";
 import CalendarTitle from "@/app/c/features/CalendarTitle";
-import YearsCalendar from "@/app/c/features/YearsCalendar";
 import { TimespansLegendFeature } from "@/app/features/TimespansLegendFeature";
 import CalendarComponents from "@/app/c/features/CalendarComments";
 
 import { CalendarProps } from "./Calendar.typings";
+import { CalendarFormatController } from "@/app/c/features/CalendarFormatController";
 
 export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
   return (
@@ -25,7 +25,7 @@ export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
         <TimespansLegendFeature />
       </Stack>
 
-      <YearsCalendar />
+      <CalendarFormatController />
 
       <CalendarComponents />
       {toolbar}

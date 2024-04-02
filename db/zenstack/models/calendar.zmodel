@@ -10,6 +10,11 @@ enum CalendarVisibility {
   feed
 }
 
+enum CalendarFormat {
+  year_week
+  month_day
+}
+
 model Calendar extends Dates {
   id String @id @default(cuid())
 
@@ -19,6 +24,7 @@ model Calendar extends Dates {
   startDate DateTime @default(now())
   endDate DateTime @default(dbgenerated("NOW() + interval '40 years'"))
   visibility CalendarVisibility @default(hidden)
+  format CalendarFormat @default(year_week)
 
   userId String
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

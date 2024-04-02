@@ -7,7 +7,6 @@ import { range } from "@mantine/hooks";
 
 import Cell from "@/app/c/features/Cell";
 import RowHints from "@/app/c/components/RowHints";
-import YearsGrid from "@/app/c/components/YearsGrid";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
 import {
   hasInitialized$,
@@ -17,10 +16,11 @@ import {
 import { resetHovered } from "@/app/stores/calendar/actions";
 import { endDateIndex$, startDateIndex$ } from "@/app/stores/calendar/computed";
 import { rowsCount$ } from "@/app/stores/calendar/computed/rowsCount";
+import MonthsGrid from "@/app/c/components/MonthsGrid";
 
-export const array53 = range(0, 52);
+const array31 = range(0, 30);
 
-const YearsCalendar = () => {
+const MonthsCalendar = () => {
   const startDateIndex = useSelector(startDateIndex$);
   const endDateIndex = useSelector(endDateIndex$);
   const rowsCount = useSelector(rowsCount$);
@@ -60,7 +60,7 @@ const YearsCalendar = () => {
         <div>
           <Box style={{ display: "grid", gridTemplateColumns: "auto 1fr" }}>
             <RowHints />
-            <YearsGrid>
+            <MonthsGrid>
               {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
               {startDateIndex !== 0 && (
                 <span
@@ -71,7 +71,7 @@ const YearsCalendar = () => {
               )}
 
               {/* TODO: рендерить через рэндж без return null */}
-              {array53.map((columnIndex) => {
+              {array31.map((columnIndex) => {
                 if (columnIndex < startDateIndex) return null;
 
                 return (
@@ -89,7 +89,7 @@ const YearsCalendar = () => {
               {/* Со второго ряда до предпоследнего */}
               {range(1, rowsCount - 2).map((rowIndex) => (
                 <React.Fragment key={rowIndex}>
-                  {array53.map((columnIndex) => (
+                  {array31.map((columnIndex) => (
                     <Cell
                       rowIndex={rowIndex}
                       columnIndex={columnIndex}
@@ -113,7 +113,7 @@ const YearsCalendar = () => {
                   />
                 );
               })}
-            </YearsGrid>
+            </MonthsGrid>
           </Box>
         </div>
       </FloatingInfoFeature>
@@ -121,4 +121,4 @@ const YearsCalendar = () => {
   );
 };
 
-export default YearsCalendar;
+export default MonthsCalendar;

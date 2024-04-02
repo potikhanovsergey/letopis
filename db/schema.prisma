@@ -19,6 +19,11 @@ enum CalendarVisibility {
     feed
 }
 
+enum CalendarFormat {
+    year_week
+    month_day
+}
+
 /// @@allow('create', true)
 /// @@allow('read', true)
 /// @@allow('all', auth() == this)
@@ -77,6 +82,7 @@ model Calendar {
     startDate DateTime @default(now())
     endDate DateTime @default(dbgenerated("NOW() + interval '40 years'"))
     visibility CalendarVisibility @default(hidden)
+    format CalendarFormat @default(year_week)
     userId String
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
     events Event[]

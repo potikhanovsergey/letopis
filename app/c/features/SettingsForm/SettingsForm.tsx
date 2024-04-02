@@ -6,7 +6,7 @@ import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 
-import { VISIBILITY_DATA } from "@/app/app.const";
+import { FORMAT_DATA, VISIBILITY_DATA } from "@/app/app.const";
 import { ModalActions } from "@/app/components/ModalActions";
 import { calendarData$ } from "@/app/stores";
 import { useUpdateCalendar } from "@/db/hooks";
@@ -16,6 +16,7 @@ const SettingsForm: FC = () => {
   const startDate = useSelector(calendarData$.startDate);
   const endDate = useSelector(calendarData$.endDate);
   const visibility = useSelector(calendarData$.visibility);
+  const format = useSelector(calendarData$.format);
 
   const { mutateAsync: updateCalendar, isPending: loading } =
     useUpdateCalendar();
@@ -25,21 +26,28 @@ const SettingsForm: FC = () => {
       startDate,
       endDate,
       visibility,
+      format,
     },
   });
 
   const handleSubmit = form.onSubmit(
-    async ({ startDate, endDate, visibility }) => {
+    async ({ startDate, endDate, visibility, format }) => {
       const data = await updateCalendar({
         where: { id },
-        data: { startDate, endDate, visibility },
-        select: { startDate: true, endDate: true, visibility: true },
+        data: { startDate, endDate, visibility, format },
+        select: {
+          startDate: true,
+          endDate: true,
+          visibility: true,
+          format: true,
+        },
       });
       if (data) {
         batch(() => {
           calendarData$.startDate.set(data.startDate);
           calendarData$.endDate.set(data.endDate);
           calendarData$.visibility.set(data.visibility);
+          calendarData$.format.set(data.format);
         });
       }
       modals.closeAll();
@@ -58,6 +66,11 @@ const SettingsForm: FC = () => {
           label="Дата конца"
           minDate={form.values.startDate}
           {...form.getInputProps("endDate")}
+        />
+        <Select
+          label="Формат календаря"
+          data={FORMAT_DATA}
+          {...form.getInputProps("format")}
         />
         <Select
           label="Видимость календаря"
