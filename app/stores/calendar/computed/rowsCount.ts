@@ -9,7 +9,8 @@ export const rowsCount$ = computed(() => {
   const endDate = calendarData$.endDate.get();
   const format = calendarData$.format.get();
   const diffUnit = format === "month_day" ? "month" : "y";
-  const diff = dayjs(endDate).diff(startDate, diffUnit) + 1;
+
+  const diff = dayjs(endDate).startOf(diffUnit).diff(dayjs(startDate).startOf(diffUnit), diffUnit) + 1;
 
   return Math.min(diff, MAX_ROWS);
 });

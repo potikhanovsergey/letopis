@@ -8,6 +8,9 @@ import StarterKit from "@tiptap/starter-kit";
 import { Input } from "@mantine/core";
 import { RichTextEditorProps } from "./typings";
 import Link from "@tiptap/extension-link";
+import TextAlign from "@tiptap/extension-text-align";
+import Highlight from "@tiptap/extension-highlight";
+import Underline from "@tiptap/extension-underline";
 
 const RichTextEditor: FC<RichTextEditorProps> = ({
   value,
@@ -17,7 +20,13 @@ const RichTextEditor: FC<RichTextEditorProps> = ({
   onChange,
 }) => {
   const editor = useEditor({
-    extensions: [StarterKit, Link],
+    extensions: [
+      StarterKit,
+      Link,
+      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Highlight,
+      Underline,
+    ],
     content: value,
     onUpdate: ({ editor }) => {
       if (onChange) {

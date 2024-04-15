@@ -5,7 +5,7 @@ model Event extends ReferenceLink, Description {
   id Int @id @default(autoincrement())
   title String
   date DateTime
-  icon String
+  icon String @default('🟢')
 
   calendarId String
   calendar Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
