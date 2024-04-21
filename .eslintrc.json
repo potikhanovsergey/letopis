@@ -13,7 +13,6 @@
         "patterns": ["../*"]
       }
     ],
-    "react/jsx-no-bind": [2, { "allowArrowFunctions": false }],
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" }

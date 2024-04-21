@@ -4,7 +4,7 @@ import { modals } from "@mantine/modals";
 import { IconWand } from "@tabler/icons-react";
 import { FC, useCallback } from "react";
 
-const TITLE = "Автозаполнение календаря"
+const TITLE = "Автозаполнение календаря";
 
 export const GptInvoker: FC = () => {
   const handleClick = useCallback(() => {
@@ -12,13 +12,17 @@ export const GptInvoker: FC = () => {
       title: TITLE,
       id: "gpt-prompt",
       size: "lg",
-      children: (
-        <GptPromptForm />
-      ),
+      children: <GptPromptForm />,
     });
   }, []);
-    
+
   return (
-    <IconButton variant="gradient" gradient={{ from: "violet", to: "orange", deg: 30 }} onClick={handleClick} icon={IconWand} label={TITLE} />
-  )
-}
+    <IconButton
+      variant="gradient"
+      gradient={{ from: "violet", to: "orange", deg: 30 }}
+      onClick={handleClick}
+      icon={IconWand}
+      label={TITLE}
+    />
+  );
+};
