@@ -70,6 +70,9 @@ export const theme = createTheme({
         title: {
           fontWeight: 700,
         },
+        body: {
+          zIndex: 100000
+        }
       },
     }),
     Button: Button.extend({
