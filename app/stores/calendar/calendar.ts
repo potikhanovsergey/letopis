@@ -17,6 +17,7 @@ export const calendarData$ = observable({
   endDate: new Date(),
   userId: "",
   visibility: "hidden",
+  format: "year_week",
 } as ExtendedCalendar);
 
 export const hasInitialized$ = observable(false);
