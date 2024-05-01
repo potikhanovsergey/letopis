@@ -1,0 +1,49 @@
+name: Next production
+
+env:
+  CR_REGISTRY: crp09i97r6qrq37th8cn
+  CR_REPOSITORY: letopis
+  IMAGE_TAG: ${{ github.sha }}
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  app:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create .env.deploy from Github Secrets
+        run: |
+          echo "${{ secrets.ENV }}" > .env.deploy
+
+      - name: Login to Yandex Cloud Container Registry
+        id: login-cr
+        uses: yc-actions/yc-cr-login@v2
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+
+      - name: Build, tag, and push image to Yandex Cloud Container Registry
+        run: |
+          docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
+          docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
+
+      - name: Deploy Serverless Container
+        id: deploy-sls-container
+        uses: yc-actions/yc-sls-container-deploy@v2
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          container-name: letopis
+          folder-id: b1grb2k19j2oc3k98ilv
+          revision-service-account-id: aje7t2e8ib2ckrjbq8up
+          revision-cores: 1
+          revision-memory: 512Mb
+          revision-core-fraction: 100
+          revision-concurrency: 8
+          revision-image-url: cr.yandex/crp09i97r6qrq37th8cn/letopis:${{ github.sha }}
+          revision-execution-timeout: 10

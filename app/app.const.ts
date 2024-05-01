@@ -23,8 +23,6 @@ export const VISIBILITY_DATA: SelectProps["data"] = Object.keys(
   value: k,
 }));
 
-if (!process.env.BASE_URL) throw new Error("No BASE_URL variable found in env");
-
 export const BASE_URL = process.env.BASE_URL!;
 
 export const MAX_ROWS = 400;
