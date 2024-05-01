@@ -6,4 +6,5 @@ export type GptEvent = {
 export type SuggestionEvent = {
   title: string;
   date: Date;
+  icon: string;
 };

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Container, Stack } from "@mantine/core";
+import { Box, Stack } from "@mantine/core";
 
 import CalendarDescription from "@/app/c/features/CalendarDescription";
 import CalendarEndDate from "@/app/c/features/CalendarEndDate";
@@ -14,7 +14,7 @@ import { CalendarFormatController } from "@/app/c/features/CalendarFormatControl
 
 export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
   return (
-    <Container>
+    <Box px="md">
       <Stack gap={4} mb="md">
         <CalendarTitle />
         <CalendarPreview />
@@ -29,6 +29,6 @@ export const Calendar: FC<CalendarProps> = ({ toolbar }) => {
 
       <CalendarComponents />
       {toolbar}
-    </Container>
+    </Box>
   );
 };

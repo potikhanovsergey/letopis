@@ -13,15 +13,10 @@ export const useTimespansModal = () => {
   const openCreateTimespanModal = useCreateTimespanModal();
   const mode = useSelector(mode$);
 
-  const handleCreateClick = useCallback(() => {
-    modals.close("timespans-modal");
-    openCreateTimespanModal();
-  }, [openCreateTimespanModal]);
-
   const onClick = useCallback(() => {
     const createButton =
       mode === "edit" ? (
-        <CreateIconButton onClick={handleCreateClick} />
+        <CreateIconButton onClick={openCreateTimespanModal} />
       ) : undefined;
 
     modals.open({
@@ -30,7 +25,7 @@ export const useTimespansModal = () => {
       size: "lg",
       children: <TimespansModalFeature />,
     });
-  }, [handleCreateClick, mode]);
+  }, [openCreateTimespanModal, mode]);
 
   return onClick;
 };

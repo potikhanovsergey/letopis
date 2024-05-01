@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useTransition } from "react";
 import { useSelector } from "@legendapp/state/react";
 import { Divider } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
@@ -14,6 +14,10 @@ export const EditCalendarLinkFeature: FC = () => {
   const id = useSelector(calendarData$.id);
   const userId = useSelector(calendarData$.userId);
 
+  const [loading, start] = useTransition();
+
+  const handleClick = () => start(() => {});
+
   if (!data || data.user.id !== userId) return null;
 
   return (
@@ -23,6 +27,8 @@ export const EditCalendarLinkFeature: FC = () => {
         label="Редактировать календарь"
         icon={IconEdit}
         component={Link}
+        onClick={handleClick}
+        loading={loading}
         href={`/c/${id}/edit` as Route}
       />
     </>

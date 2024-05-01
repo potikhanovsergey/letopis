@@ -13,15 +13,10 @@ export const useEventsModal = () => {
   const openCreateEventModal = useCreateEventModal();
   const mode = useSelector(mode$);
 
-  const handleCreateClick = useCallback(() => {
-    modals.close("event-modal");
-    openCreateEventModal();
-  }, [openCreateEventModal]);
-
   const onClick = useCallback(() => {
     const createButton =
       mode === "edit" ? (
-        <CreateIconButton onClick={handleCreateClick} />
+        <CreateIconButton onClick={openCreateEventModal} />
       ) : undefined;
 
     modals.open({
@@ -30,7 +25,7 @@ export const useEventsModal = () => {
       size: "lg",
       children: <EventsModalFeature />,
     });
-  }, [handleCreateClick, mode]);
+  }, [openCreateEventModal, mode]);
 
   return onClick;
 };

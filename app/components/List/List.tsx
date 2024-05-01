@@ -11,7 +11,9 @@ export const List: FC<ListProps> = ({ items, title }) => {
       </Text>
       <MantineList size="sm" type="unordered">
         {items.map((item) => (
-          <ListItem key={item.id}>{item.title}</ListItem>
+          <ListItem icon={item.icon} key={item.id}>
+            {item.title}
+          </ListItem>
         ))}
       </MantineList>
     </div>

@@ -3,4 +3,5 @@ import { CalendarCardProps } from "@/app/components/CalendarCard/CalendarCard.ty
 export interface CalendarsIncutProps {
   title?: string;
   calendars: CalendarCardProps[];
+  loading?: boolean;
 }

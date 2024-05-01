@@ -13,7 +13,7 @@ import { useSearchParams } from "next/navigation";
 export const FeedWidget: FC = () => {
   const filter = useSelector(feedFilter$);
 
-  const { data: calendars } = useFindManyCalendar({
+  const { data: calendars, isPending } = useFindManyCalendar({
     orderBy: { createdAt: "desc" },
     select: calendarCardSelect,
     where: filter,
@@ -34,7 +34,7 @@ export const FeedWidget: FC = () => {
   return (
     <Stack>
       <SearchFeature />
-      <CalendarsIncut calendars={calendars ?? []} />
+      <CalendarsIncut loading={isPending} calendars={calendars ?? []} />
     </Stack>
   );
 };

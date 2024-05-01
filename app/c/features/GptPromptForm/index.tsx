@@ -1,3 +1,4 @@
+"use client";
 import { GptEvent, SuggestionEvent } from "@/app/(fsd)/app/types";
 import { Stack, TextInput, Button, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
@@ -28,7 +29,7 @@ export const GptPromptForm: FC = () => {
     const validItems = items.reduce((acc, item) => {
       const d = dayjs(item.date, "DD.MM.YYYY");
       if (d.isValid()) {
-        acc.push({ ...item, date: d.toDate() });
+        acc.push({ ...item, date: d.toDate(), icon: "🟢" });
       }
 
       return acc;
@@ -48,9 +49,9 @@ export const GptPromptForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack>
+      <Stack gap="xs">
         {hasNoFound && (
-          <Text c="dimmed">
+          <Text c="dimmed" size="sm">
             Ничего не получилось вывести, попробуйте другой запрос
           </Text>
         )}
@@ -58,6 +59,7 @@ export const GptPromptForm: FC = () => {
           {...form.getInputProps("prompt")}
           maxLength={80}
           minLength={4}
+          required
           disabled={loading}
           placeholder="История России"
           label="Введите тематику"

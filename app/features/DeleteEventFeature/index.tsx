@@ -7,7 +7,7 @@ import { useDeleteEvent } from "@/db/hooks";
 import { DeleteEventFeatureProps } from "./typings";
 
 const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
-  const { mutateAsync: deleteEvent } = useDeleteEvent();
+  const { mutateAsync: deleteEvent, isPending } = useDeleteEvent();
 
   const handleClick = useCallback(async () => {
     const event = await deleteEvent({ where: { id }, select: { id: true } });
@@ -17,7 +17,7 @@ const DeleteEventFeature: FC<DeleteEventFeatureProps> = ({ id }) => {
   }, [id, deleteEvent]);
 
   return (
-    <Button onClick={handleClick} size="compact-sm">
+    <Button loading={isPending} onClick={handleClick} size="compact-sm">
       Удалить
     </Button>
   );

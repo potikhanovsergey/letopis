@@ -12,8 +12,8 @@ export const HoveredCellEventsFeature: FC = () => {
     () =>
       events
         .slice(0, TOOLTIP_EVENTS_LIMIT)
-        .map((item) => ({ id: item.id, title: item.title })),
-    [events],
+        .map((item) => ({ id: item.id, title: item.title, icon: item.icon })),
+    [events]
   );
 
   if (!events.length) return null;

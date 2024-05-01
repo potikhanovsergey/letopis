@@ -8,11 +8,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  font-size: 75%;
-
-  &:hover {
-    filter: brightness(90%);
-  }
+  font-size: 1rem;
   margin: rem(0.5px);
 
   @mixin light {
@@ -20,6 +16,10 @@
   }
 
   @mixin dark {
-    background: var(--mantine-color-dark-3);
+    background: var(--mantine-color-dark-4);
+  }
+
+  &:hover {
+    filter: brightness(90%);
   }
 }

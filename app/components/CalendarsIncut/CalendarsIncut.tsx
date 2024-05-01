@@ -1,14 +1,34 @@
 import { FC } from "react";
-import { SimpleGrid, Text, Title } from "@mantine/core";
+import {
+  SimpleGrid,
+  SimpleGridProps,
+  Skeleton,
+  Text,
+  Title,
+} from "@mantine/core";
 
 import { CalendarCard } from "@/app/components/CalendarCard";
 
 import { CalendarsIncutProps } from "./CalendarsIncut.typings";
+import { range } from "@mantine/hooks";
+
+const cols: SimpleGridProps["cols"] = 4;
 
 export const CalendarsIncut: FC<CalendarsIncutProps> = ({
   title,
   calendars,
+  loading,
 }) => {
+  if (loading) {
+    return (
+      <SimpleGrid cols={cols}>
+        {range(0, 16).map((item) => (
+          <Skeleton visible h={200} key={item} />
+        ))}
+      </SimpleGrid>
+    );
+  }
+
   return (
     <div>
       {title && (
@@ -17,7 +37,7 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
         </Title>
       )}
       {calendars.length > 0 ? (
-        <SimpleGrid cols={4}>
+        <SimpleGrid cols={cols}>
           {calendars.map((calendar) => (
             <CalendarCard
               key={calendar.id}
@@ -32,7 +52,7 @@ export const CalendarsIncut: FC<CalendarsIncutProps> = ({
           ))}
         </SimpleGrid>
       ) : (
-        <Text c="dimmed">Здесь еще ничего нет.</Text>
+        <Text c="dimmed">Ничего не нашлось</Text>
       )}
     </div>
   );

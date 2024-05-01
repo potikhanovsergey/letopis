@@ -1,4 +1,6 @@
 .footer {
+  padding: var(--mantine-spacing-xs);
+
   @mixin light {
     border-color: var(--mantine-color-gray-3);
   }

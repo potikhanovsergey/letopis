@@ -7,7 +7,8 @@ import { useDeleteTimespan } from "@/db/hooks";
 import { DeleteTimespanFeatureProps } from "./typings";
 
 const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({ id }) => {
-  const { mutateAsync: deleteTimespanMutation } = useDeleteTimespan();
+  const { mutateAsync: deleteTimespanMutation, isPending } =
+    useDeleteTimespan();
 
   const handleClick = useCallback(async () => {
     const timespan = await deleteTimespanMutation({
@@ -20,7 +21,7 @@ const DeleteTimespanFeature: FC<DeleteTimespanFeatureProps> = ({ id }) => {
   }, [id, deleteTimespanMutation]);
 
   return (
-    <Button size="compact-sm" onClick={handleClick}>
+    <Button loading={isPending} size="compact-sm" onClick={handleClick}>
       Удалить
     </Button>
   );

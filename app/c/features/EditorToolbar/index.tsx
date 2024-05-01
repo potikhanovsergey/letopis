@@ -5,8 +5,8 @@ import { DotsActions } from "@/app/components/DotsActions";
 import { FloatingToolbar } from "@/app/components/FloatingToolbar";
 import { TimespansButtonFeature } from "@/app/features//TimespansButtonFeature";
 import { EventsButtonFeature } from "@/app/features/EventsButtonFeature";
-import ToolbarMediaButtons from "@/app/c/features/ToolbarMediaButtons";
 import { GptInvoker } from "@/app/c/features/GptInvoker";
+import { ViewCalendarLinkFeature } from "@/app/features/ViewCalendarLinkFeature";
 
 const EditorToolbar = () => {
   return (
@@ -15,8 +15,7 @@ const EditorToolbar = () => {
       <EventsButtonFeature />
       <GptInvoker />
       <Divider orientation="vertical" />
-      <ToolbarMediaButtons />
-      <Divider orientation="vertical" />
+      <ViewCalendarLinkFeature />
       <DotsActions />
     </FloatingToolbar>
   );

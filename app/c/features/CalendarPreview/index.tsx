@@ -5,8 +5,8 @@ import { Skeleton } from "@mantine/core";
 import { CalendarPreviewImage } from "@/app/components/CalendarPreviewImage";
 import { calendarData$, hasInitialized$ } from "@/app/stores";
 
-const MAW = 320;
-const h = (320 / 16) * 9;
+const MAW = 500;
+const h = (MAW / 16) * 9;
 
 const CalendarPreview: FC = () => {
   const previewUrl = useSelector(calendarData$.previewUrl);

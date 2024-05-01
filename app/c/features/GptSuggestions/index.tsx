@@ -1,3 +1,4 @@
+"use client";
 import { GPT_SUGGESTIONS_MODAL_ID } from "@/app/(fsd)/app/constants";
 import { GptSuggestionsProps } from "@/app/c/features/GptSuggestions/types";
 import { ModalActions } from "@/app/components/ModalActions";
@@ -12,6 +13,7 @@ import {
   Group,
   LoadingOverlay,
   Stack,
+  Text,
   TextInput,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
@@ -25,6 +27,7 @@ const GptSuggestions: FC<GptSuggestionsProps> = ({ suggestions }) => {
     initialValues: {
       items: suggestions,
     },
+    mode: "uncontrolled",
   });
   const [loading, { open: startLoading, close: endLoading }] = useDisclosure();
 
@@ -36,7 +39,7 @@ const GptSuggestions: FC<GptSuggestionsProps> = ({ suggestions }) => {
     startLoading();
     for (let item of values.items) {
       const created = await createEvent.mutateAsync({
-        data: { calendarId, ...item, icon: "🟢" },
+        data: { calendarId, ...item },
       });
       if (created) {
         addCellEvent(created);
@@ -53,7 +56,16 @@ const GptSuggestions: FC<GptSuggestionsProps> = ({ suggestions }) => {
   return (
     <Box component="form" pos="relative" onSubmit={handleSubmit}>
       <LoadingOverlay visible={loading} />
-      <Stack>
+      <Text c="dimmed" mb="xs">
+        Если нейросеть не уверена в точной дате, или точная дата неизвестна —
+        предлагается 1-ое января. Также нейросеть может галюционировать, поэтому
+        старайтесь проверять события и даты на достоверность.
+      </Text>
+      <Text c="dimmed" mb="xs">
+        После добавления событий в календарь их можно будет отредактировать —
+        подобрать иконку, скорректировать название или дату.
+      </Text>
+      <Stack gap="xs">
         {form.values.items.map((item, index) => (
           <Fieldset key={item.title} legend={`Событие ${index + 1}`}>
             <TextInput

@@ -11,9 +11,9 @@ export const TimespansLegend: FC<TimespansLegendProps> = ({ timespans }) => {
       <Title order={2} size="h4">
         Легенда
       </Title>
-      <Group>
+      <Group gap="xs">
         {timespans.map((timespan) => (
-          <Group gap="xs" key={timespan.id}>
+          <Group gap={4} key={timespan.id}>
             <ColorSwatch radius="xs" size={12} color={timespan.color} />
             <Text size="sm">{timespan.title}</Text>
           </Group>

@@ -8,7 +8,10 @@ import Link from "next/link";
 
 export const Navbar: FC = () => {
   return (
-    <AppShellNavbar p="md">
+    <AppShellNavbar
+      p="md"
+      h="calc( 100dvh - var(--app-shell-header-offset, 0rem))"
+    >
       <AppShellSection>
         <Stack gap={4}>
           <CreateCalendarFeature />

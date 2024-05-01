@@ -10,7 +10,7 @@ import { SettingsFormInvoker } from "@/app/c/features/SettingsForm";
 
 export const DotsActions: FC = () => {
   return (
-    <Menu>
+    <Menu position="top-end">
       <Menu.Target>
         <IconButton label="Действия с календарем" icon={IconDotsVertical} />
       </Menu.Target>
