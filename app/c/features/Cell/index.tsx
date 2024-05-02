@@ -9,6 +9,8 @@ import { events$, timespans$ } from "@/app/stores/calendar/computed";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
 import { CellProps } from "./typings";
+import { Tooltip } from "@mantine/core";
+import { HoveredInfo } from "@/app/features/HoveredInfo";
 
 const Cell: FC<CellProps> = ({
   rowIndex,
@@ -35,6 +37,11 @@ const Cell: FC<CellProps> = ({
     onMouseEnter({ rowIndex, columnIndex });
   }, [onMouseEnter, rowIndex, columnIndex]);
 
+  const handleClick = useCallback(() => {
+    onMouseEnter({ rowIndex, columnIndex });
+    openCellData();
+  }, [onMouseEnter, rowIndex, columnIndex, openCellData]);
+
   const children = useMemo(() => {
     const cellEvents = getCellEvents({
       rowIndex,
@@ -52,14 +59,28 @@ const Cell: FC<CellProps> = ({
   }, [rowIndex, columnIndex, events]);
 
   return (
-    <CellUI
-      color={color}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={openCellData}
+    <Tooltip
+      multiline
+      zIndex={100}
+      maw={400}
+      styles={{
+        tooltip: {
+          whiteSpace: "normal",
+        },
+      }}
+      position="bottom"
+      label={<HoveredInfo />}
+      transitionProps={{ duration: 0 }}
     >
-      {children}
-    </CellUI>
+      <CellUI
+        color={color}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={handleClick}
+      >
+        {children}
+      </CellUI>
+    </Tooltip>
   );
 };
 
