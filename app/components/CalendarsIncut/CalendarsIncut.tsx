@@ -12,7 +12,7 @@ import { CalendarCard } from "@/app/components/CalendarCard";
 import { CalendarsIncutProps } from "./CalendarsIncut.typings";
 import { range } from "@mantine/hooks";
 
-const cols: SimpleGridProps["cols"] = 4;
+const cols: SimpleGridProps["cols"] = { base: 1, sm: 2, lg: 4 };
 
 export const CalendarsIncut: FC<CalendarsIncutProps> = ({
   title,
