@@ -35,6 +35,7 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
       maw={400}
       position="bottom"
       offset={20}
+      zIndex={100}
       disabled={hoveredDatesStart === null}
       styles={{
         tooltip: {
