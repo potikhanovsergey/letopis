@@ -1,7 +1,7 @@
 name: Next production
 
 env:
-  CR_REGISTRY: crp09i97r6qrq37th8cn
+  CR_REGISTRY: ${{ secrets.CR_REGISTRY }}
   CR_REPOSITORY: letopis
   IMAGE_TAG: ${{ github.sha }}
 
@@ -39,11 +39,11 @@ jobs:
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
           container-name: letopis
-          folder-id: b1grb2k19j2oc3k98ilv
-          revision-service-account-id: aje7t2e8ib2ckrjbq8up
+          folder-id: ${{ secrets.YC_FOLDER_ID }}
+          revision-service-account-id: ${{ secrets.YC_SERVICE_ACCOUNT_ID }}
           revision-cores: 1
           revision-memory: 512Mb
           revision-core-fraction: 100
           revision-concurrency: 8
-          revision-image-url: cr.yandex/crp09i97r6qrq37th8cn/letopis:${{ github.sha }}
+          revision-image-url: cr.yandex/${{ secrets.CR_REGISTRY }}/letopis:${{ github.sha }}
           revision-execution-timeout: 10
