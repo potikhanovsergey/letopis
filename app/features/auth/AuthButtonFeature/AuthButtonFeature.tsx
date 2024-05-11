@@ -5,8 +5,9 @@ import { modals } from "@mantine/modals";
 import { GoogleButtonFeature } from "@/app/features/auth/GoogleButtonFeature";
 import { YandexAuth } from "@/app/(fsd)/features";
 import { title } from "./AuthButtonFeature.const";
+import { withoutSession } from "@/app/(fsd)/app/hocs";
 
-export const AuthButtonFeature: FC = () => {
+const AuthButtonFeatureBase: FC = () => {
   const handleClick = useCallback(() => {
     modals.open({
       title,
@@ -21,3 +22,5 @@ export const AuthButtonFeature: FC = () => {
 
   return <Button onClick={handleClick}>{title}</Button>;
 };
+
+export const AuthButtonFeature = withoutSession(AuthButtonFeatureBase);
