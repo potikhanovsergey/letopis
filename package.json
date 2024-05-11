@@ -44,6 +44,7 @@
     "@tiptap/starter-kit": "^2.2.4",
     "@zenstackhq/runtime": "1.2.1",
     "@zenstackhq/tanstack-query": "1.2.1",
+    "classnames": "^2.5.1",
     "next": "14.0.0",
     "next-auth": "^4.24.5",
     "react": "18",

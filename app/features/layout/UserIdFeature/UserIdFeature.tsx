@@ -2,7 +2,10 @@
 import { FC } from "react";
 import { Avatar, Menu, UnstyledButton } from "@mantine/core";
 
-import { SignoutButtonFeature } from "@/app/features/auth";
+import {
+  ProfileButtonFeature,
+  SignoutButtonFeature,
+} from "@/app/features/auth";
 
 import { UserIdFeatureProps } from "./UserIdFeature.typings";
 
@@ -15,6 +18,7 @@ export const UserIdFeature: FC<UserIdFeatureProps> = ({ user }) => {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
+        <ProfileButtonFeature type="menuItem" />
         <SignoutButtonFeature component={Menu.Item} />
       </Menu.Dropdown>
     </Menu>

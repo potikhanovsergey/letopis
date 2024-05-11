@@ -11,13 +11,17 @@ export const UserCalendarsFeature: FC<UserCalendarsFeatureProps> = ({
   user,
   title,
 }) => {
-  const { data: calendars } = useFindManyCalendar({
+  const { data: calendars, isLoading } = useFindManyCalendar({
     where: { userId: user.id },
     select: calendarCardSelect,
     orderBy: { updatedAt: "desc" },
   });
 
-  if (!calendars) return null;
-
-  return <CalendarsIncut title={title} calendars={calendars} />;
+  return (
+    <CalendarsIncut
+      loading={isLoading}
+      title={title}
+      calendars={calendars ?? []}
+    />
+  );
 };

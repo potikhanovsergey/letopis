@@ -14,3 +14,11 @@ export type SuggestionEvent = {
 export interface WithSessionProps {
   user: Session["user"];
 }
+
+export type WithId = {
+  id: string;
+};
+
+export type WithParams<P> = {
+  params: P;
+};

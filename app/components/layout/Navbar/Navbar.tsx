@@ -1,7 +1,11 @@
 import { FC } from "react";
 import { AppShellNavbar, AppShellSection, Button, Stack } from "@mantine/core";
 
-import { AuthButtonFeature, SignoutButtonFeature } from "@/app/features/auth";
+import {
+  AuthButtonFeature,
+  ProfileButtonFeature,
+  SignoutButtonFeature,
+} from "@/app/features/auth";
 import { CreateCalendarFeature } from "@/app/features/CreateCalendarFeature";
 import { RouteListenerFeature } from "@/app/features/RouteListenerFeature";
 import Link from "next/link";
@@ -14,6 +18,7 @@ export const Navbar: FC = () => {
     >
       <AppShellSection>
         <Stack gap={4}>
+          <ProfileButtonFeature type="button" />
           <AuthButtonFeature />
           <CreateCalendarFeature />
           <Button component={Link} href="/">

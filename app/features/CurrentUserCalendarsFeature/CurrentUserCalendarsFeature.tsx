@@ -9,5 +9,5 @@ export const CurrentUserCalendarsFeature: FC = () => {
 
   if (!session.data?.user) return null;
 
-  return <UserCalendarsFeature title="Мои календари" user={session.data.user} />;
+  return <UserCalendarsFeature user={session.data.user} />;
 };

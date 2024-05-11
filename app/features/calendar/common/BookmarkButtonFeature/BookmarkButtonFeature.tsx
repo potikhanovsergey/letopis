@@ -44,7 +44,7 @@ export const BookmarkButtonFeature: FC<BookmarkButtonFeatureProps> = ({
   return (
     <IconButton
       icon={bookmarked ? IconBookmarkFilled : IconBookmark}
-      label={bookmarked ? "Убрать из закладок" : "Добавить в закладки"}
+      label={bookmarked ? "Убрать из сохраненного" : "Сохранить"}
       onClick={onClick}
       loading={loading}
     />
