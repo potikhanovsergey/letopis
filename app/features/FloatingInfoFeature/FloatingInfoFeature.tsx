@@ -8,10 +8,12 @@ import { HoveredCellEventsFeature } from "@/app/features/HoveredCellEventsFeatur
 import { HoveredCellTimespansFeature } from "@/app/features/HoveredCellTimespansFeature";
 import { hoveredDates$ } from "@/app/stores/calendar/computed";
 import { formatLong, getDayOfWeekLabel } from "@/app/utils/date";
+import { calendarData$ } from "@/app/stores";
 
 export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
   const hoveredDatesStart = useSelector(hoveredDates$.start);
   const hoveredDatesEnd = useSelector(hoveredDates$.end);
+  const format = useSelector(calendarData$.format);
 
   const startDayOfWeek = useMemo(() => {
     return getDayOfWeekLabel(hoveredDatesStart);
@@ -22,11 +24,11 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
   }, [hoveredDatesEnd]);
 
   const startDateLabel = useMemo(() => {
-    return `${formatLong(hoveredDatesStart)} года, ${startDayOfWeek}`;
+    return `${formatLong(hoveredDatesStart)}, ${startDayOfWeek}`;
   }, [hoveredDatesStart, startDayOfWeek]);
 
   const endDateLabel = useMemo(() => {
-    return `${formatLong(hoveredDatesEnd)} года, ${endDayOfWeek}`;
+    return `${formatLong(hoveredDatesEnd)}, ${endDayOfWeek}`;
   }, [endDayOfWeek, hoveredDatesEnd]);
 
   return (
@@ -44,8 +46,14 @@ export const FloatingInfoFeature: FC<PropsWithChildren> = ({ children }) => {
       }}
       label={
         <Stack gap={0}>
-          <KeyValue k="Начало клетки" v={startDateLabel} />
-          <KeyValue k="Конец клетки" v={endDateLabel} />
+          {format === "year_week" ? (
+            <>
+              <KeyValue k="Начало клетки" v={startDateLabel} />
+              <KeyValue k="Конец клетки" v={endDateLabel} />
+            </>
+          ) : (
+            <KeyValue k="Дата клетки" v={startDateLabel} />
+          )}
           <HoveredCellEventsFeature />
           <HoveredCellTimespansFeature />
           <Text size="sm">Кликните, чтобы увидеть больше</Text>

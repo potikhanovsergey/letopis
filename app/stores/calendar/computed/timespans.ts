@@ -9,6 +9,7 @@ export const timespans$ = computed(() => {
   const startDate = calendarData$.startDate.get();
   const endDate = calendarData$.endDate.get();
   const timespans = calendarData$.timespans.get();
+  const format = calendarData$.format.get();
 
   const indexedTimespans: IndexedTimespan[] = [];
 
@@ -16,7 +17,7 @@ export const timespans$ = computed(() => {
     if (dayjs(endDate).isBefore(t.startDate)) continue;
     if (dayjs(startDate).isAfter(t.endDate)) continue;
 
-    indexedTimespans.push(getIndexedTimespan(t, startDate));
+    indexedTimespans.push(getIndexedTimespan(t, startDate, format));
   }
 
   return indexedTimespans;

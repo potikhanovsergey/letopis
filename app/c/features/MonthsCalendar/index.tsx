@@ -9,6 +9,7 @@ import Cell from "@/app/c/features/Cell";
 import RowHints from "@/app/c/components/RowHints";
 import { FloatingInfoFeature } from "@/app/features/FloatingInfoFeature";
 import {
+  calendarData$,
   hasInitialized$,
   hoveredColumnIndex$,
   hoveredRowIndex$,
@@ -17,6 +18,7 @@ import { resetHovered } from "@/app/stores/calendar/actions";
 import { endDateIndex$, startDateIndex$ } from "@/app/stores/calendar/computed";
 import { rowsCount$ } from "@/app/stores/calendar/computed/rowsCount";
 import MonthsGrid from "@/app/c/components/MonthsGrid";
+import dayjs from "dayjs";
 
 const array31 = range(0, 30);
 
@@ -24,6 +26,7 @@ const MonthsCalendar = () => {
   const startDateIndex = useSelector(startDateIndex$);
   const endDateIndex = useSelector(endDateIndex$);
   const rowsCount = useSelector(rowsCount$);
+  const startDate = useSelector(calendarData$.startDate);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -61,45 +64,36 @@ const MonthsCalendar = () => {
           <Box style={{ display: "grid", gridTemplateColumns: "auto 1fr" }}>
             <RowHints />
             <MonthsGrid>
-              {/* Первый ряд клеток может быть меньше из-за стартовой даты */}
-              {startDateIndex !== 0 && (
-                <span
-                  style={{
-                    gridArea: `1 / 1 / 2 / ${startDateIndex + 1}`,
-                  }}
-                />
-              )}
-
-              {/* TODO: рендерить через рэндж без return null */}
-              {array31.map((columnIndex) => {
-                if (columnIndex < startDateIndex) return null;
-
-                return (
-                  <Cell
-                    rowIndex={0}
-                    columnIndex={columnIndex}
-                    key={columnIndex}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  />
-                );
-              })}
-
               {/* Все кроме последнего ряда полные */}
               {/* Со второго ряда до предпоследнего */}
-              {range(1, rowsCount - 2).map((rowIndex) => (
-                <React.Fragment key={rowIndex}>
-                  {array31.map((columnIndex) => (
-                    <Cell
-                      rowIndex={rowIndex}
-                      columnIndex={columnIndex}
-                      key={columnIndex}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                  ))}
-                </React.Fragment>
-              ))}
+              {range(0, rowsCount - 2).map((rowIndex) => {
+                const month = dayjs(startDate)
+                  .startOf("month")
+                  .add(rowIndex, "month");
+                const endMonthIndex = month.daysInMonth() - 1;
+
+                return (
+                  <React.Fragment key={rowIndex}>
+                    {array31.map((columnIndex) => {
+                      if (rowIndex === 0 && columnIndex < startDateIndex)
+                        return <span key={columnIndex} />;
+
+                      if (columnIndex > endMonthIndex)
+                        return <span key={columnIndex} />;
+
+                      return (
+                        <Cell
+                          rowIndex={rowIndex}
+                          columnIndex={columnIndex}
+                          key={columnIndex}
+                          onMouseEnter={handleMouseEnter}
+                          onMouseLeave={handleMouseLeave}
+                        />
+                      );
+                    })}
+                  </React.Fragment>
+                );
+              })}
 
               {/* Последний ряд клеток может быть меньше из-за стартовой даты */}
               {range(0, endDateIndex).map((columnIndex) => {

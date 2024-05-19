@@ -9,6 +9,7 @@ export const events$ = computed(() => {
   const startDate = calendarData$.startDate.get();
   const endDate = calendarData$.endDate.get();
   const events = calendarData$.events.get();
+  const format = calendarData$.format.get();
 
   const indexedEvents: IndexedEvent[] = [];
 
@@ -16,7 +17,7 @@ export const events$ = computed(() => {
     if (dayjs(endDate).isBefore(e.date)) continue;
     if (dayjs(startDate).isAfter(e.date)) continue;
 
-    indexedEvents.push(getIndexedEvent(e, startDate));
+    indexedEvents.push(getIndexedEvent(e, startDate, format));
   }
 
   return indexedEvents;

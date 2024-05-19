@@ -9,6 +9,6 @@ export const getCellEvents = ({
   events: IndexedEvent[];
 }) => {
   return events.filter(
-    (e) => e.columnIndex === columnIndex && e.rowIndex === rowIndex,
+    (e) => e.columnIndex === columnIndex && e.rowIndex === rowIndex
   );
 };

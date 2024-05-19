@@ -12,6 +12,7 @@ export const clickedDates$ = computed(() => {
   const columnIndex = clickedColumnIndex$.get();
   const startDate = calendarData$.startDate.get();
   const endDate = calendarData$.endDate.get();
+  const format = calendarData$.format.get();
 
-  return getCellDates({ rowIndex, columnIndex, startDate, endDate });
+  return getCellDates({ rowIndex, columnIndex, startDate, endDate, format });
 });
