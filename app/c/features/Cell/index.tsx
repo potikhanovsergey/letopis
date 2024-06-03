@@ -9,6 +9,7 @@ import { events$, timespans$ } from "@/app/stores/calendar/computed";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
 
 import { CellProps } from "./typings";
+import { calendarData$ } from "@/app/stores";
 
 const Cell: FC<CellProps> = ({
   rowIndex,
@@ -18,6 +19,7 @@ const Cell: FC<CellProps> = ({
 }) => {
   const events = useSelector(events$);
   const timespans = useSelector(timespans$);
+  const format = useSelector(calendarData$.format);
 
   const openCellData = useCellsDataModal({ rowIndex, columnIndex });
 
