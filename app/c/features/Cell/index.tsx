@@ -7,9 +7,10 @@ import { useCellsDataModal } from "@/app/hooks/useCellsDataModal";
 import { useTimespansColor } from "@/app/hooks/useTimespansColor";
 import { events$, timespans$ } from "@/app/stores/calendar/computed";
 import { getCellEvents, getCellTimespans } from "@/app/stores/calendar/utils";
+import { Tooltip } from "@mantine/core";
+import { HoveredInfo } from "@/app/features/HoveredInfo";
 
 import { CellProps } from "./typings";
-import { calendarData$ } from "@/app/stores";
 
 const Cell: FC<CellProps> = ({
   rowIndex,
@@ -19,7 +20,6 @@ const Cell: FC<CellProps> = ({
 }) => {
   const events = useSelector(events$);
   const timespans = useSelector(timespans$);
-  const format = useSelector(calendarData$.format);
 
   const openCellData = useCellsDataModal({ rowIndex, columnIndex });
 
@@ -36,6 +36,11 @@ const Cell: FC<CellProps> = ({
   const handleMouseEnter = useCallback(() => {
     onMouseEnter({ rowIndex, columnIndex });
   }, [onMouseEnter, rowIndex, columnIndex]);
+
+  const handleClick = useCallback(() => {
+    onMouseEnter({ rowIndex, columnIndex });
+    openCellData();
+  }, [onMouseEnter, rowIndex, columnIndex, openCellData]);
 
   const children = useMemo(() => {
     const cellEvents = getCellEvents({
@@ -54,14 +59,31 @@ const Cell: FC<CellProps> = ({
   }, [rowIndex, columnIndex, events]);
 
   return (
-    <CellUI
-      color={color}
+    <Tooltip
+      multiline
       onMouseEnter={handleMouseEnter}
+      zIndex={100}
       onMouseLeave={onMouseLeave}
+      maw={400}
       onClick={openCellData}
+      styles={{
+        tooltip: {
+          whiteSpace: "normal",
+        },
+      }}
+      position="bottom"
+      label={<HoveredInfo />}
+      transitionProps={{ duration: 0 }}
     >
-      {children}
-    </CellUI>
+      <CellUI
+        color={color}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={handleClick}
+      >
+        {children}
+      </CellUI>
+    </Tooltip>
   );
 };
 
