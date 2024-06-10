@@ -18,9 +18,6 @@ export const Header: FC = () => {
             <Button component={Link} href="/">
               Календари
             </Button>
-            <Button component={Link} href="/">
-              О проекте
-            </Button>
           </Group>
         </Group>
         <BurgerFeature />

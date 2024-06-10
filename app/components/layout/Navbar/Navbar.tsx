@@ -24,9 +24,6 @@ export const Navbar: FC = () => {
           <Button component={Link} href="/">
             Календари
           </Button>
-          <Button component={Link} href="/">
-            О проекте
-          </Button>
           <SignoutButtonFeature component={Button} />
         </Stack>
       </AppShellSection>
