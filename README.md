@@ -1,2 +1,2 @@
 ## Летопись
-letopis.vercel.app
+[Vercel instance](https://letopis.vercel.app)
